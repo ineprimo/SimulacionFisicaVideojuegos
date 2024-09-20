@@ -30,6 +30,17 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 
+//transform fuera porque es un puntero <3
+RenderItem* xrenderItem = NULL;
+RenderItem* yrenderItem = NULL;
+RenderItem* zrenderItem = NULL;
+RenderItem* orenderItem = NULL;
+
+PxTransform xTransform(10.0, 0.0, 0.0);
+PxTransform yTransform(0.0, 10.0, 0.0);
+PxTransform zTransform(0.0, 0.0, 10.0);
+PxTransform oTransform(0.0, 0.0, 0.0);
+
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -54,7 +65,15 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
-	}
+	
+
+	// crear esfera
+	xrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &xTransform, {1.0, 0.7, 0.8, 1.0});
+	yrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &yTransform, {0.0, 1.0, 0.9, 1.0});
+	zrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &zTransform, {0.0, 0.0, 0.9, 1.0});
+	orenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &oTransform, {0.0, 0.0, 0.0, 1.0});
+
+}
 
 
 // Function to configure what happens in each step of physics
@@ -73,6 +92,12 @@ void stepPhysics(bool interactive, double t)
 void cleanupPhysics(bool interactive)
 {
 	PX_UNUSED(interactive);
+
+	//
+	DeregisterRenderItem(xrenderItem);
+	DeregisterRenderItem(yrenderItem);
+	DeregisterRenderItem(zrenderItem);
+	DeregisterRenderItem(orenderItem);
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
 	gScene->release();
