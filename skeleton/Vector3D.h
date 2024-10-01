@@ -1,17 +1,21 @@
 #pragma once
 
+#include <cmath>
 
 // ho-ho-hola de nuevo vector3d
 class Vector3D {
 
+private:
 	float x, y, z;
 
+public:
 	Vector3D() :
 		x(0.0), y(0.0), z(0.0) {};
 
 	Vector3D(float x_, float y_, float z_) 
 		: x(x_), y(y_), z(z_) {};
 
+	~Vector3D();
 	
 
 	// ------------ GETTERS Y SETTERS --------- //
@@ -32,18 +36,22 @@ class Vector3D {
 	// MODULO
 	float module(Vector3D vector);
 
+	void operator+(Vector3D& v)
+	{
+		this->x += v.x;
+		this->y += v.y;
+		this->z += v.z;
+	}
 
-	// ---------- OPERACIONES ------------ //
-	//
 
-	// sobrecargar esto tmbbbbbbbb omfg
-	// PRODUCTO ESCALAR
-	Vector3D product(Vector3D v1, Vector3D v2);
 
-	// VECTOR X ESCALAR
-	Vector3D product(Vector3D vec, float esc);
+	//Producto escalar de un vector por otro
+	Vector3D& operator*(Vector3D& vec);
+	
+	// ¿??¿?¿
+	float& operator*(float& a);
 
-	// ---------- SOBRECARGAS ------------- //
+
 
 
 
