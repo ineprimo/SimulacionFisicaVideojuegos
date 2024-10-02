@@ -5,17 +5,17 @@ Vector3D Vector3D::normalize(Vector3D vector)
 {
     // vector / modulo
 
-    float mod = module(vector);
+    double mod = module(vector);
 
-    Vector3D vec = { vector.x()/mod, vector.y()/mod, vector.z()/mod };
+    Vector3D vec = { vector.getX()/mod, vector.getY()/mod, vector.getZ()/mod };
 
     return vec;
 }
 
-float Vector3D::module(Vector3D vector)
+double Vector3D::module(Vector3D vector)
 {
-    float in = pow(vector.x(), 2) + pow(vector.y(), 2) + pow(vector.z(), 2);
-    float mod = sqrt(in);
+    double in = pow(vector.getX(), 2) + pow(vector.getY(), 2) + pow(vector.getZ(), 2);
+    double mod = sqrt(in);
     return mod;
 }
 
