@@ -36,45 +36,21 @@ public:
 	// MODULO
 	float module(Vector3D vector);
 
-
-
-	Vector3D operator+(Vector3D& v)
+	void operator+(Vector3D& v)
 	{
-		return Vector3D(x + v.x, y + v.y, z + v.z);
-
+		this->x += v.x;
+		this->y += v.y;
+		this->z += v.z;
 	}
+
+
+
+	//Producto escalar de un vector por otro
+	Vector3D& operator*(Vector3D& vec);
 	
-	Vector3D operator-(Vector3D& v)
-	{
-		return Vector3D(x -v.x, y - v.y, z-v.z);
+	// ¿??¿?¿
+	float& operator*(float& a);
 
-	}
-
-
-
-	//Producto escalar
-	double operator*(Vector3D& vec) {
-
-		return x * vec.x + y * vec.y + z * vec.z;
-	}
-
-	//Por un escalar
-	double operator*(double escalar) {
-
-		return x * escalar + y * escalar + z * escalar;
-	}
-
-
-	bool operator==(Vector3D& v) {
-
-		return x == v.x && y == v.y && z == v.z;
-	}
-
-	Vector3D operator=(Vector3D& v) {
-		x = v.x;
-		y = v.y;
-		z = v.z;
-	}
 
 
 
