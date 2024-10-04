@@ -42,4 +42,6 @@ void Particle::integrate(double t)
 	pose.p = pose.p + vel;
 	vel = vel + t * a;
 	vel = vel * pow(dump, t);
+
+	// decir cuando/donde muere
 }

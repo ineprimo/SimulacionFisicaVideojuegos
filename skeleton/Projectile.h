@@ -25,7 +25,7 @@ private:
 	Vector3 a;		// en m/s
 
 	// ----------
-	Vector3 gravity = {0, 9.8, 0};	//
+	Vector3 gravity = {0, -9.8, 0};	//
 
 
 };

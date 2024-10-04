@@ -17,6 +17,10 @@ public:
 	Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, float r_);
 	~Particle();
 
+
+	void setMaxTime(double t_) { maxt = t_; }
+	void setMaxPos(Vector3 mp_) { maxp = mp_; }
+
 	void integrate(double t);
 
 private:
@@ -27,5 +31,10 @@ private:
 	float rad = 5;			// radio de la particula
 	physx::PxTransform pose;	// posicion
 	RenderItem* renderItem;		// para verlo
+
+
+	double maxt;
+	Vector3 maxp;
+
 
 };

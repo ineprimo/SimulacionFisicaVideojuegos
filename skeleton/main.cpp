@@ -8,6 +8,9 @@
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
 #include "Particle.h"
+#include "Projectile.h"
+#include <vector>
+#include <list>
 
 #include <iostream>
 
@@ -47,6 +50,7 @@ PxTransform oTransform(0.0, 0.0, 0.0);
 // ------------
 
 Particle* particle;
+std::vector<Projectile*> projectileList;
 
 
 // ------------
@@ -93,6 +97,7 @@ void initPhysics(bool interactive)
 
 	particle = new Particle(p, v, a, c);
 
+
 	// ------------------
 
 }
@@ -111,6 +116,9 @@ void stepPhysics(bool interactive, double t)
 
 
 	particle->integrate(t);
+	for (int i = 0; i < projectileList.size(); i++) {
+		projectileList[i]->integrate(t);
+	}
 
 }
 
@@ -129,6 +137,9 @@ void cleanupPhysics(bool interactive)
 
 	//  ¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
 	delete particle;
+	for (int i = 0; i < projectileList.size(); i++) {
+		delete projectileList[i];
+	}
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
 	gScene->release();
@@ -151,6 +162,20 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	{
 	//case 'B': break;
 	//case ' ':	break;
+	case 'P':
+	{
+		{
+			Vector3 p = camera.p;// { 0,0,0 };
+			Vector3 v = { 0,2,0 };
+			Vector3 a = { 0,-9.8,0 };
+			Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
+
+			Projectile* pr = new Projectile(p, v, a, c);
+			projectileList.push_back(pr);
+		}
+
+		break;
+	}
 	case ' ':
 	{
 		break;
