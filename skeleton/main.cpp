@@ -7,6 +7,7 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
+#include "Particle.h"
 
 #include <iostream>
 
@@ -42,6 +43,15 @@ PxTransform zTransform(0.0, 0.0, 10.0);
 PxTransform oTransform(0.0, 0.0, 0.0);
 
 
+
+// ------------
+
+Particle* particle;
+
+
+// ------------
+
+
 // Initialize physics engine
 void initPhysics(bool interactive)
 {
@@ -73,6 +83,18 @@ void initPhysics(bool interactive)
 	zrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &zTransform, {0.0, 0.0, 0.9, 1.0});
 	orenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &oTransform, {0.0, 0.0, 0.0, 1.0});
 
+
+	// ------------------
+
+	Vector3 p = {0,0,0};
+	Vector3 v = {0,2,0};
+	Vector3 a = {0,2,0};
+	Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
+
+	particle = new Particle(p, v, a, c);
+
+	// ------------------
+
 }
 
 
@@ -83,8 +105,13 @@ void stepPhysics(bool interactive, double t)
 {
 	PX_UNUSED(interactive);
 
+
 	gScene->simulate(t);
 	gScene->fetchResults(true);
+
+
+	particle->integrate(t);
+
 }
 
 // Function to clean data
@@ -98,6 +125,10 @@ void cleanupPhysics(bool interactive)
 	DeregisterRenderItem(yrenderItem);
 	DeregisterRenderItem(zrenderItem);
 	DeregisterRenderItem(orenderItem);
+
+
+	//  ¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
+	delete particle;
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
 	gScene->release();
