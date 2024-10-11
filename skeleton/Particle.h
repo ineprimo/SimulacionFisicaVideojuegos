@@ -21,7 +21,8 @@ public:
 	void setMaxTime(double t_) { maxt = t_; }
 	void setMaxPos(Vector3 mp_) { maxp = mp_; }
 
-	void integrate(double t);
+
+	bool integrate(double t);
 
 private:
 
@@ -31,7 +32,6 @@ private:
 	float rad = 5;			// radio de la particula
 	physx::PxTransform pose;	// posicion
 	RenderItem* renderItem;		// para verlo
-
 
 	double maxt;
 	Vector3 maxp;
