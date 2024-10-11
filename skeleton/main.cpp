@@ -115,7 +115,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->fetchResults(true);
 
 
-	particle->integrate(t);
+	particle->update(t);
 	//for (int i = 0; i < projectileList.size(); i++) {
 	//	if (projectileList[i]->integrate(t)) {
 
@@ -127,7 +127,7 @@ void stepPhysics(bool interactive, double t)
 	for (auto it = projectileList.begin(); it != projectileList.end(); ) {
 	
 		Particle* p = *it;
-		if (!p->integrate(t)) {
+		if (!p->update(t)) {
 
 			delete p;
 			it = projectileList.erase(it);

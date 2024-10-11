@@ -65,3 +65,8 @@ bool Particle::integrate(double t)
 
 	return true;
 }
+
+bool Particle::update(double t)
+{
+	return integrate(t);
+}

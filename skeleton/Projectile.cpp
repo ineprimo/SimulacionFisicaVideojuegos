@@ -17,3 +17,8 @@ Projectile::~Projectile()
 {
 
 }
+
+bool Projectile::update(double t)
+{
+	return Particle::update(t);
+}

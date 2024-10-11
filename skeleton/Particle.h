@@ -24,6 +24,8 @@ public:
 
 	bool integrate(double t);
 
+	virtual bool update(double t);
+
 private:
 
 	Vector3 vel;	// vel

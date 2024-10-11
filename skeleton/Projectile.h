@@ -16,6 +16,8 @@ public:
 	void setForce(Vector3 f) { force = f; };
 	void setMasa(float m) { masa = m; };
 
+	bool update(double t) override;
+
 
 private:
 
