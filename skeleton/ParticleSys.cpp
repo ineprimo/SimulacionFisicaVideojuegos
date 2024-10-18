@@ -50,14 +50,16 @@ void ParticleSys::update(double t)
 void ParticleSys::generateParticle()
 {
 	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
-	const Vector3 p = {u.x + 50, u.y, u.z}; // 
+	const Vector3 p = {u.x + 200, u.y, u.z + 50}; // 
 
 	float randx, randz;
-	std::normal_distribution<float> distribution(5.0, 2.0);
+	std::normal_distribution<float> distribution(4.0, 10.0);
 	randx = distribution(generator);
 	randz = distribution(generator);
 
-	const Vector3 v = { randx, 10, randz};//GetCamera()->getDir() * 20;
+
+	//std::cout
+	const Vector3 v = { randx, 5, randz};//GetCamera()->getDir() * 20;
 	const Vector3 a = { 0,1,0 };
 	const Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 
