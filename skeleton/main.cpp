@@ -9,6 +9,7 @@
 #include "callbacks.hpp"
 #include "Particle.h"
 #include "Projectile.h"
+#include "ParticleSys.h"
 #include <vector>
 #include <list>
 
@@ -50,6 +51,7 @@ PxTransform oTransform(0.0, 0.0, 0.0);
 // ------------
 
 Particle* particle;
+ParticleSys* sys;
 std::vector<Projectile*> projectileList;
 
 
@@ -99,6 +101,10 @@ void initPhysics(bool interactive)
 
 
 	// ------------------
+	// Particle system
+	// ------------------
+	sys = new ParticleSys();
+
 
 }
 
@@ -135,6 +141,9 @@ void stepPhysics(bool interactive, double t)
 		else
 			++it;
 	}
+
+	// --------------------
+	sys->update(t);
 
 }
 

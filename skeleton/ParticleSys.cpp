@@ -2,10 +2,26 @@
 
 ParticleSys::ParticleSys()
 {
+
+	timeElapsed = 0.0;
+	cooldown = 2.0;
 }
 
 ParticleSys::~ParticleSys()
 {
+
+	for (auto it = particleListToDelete.begin(); it != particleListToDelete.end(); ++it) {
+
+		Particle* p = *it;
+		delete p;
+		particleListToDelete.pop_front();
+	}
+	for (auto it = particleList.begin(); it != particleList.end(); ++it) {
+
+		Particle* p = *it;
+		delete p;
+		particleList.pop_front();
+	}
 }
 
 void ParticleSys::update(double t)
@@ -14,12 +30,19 @@ void ParticleSys::update(double t)
 
 		Particle* p = *it;
 		if (!p->update(t)) {
-			particleListToDelete.push_back(p);
-			particleList.remove(p);
+		//	particleListToDelete.push_back(p);
+		//	particleList.erase(it);
+
+		delete p;
+		it = particleList.erase(it);
 		}
 		else
 			++it;
 	}
+
+	countCooldown();
+
+	//destroyParticles();
 }
 
 void ParticleSys::generateParticle()
@@ -34,13 +57,30 @@ void ParticleSys::generateParticle()
 
 }
 
-void ParticleSys::destroyParticle()
+void ParticleSys::destroyParticles()
 {
 	for (auto it = particleListToDelete.begin(); it != particleListToDelete.end(); ++it) {
 
 		Particle* p = *it;
 		delete p;
-		particleListToDelete.pop_front();
 	}
+	particleListToDelete.clear();
+}
+
+void ParticleSys::countCooldown()
+{
+	if (timeElapsed > cooldown) {
+
+		// genera una particula
+		generateParticle();
+
+		// genera otro cooldown aleatorio
+		//
+
+		// reinicia el contador
+		timeElapsed = 0;
+	}
+	else
+		timeElapsed++;
 
 }

@@ -10,6 +10,10 @@ private:
 
 	// std::uniform_real_distribution<double> d(0,1);
 
+
+	double timeElapsed;
+	double cooldown;
+
 public:
 	ParticleSys();
 	~ParticleSys();
@@ -19,6 +23,10 @@ public:
 
 	void generateParticle();
 
-	void destroyParticle();
+	void destroyParticles();
+
+	void countCooldown();
+
+
 
 };
