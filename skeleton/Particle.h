@@ -21,7 +21,6 @@ public:
 	void setMaxTime(double t_) { maxt = t_; }
 	void setMaxPos(Vector3 mp_) { maxp = mp_; }
 
-
 	bool integrate(double t);
 
 	virtual bool update(double t);

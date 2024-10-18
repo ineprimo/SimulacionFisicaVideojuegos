@@ -46,6 +46,7 @@ Particle::~Particle()
 	DeregisterRenderItem(renderItem);
 }
 
+
 bool Particle::integrate(double t)
 {
 	pose.p = pose.p + vel;

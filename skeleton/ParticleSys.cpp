@@ -5,6 +5,8 @@ ParticleSys::ParticleSys()
 
 	timeElapsed = 0.0;
 	cooldown = 2.0;
+
+	g = {0, -9.8, 0};
 }
 
 ParticleSys::~ParticleSys()
@@ -30,11 +32,11 @@ void ParticleSys::update(double t)
 
 		Particle* p = *it;
 		if (!p->update(t)) {
-		//	particleListToDelete.push_back(p);
-		//	particleList.erase(it);
+			//	particleListToDelete.push_back(p);
+			//	particleList.erase(it);
 
-		delete p;
-		it = particleList.erase(it);
+			delete p;
+			it = particleList.erase(it);
 		}
 		else
 			++it;
@@ -47,12 +49,19 @@ void ParticleSys::update(double t)
 
 void ParticleSys::generateParticle()
 {
-	const Vector3 p = GetCamera()->getTransform().p;// { 0,0,0 };
-	const Vector3 v = GetCamera()->getDir() * 20;
-	const Vector3 a = { 0,-9.8,0 };
+	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
+	const Vector3 p = {u.x + 50, u.y, u.z}; // 
+
+	float randx, randz;
+	std::normal_distribution<float> distribution(5.0, 2.0);
+	randx = distribution(generator);
+	randz = distribution(generator);
+
+	const Vector3 v = { randx, 10, randz};//GetCamera()->getDir() * 20;
+	const Vector3 a = { 0,1,0 };
 	const Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 
-	Particle* pr = new Particle(p, v, a, c);
+	Particle* pr = new Particle(p, v, g, c);
 	particleList.push_back(pr);
 
 }
