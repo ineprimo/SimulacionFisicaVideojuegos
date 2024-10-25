@@ -103,7 +103,18 @@ void initPhysics(bool interactive)
 	// ------------------
 	// Particle system
 	// ------------------
-	sys = new ParticleSys();
+
+	/*v = { 1,0.5,1 };
+	Vector3 offset = {200, 0, 50};
+	sys = new ParticleSys(v, a, c, offset, 3, 1);*/
+
+
+
+	// ------------------
+
+	v = { 1,0.5,1 };
+	Vector3 offset = { 200, 0, 50 };
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
 }

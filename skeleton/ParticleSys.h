@@ -16,11 +16,19 @@ private:
 	double timeElapsed;
 	double cooldown;
 
+	Vector3 v;
+	Vector3 a;
+	Vector4 c;
+
+	int var, med;
+
+	Vector3 offset;
+
 
 	Vector3 g;		// gravedad
 
 public:
-	ParticleSys();
+	ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _med, int _var);
 	~ParticleSys();
 
 
