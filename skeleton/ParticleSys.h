@@ -1,11 +1,12 @@
 #pragma once
 #include <list>
 #include <random>
+#include <iostream>
 #include "Particle.h"
 
 
 class ParticleSys {
-private:
+protected:
 	std::list<Particle*> particleList;
 	std::list<Particle*> particleListToDelete;
 
@@ -34,7 +35,7 @@ public:
 
 	void update(double t);
 
-	void generateParticle();
+	virtual void generateParticle();
 
 	void destroyParticles();
 

@@ -10,6 +10,7 @@
 #include "Particle.h"
 #include "Projectile.h"
 #include "ParticleSys.h"
+#include "SprinklerSystem.h"
 #include <vector>
 #include <list>
 
@@ -103,18 +104,17 @@ void initPhysics(bool interactive)
 	// ------------------
 	// Particle system
 	// ------------------
+	Vector3 offset = { 200, 0, 50 };
 
-	/*v = { 1,0.5,1 };
-	Vector3 offset = {200, 0, 50};
-	sys = new ParticleSys(v, a, c, offset, 3, 1);*/
-
+	v = { 1,1,1 };
+	//sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
 	// ------------------
+	v = { 10,10,10 };
+	offset = { 200, 0, 50 };
 
-	v = { 1,0.5,1 };
-	Vector3 offset = { 200, 0, 50 };
-	sys = new ParticleSys(v, a, c, offset, 3, 1);
+	sys = new SprinklerSystem(v, a, c, offset, 3, 1);
 
 
 }

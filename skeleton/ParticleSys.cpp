@@ -55,6 +55,8 @@ void ParticleSys::generateParticle()
 
 	float randx, randy, randz;
 	std::normal_distribution<float> distribution(1.0, 3.0);
+
+	// con 
 	randx = distribution(generator);
 	randy = distribution(generator);
 	randz = distribution(generator);
