@@ -107,14 +107,14 @@ void initPhysics(bool interactive)
 	Vector3 offset = { 200, 0, 50 };
 
 	v = { 1,1,1 };
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
 	// ------------------
 	v = { 10,10,10 };
 	offset = { 200, 0, 50 };
 
-	sys = new SprinklerSystem(v, a, c, offset, 3, 1);
+	//sys = new SprinklerSystem(v, a, c, offset, 3, 1);
 
 
 }
