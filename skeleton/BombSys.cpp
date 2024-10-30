@@ -14,16 +14,23 @@ void BombSys::generateParticle()
 		int alpha = 1;
 		int a = 360 / partnum;
 
-		while (alpha < 360) {
-			const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
-			const Vector3 p = { u.x + offset.x, u.y + offset.y, u.z + offset.z }; // 
+		const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
+		std::uniform_int_distribution<int> distribution_bomb(-100, 100);
 
+		int posxo = distribution_bomb(generator);
+		int posyo = distribution_bomb(generator);
+		int poszo = distribution_bomb(generator);
+
+		const Vector3 p = { u.x + offset.x + posxo,
+							u.y + offset.y + posyo,
+							u.z + offset.z + poszo }; // 
+
+		while (alpha < 360) {
 			float randx = 1, randy = 1, randz = 1;
-			std::normal_distribution<float> distribution(1.0, 3.0);
 
 			randx *= cos(alpha * pi / 180);
-			randy *= sin(alpha * pi / 180);
-			randz *= 1;
+			randy *= 1;
+			randz *= sin(alpha * pi / 180);
 
 			alpha += a;
 
@@ -31,7 +38,6 @@ void BombSys::generateParticle()
 
 			Particle* pr = new Particle(p, auxv, g, c);
 			particleList.push_back(pr);
-
 		}
 
 		exploded = true;

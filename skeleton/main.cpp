@@ -112,14 +112,16 @@ void initPhysics(bool interactive)
 
 
 	// ------------------  ASPERSOR
-	v = { 1,1,1 };
+	/*v = { 1,1,1 };
 	offset = { 200, 0, 50 };
 
-	sys = new SprinklerSystem(v, a, c, offset, 3, 1, 4, 10);
+	sys = new SprinklerSystem(v, a, c, offset, 3, 1, 4, 10);*/
 
 
-	// ----------------- ONDA EXPANSIVA
-	a = { 0,9.8,0 };
+	// ----------------- ONDAs EXPANSIVAs
+	a = { 0,0,0 };
+	v = { 1,0,1 };
+	c = { 0.87, 0.34, 0.57, 1.0 };
 	sys = new BombSys(v, a, c, offset, 20);
 	
 
