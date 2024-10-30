@@ -111,10 +111,11 @@ void initPhysics(bool interactive)
 
 
 	// ------------------
-	v = { 10,10,10 };
+	v = { 1,1,1 };
 	offset = { 200, 0, 50 };
 
-	sys = new SprinklerSystem(v, a, c, offset, 3, 1);
+	sys = new SprinklerSystem(v, a, c, offset, 3, 1, 4, 10);
+	
 
 
 }
