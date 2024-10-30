@@ -11,6 +11,7 @@
 #include "Projectile.h"
 #include "ParticleSys.h"
 #include "SprinklerSystem.h"
+#include "BombSys.h"
 #include <vector>
 #include <list>
 
@@ -110,11 +111,16 @@ void initPhysics(bool interactive)
 	//sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
-	// ------------------
+	// ------------------  ASPERSOR
 	v = { 1,1,1 };
 	offset = { 200, 0, 50 };
 
 	sys = new SprinklerSystem(v, a, c, offset, 3, 1, 4, 10);
+
+
+	// ----------------- ONDA EXPANSIVA
+	a = { 0,9.8,0 };
+	sys = new BombSys(v, a, c, offset, 20);
 	
 
 

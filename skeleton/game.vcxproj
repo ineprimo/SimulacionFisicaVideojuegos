@@ -253,6 +253,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BombSys.cpp" />
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="FountainSystem.cpp" />
     <ClCompile Include="main.cpp" />
@@ -266,6 +267,7 @@
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BombSys.h" />
     <ClInclude Include="callbacks.hpp" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="FountainSystem.h" />

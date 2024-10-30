@@ -14,6 +14,7 @@ void SprinklerSystem::generateParticle()
 {
 
 	if (counter >= cooldown) {
+
 		if (particlecount <= particlenum) {
 			const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
 			const Vector3 p = { u.x + offset.x, u.y + offset.y, u.z + offset.z }; // 

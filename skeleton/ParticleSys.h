@@ -44,5 +44,8 @@ public:
 	void applyGravity(Particle* p);
 
 
+	void setGravity(Vector3 g_) { g = g_; }
+
+
 
 };

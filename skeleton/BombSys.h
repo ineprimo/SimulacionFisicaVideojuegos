@@ -1,0 +1,26 @@
+#pragma once
+#include "ParticleSys.h"
+class BombSys :
+    public ParticleSys
+{
+private:
+
+    bool exploded = false;
+    int partnum;
+    float pi = 3.1415;
+
+
+
+    int cooldown = 5;
+    int count = 0;
+
+public:
+
+
+    BombSys(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 _o, int p);
+    ~BombSys();
+
+    void generateParticle() override;
+
+};
+
