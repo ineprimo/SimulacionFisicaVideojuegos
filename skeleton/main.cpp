@@ -12,6 +12,7 @@
 #include "ParticleSys.h"
 #include "SprinklerSystem.h"
 #include "BombSys.h"
+#include "FountainSystem.h"
 #include <vector>
 #include <list>
 
@@ -122,7 +123,11 @@ void initPhysics(bool interactive)
 	a = { 0,0,0 };
 	v = { 1,0,1 };
 	c = { 0.87, 0.34, 0.57, 1.0 };
-	sys = new BombSys(v, a, c, offset, 20);
+	//sys = new BombSys(v, a, c, offset, 20);
+
+
+	// --------------- fuente
+	sys = new FountainSystem(v, a, c, offset);
 	
 
 
