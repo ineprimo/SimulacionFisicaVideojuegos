@@ -106,17 +106,17 @@ void initPhysics(bool interactive)
 	// ------------------
 	// Particle system
 	// ------------------
-	Vector3 offset = { 200, 0, 50 };
+	Vector3 offset = { 500, 0, 500 };
 
 	v = { 1,1,1 };
 	//sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
 	// ------------------  ASPERSOR
-	/*v = { 1,1,1 };
-	offset = { 200, 0, 50 };
-
-	sys = new SprinklerSystem(v, a, c, offset, 3, 1, 4, 10);*/
+	v = { 10,10,1 };
+	offset = { 200, 0, 200 };
+	//sys = new SprinklerSystem(v, a, c, offset, 3, 1, 5, 2, 5);
+	
 
 
 	// ----------------- ONDAs EXPANSIVAs
@@ -129,7 +129,7 @@ void initPhysics(bool interactive)
 	// --------------- fuente
 	offset = { -400, 0, -200 };
 
-	sys = new FountainSystem(v, a, c, offset);
+	//sys = new FountainSystem(v, a, c, offset);
 	
 
 
