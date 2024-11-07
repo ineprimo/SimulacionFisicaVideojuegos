@@ -122,11 +122,13 @@ void initPhysics(bool interactive)
 	// ----------------- ONDAs EXPANSIVAs
 	a = { 0,0,0 };
 	v = { 1,0,1 };
-	c = { 0.87, 0.34, 0.57, 1.0 };
+	//c = { 0.87, 0.34, 0.57, 1.0 };
 	//sys = new BombSys(v, a, c, offset, 20);
 
 
 	// --------------- fuente
+	offset = { -400, 0, -200 };
+
 	sys = new FountainSystem(v, a, c, offset);
 	
 

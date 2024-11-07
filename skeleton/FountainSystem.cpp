@@ -21,7 +21,8 @@ void FountainSystem::generateParticle()
 							u.z + offset.z}; // 
 
 
-	std::normal_distribution<double> rand(5.0, 3.0);
+	std::normal_distribution<double> rand(5.0, 1.0);
+	//std::binomial_distribution<int> Bdistribution(1, 0.1);
 
 
 	for (int i = 0; i < partcant; i++) {
