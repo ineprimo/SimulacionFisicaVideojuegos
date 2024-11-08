@@ -127,9 +127,8 @@ void initPhysics(bool interactive)
 
 
 	// --------------- fuente
-	offset = { -400, 0, -200 };
-
-	//sys = new FountainSystem(v, a, c, offset);
+	offset = { -400, 0, -400 };
+	sys = new FountainSystem(v, a, c, offset);
 	
 
 
@@ -218,7 +217,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	{
 		{
 			Vector3 p = camera.p;// { 0,0,0 };
-			Vector3 v = GetCamera()->getDir() * 20;
+			Vector3 v = GetCamera()->getDir() * 5;
 			Vector3 a = { 0,-9.8,0 };
 			Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 

@@ -49,6 +49,8 @@ Particle::~Particle()
 
 bool Particle::integrate(double t)
 {
+
+	// euler sewmi implicito
 	pose.p = pose.p + vel;
 	vel = vel + t * a;
 	vel = vel * pow(dump, t);

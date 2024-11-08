@@ -6,7 +6,7 @@ class FountainSystem : public ParticleSys
 
 private:
 
-	int partcant = 20;
+	int partcant = 50;
 public:
 	FountainSystem(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 o_);
 	~FountainSystem();
