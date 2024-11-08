@@ -13,6 +13,7 @@
 #include "SprinklerSystem.h"
 #include "BombSys.h"
 #include "FountainSystem.h"
+#include "ForceSystem.h"
 #include <vector>
 #include <list>
 
@@ -55,6 +56,7 @@ PxTransform oTransform(0.0, 0.0, 0.0);
 
 Particle* particle;
 ParticleSys* sys;
+ForceSystem* forceSys;
 std::vector<Projectile*> projectileList;
 
 
@@ -128,9 +130,16 @@ void initPhysics(bool interactive)
 
 	// --------------- fuente
 	offset = { -400, 0, -400 };
-	sys = new FountainSystem(v, a, c, offset);
+	//sys = new FountainSystem(v, a, c, offset);
 	
 
+
+	// -------- SISTEMA DE FUERZAS -------------
+	Vector3 force = { 10, 0, 0, };
+	Vector3 position = { 400, 0, 400};
+	Vector4 c = { 0.0, 1.0, 0.9, 0.5 };
+	//RenderItem* collider = new RenderItem(CreateShape(physx::PxSphereGeometry(50)), &position, c);
+	//forceSys = new ForceSystem(force, collider);
 
 }
 

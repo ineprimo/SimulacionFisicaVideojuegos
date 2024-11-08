@@ -20,6 +20,11 @@ public:
 
 	void setMaxTime(double t_) { maxt = t_; }
 	void setMaxPos(Vector3 mp_) { maxp = mp_; }
+	RenderItem* getRenderItem() { return renderItem; }
+	void setMass(float m) { mass = m; }
+	float getMass() { return mass; }
+	Vector3 getAcceleration() { return a; }
+	void setAcceleration(Vector3 a_) { a = a_; }
 
 	bool integrate(double t);
 
@@ -36,6 +41,9 @@ private:
 
 	double maxt;
 	Vector3 maxp;
+
+
+	float mass;
 
 
 };
