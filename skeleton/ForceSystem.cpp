@@ -1,8 +1,17 @@
 #include "ForceSystem.h"
 
 ForceSystem::ForceSystem(Vector3 force_, RenderItem* zone_)
-	: force(force_), zone(zone_)
+	: force(force_), zone(zone_), radio(10)
 {
+}
+
+ForceSystem::ForceSystem(Vector3 force_, RenderItem* zone_, Vector3 pos_, int rad, Vector4 col_)
+	: force(force_), zone(zone_), radio(rad)
+{
+	physx::PxTransform pose = physx::PxTransform(pos_);	// posicion
+
+	zone = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, col_);
+
 }
 
 ForceSystem::~ForceSystem()
