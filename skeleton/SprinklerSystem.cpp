@@ -10,9 +10,9 @@ SprinklerSystem::~SprinklerSystem()
 {
 }
 
-void SprinklerSystem::generateParticle()
+Particle* SprinklerSystem::generateParticle()
 {
-
+	Particle* pr;
 	if (counter >= cooldown) {
 
 		if (particlecount <= particlenum) {
@@ -35,7 +35,7 @@ void SprinklerSystem::generateParticle()
 
 			const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
-			Particle* pr = new Particle(p, auxv, g, c);
+			pr = new Particle(p, auxv, g, c);
 			particleList.push_back(pr);
 
 			particlecount++;
@@ -49,6 +49,8 @@ void SprinklerSystem::generateParticle()
 
 		counter++;
 	}
+
+	return pr;
 }
 
 void SprinklerSystem::setCD(int c)

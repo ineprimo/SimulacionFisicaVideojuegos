@@ -7,8 +7,11 @@ BombSys::BombSys(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::Px
 
 }
 
-void BombSys::generateParticle()
+Particle* BombSys::generateParticle()
 {
+	Particle* pr;
+
+
 	// si no ha explotado, explota (cooldown?)
 	if (!exploded) {
 		int alpha = 1;
@@ -24,6 +27,7 @@ void BombSys::generateParticle()
 		const Vector3 p = { u.x + offset.x + posxo,
 							u.y + offset.y + posyo,
 							u.z + offset.z + poszo }; // 
+
 
 		while (alpha < 360) {
 			float randx = 1, randy = 1, randz = 1;
@@ -55,5 +59,7 @@ void BombSys::generateParticle()
 			count = 0;
 		}
 	}
+
+	return pr;
 
 }

@@ -10,7 +10,7 @@ FountainSystem::~FountainSystem()
 {
 }
 
-void FountainSystem::generateParticle()
+Particle* FountainSystem::generateParticle()
 {
 	// settea randoms
 
@@ -22,7 +22,7 @@ void FountainSystem::generateParticle()
 
 
 	std::normal_distribution<double> rand(3.0, 1.0);
-
+	Particle* pr;
 
 	for (int i = 0; i < partcant; i++) {
 
@@ -32,8 +32,9 @@ void FountainSystem::generateParticle()
 
 		const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
-		Particle* pr = new Particle(p, auxv, g, c);
+		pr = new Particle(p, auxv, g, c);
 		particleList.push_back(pr);
 	}
 
+	return pr;
 }

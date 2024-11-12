@@ -21,7 +21,7 @@ public:
 
 
 
-	void generateParticle() override;
+	Particle* generateParticle() override;
 
 	void setCD(int c);
 	void setPartNum(int p);

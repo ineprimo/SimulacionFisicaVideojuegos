@@ -6,6 +6,7 @@
 #include "RenderUtils.hpp"
 #include <cmath>
 
+class ForceSystem;
 
 // clase particle
 
@@ -26,9 +27,16 @@ public:
 	Vector3 getAcceleration() { return a; }
 	void setAcceleration(Vector3 a_) { a = a_; }
 
+	Vector3 getPosition() { return pose.p; }
+
 	bool integrate(double t);
 
 	virtual bool update(double t);
+
+
+	void addForceGen(ForceSystem* f);
+	void applyContForce(Vector3 f);
+	void applyInstForce(Vector3 f);
 
 private:
 
@@ -42,8 +50,9 @@ private:
 	double maxt;
 	Vector3 maxp;
 
-
 	float mass;
 
+
+	std::vector<ForceSystem*> forceGens;
 
 };

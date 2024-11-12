@@ -20,7 +20,7 @@ public:
     BombSys(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 _o, int p);
     ~BombSys();
 
-    void generateParticle() override;
+    Particle* generateParticle() override;
 
 };
 

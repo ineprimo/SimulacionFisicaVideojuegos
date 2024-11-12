@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "ForceSystem.h"
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 {
@@ -50,10 +51,16 @@ Particle::~Particle()
 bool Particle::integrate(double t)
 {
 
-	// euler sewmi implicito
-	pose.p = pose.p + vel;
+	// euler 
+	//pose.p = pose.p + vel;
+	//vel = vel + t * a;
+	//vel = vel * pow(dump, t);
+
+	// semi implicito
 	vel = vel + t * a;
+	pose.p = pose.p + vel * t;
 	vel = vel * pow(dump, t);
+
 
 	if (t >= maxt) {
 
@@ -71,5 +78,29 @@ bool Particle::integrate(double t)
 
 bool Particle::update(double t)
 {
+	for (auto f : forceGens) {
+		// actualiza
+		f->updateGravityForce(t, this);
+	}
+
+
 	return integrate(t);
 }
+
+void Particle::addForceGen(ForceSystem* f)
+{
+	forceGens.push_back(f);
+}
+
+void Particle::applyContForce(Vector3 f)
+{
+	// v = v + f/m
+	vel = vel + f * mass;
+}
+
+void Particle::applyInstForce(Vector3 f)
+{
+	a = a + f / mass;
+}
+
+

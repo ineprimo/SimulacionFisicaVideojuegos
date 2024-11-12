@@ -136,13 +136,18 @@ void initPhysics(bool interactive)
 
 
 	// -------- SISTEMA DE FUERZAS -------------
-	Vector3 force = { 10, 0, 0, };
+	/*Vector3 force = { 10, 0, 0, };
 	Vector3 position = { 400, 0, 400};
 	const physx::PxTransform trans = {400,0,400};
 	const Vector4 c2 = { 0.0, 1.0, 0.9, 0.5 };
 	PxShape* shape = CreateShape(physx::PxSphereGeometry(50));
 	zone = new RenderItem(shape, &position, c2);
-	forceSys = new ForceSystem(force, zone);
+	forceSys = new ForceSystem(force, zone);*/
+
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
+
+
+
 
 }
 

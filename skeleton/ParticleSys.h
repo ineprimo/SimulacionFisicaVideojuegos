@@ -3,6 +3,7 @@
 #include <random>
 #include <iostream>
 #include "Particle.h"
+#include "GravityForceGenerator.h"
 
 
 class ParticleSys {
@@ -28,6 +29,9 @@ protected:
 
 	Vector3 g;		// gravedad
 
+	// fuerzas
+	GravityForceGenerator* gfGen;
+
 public:
 	ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _med, int _var);
 	~ParticleSys();
@@ -35,7 +39,7 @@ public:
 
 	void update(double t);
 
-	virtual void generateParticle();
+	virtual Particle* generateParticle();
 
 	void destroyParticles();
 
@@ -43,6 +47,7 @@ public:
 
 	void applyGravity(Particle* p);
 
+	void addParticle(Particle* p);
 
 	void setGravity(Vector3 g_) { g = g_; }
 

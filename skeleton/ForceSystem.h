@@ -24,16 +24,19 @@ private:
 
 
 public:
+	ForceSystem();
 	ForceSystem(Vector3 force_, RenderItem* zone_);
 	ForceSystem(Vector3 force_, RenderItem* zone_, Vector3 pos_, int rad, Vector4 col_);
 
 	~ForceSystem();
 
+	virtual void updateGravityForce(double t, Particle* p);
 
 
 	bool enterZone(Particle* p);
 	void exitZone(Particle* p);
 	void applyForce();
+	bool isInside(Vector3 pos);
 
 
 };

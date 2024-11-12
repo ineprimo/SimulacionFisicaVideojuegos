@@ -1,4 +1,6 @@
 #include "ParticleSys.h"
+#include "ForceSystem.h"
+#include "GravityForceGenerator.h"
 
 ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _var, int _med) 
 	: v(_v), a(_a), c(_c), offset(o_), var(_var), med(_med)
@@ -48,7 +50,7 @@ void ParticleSys::update(double t)
 	//destroyParticles();
 }
 
-void ParticleSys::generateParticle()
+Particle* ParticleSys::generateParticle()
 {
 	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
 	const Vector3 p = {u.x + offset.x, u.y + offset.y, u.z + offset.z}; // 
@@ -72,6 +74,8 @@ void ParticleSys::generateParticle()
 	Particle* pr = new Particle(p, auxv, g, c);	
 	particleList.push_back(pr);
 
+	return pr;
+
 }
 
 void ParticleSys::destroyParticles()
@@ -89,7 +93,6 @@ void ParticleSys::countCooldown()
 	if (timeElapsed > cooldown) {
 
 		// genera una particula
-		generateParticle();
 
 		// genera otro cooldown aleatorio
 		//
@@ -99,5 +102,16 @@ void ParticleSys::countCooldown()
 	}
 	else
 		timeElapsed++;
+
+}
+
+void ParticleSys::addParticle(Particle* p)
+{
+	Particle* pr = generateParticle();
+	Vector3 grav = {0, 9.8, 0};
+	gfGen = new GravityForceGenerator(grav);
+
+	pr->addForceGen(gfGen);
+
 
 }
