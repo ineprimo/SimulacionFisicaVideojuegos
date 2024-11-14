@@ -89,7 +89,8 @@ bool Particle::update(double t)
 
 void Particle::addForceGen(ForceGen* f)
 {
-	forceGens.push_back(f);
+	if(f != nullptr)
+		forceGens.push_back(f);
 }
 
 void Particle::applyContForce(Vector3 f)

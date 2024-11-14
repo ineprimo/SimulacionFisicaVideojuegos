@@ -56,6 +56,7 @@ PxTransform oTransform(0.0, 0.0, 0.0);
 
 Particle* particle;
 ParticleSys* sys;
+ParticleSys* sys2;
 ForceSystem* forceSys;
 RenderItem* zone;
 std::vector<Projectile*> projectileList;
@@ -136,17 +137,17 @@ void initPhysics(bool interactive)
 
 
 	// -------- SISTEMA DE FUERZAS -------------
-	/*Vector3 force = { 10, 0, 0, };
-	Vector3 position = { 400, 0, 400};
-	const physx::PxTransform trans = {400,0,400};
-	const Vector4 c2 = { 0.0, 1.0, 0.9, 0.5 };
-	PxShape* shape = CreateShape(physx::PxSphereGeometry(50));
-	zone = new RenderItem(shape, &position, c2);
-	forceSys = new ForceSystem(force, zone);*/
+	//// pt1
+	//sys = new ParticleSys(v, a, c, offset, 3, 1);
+	//GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
+	//sys->setGravForgeGen(aux);
+	//offset = { -200, 0, -400 };
 
-	sys = new ParticleSys(v, a, c, offset, 3, 1);
+	//sys2 = new ParticleSys(v, a, c, offset, 3, 1);
+	//aux = new GravityForceGenerator({ 10,-9.8, 0 });
+	//sys2->setGravForgeGen(aux);
 
-
+	// pt2
 
 
 }
@@ -187,7 +188,9 @@ void stepPhysics(bool interactive, double t)
 
 	// --------------------
 	if(sys != nullptr)
-		sys->update(t);
+		sys->update(t);	
+	if(sys2 != nullptr)
+		sys2->update(t);
 
 }
 

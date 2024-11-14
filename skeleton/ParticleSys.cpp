@@ -12,7 +12,6 @@ ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _va
 	g = {0, -9.8, 0};
 
 
-	gfGen = new GravityForceGenerator(g);
 }
 
 ParticleSys::~ParticleSys()

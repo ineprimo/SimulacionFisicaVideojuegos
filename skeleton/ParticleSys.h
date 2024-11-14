@@ -51,6 +51,6 @@ public:
 
 	void setGravity(Vector3 g_) { g = g_; }
 
-
+	void setGravForgeGen(GravityForceGenerator* g) { gfGen = g; };
 
 };
