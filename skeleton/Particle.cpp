@@ -101,7 +101,7 @@ void Particle::applyContForce(Vector3 f)
 
 void Particle::applyInstForce(Vector3 f)
 {
-	a = a + f / mass;
+	a = a + f;
 }
 
 

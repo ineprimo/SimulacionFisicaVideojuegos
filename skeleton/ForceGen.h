@@ -4,6 +4,8 @@ class Particle;
 #include <PxPhysicsAPI.h>
 #include "core.hpp"
 #include <cmath>
+#include <iostream>
+
 
 class ForceGen
 {
