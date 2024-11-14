@@ -1,5 +1,6 @@
 #include "ForceSystem.h"
 
+
 ForceSystem::ForceSystem()
 	: force(0), zone(nullptr), radio(0)
 {

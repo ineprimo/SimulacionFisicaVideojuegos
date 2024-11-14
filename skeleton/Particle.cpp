@@ -87,7 +87,7 @@ bool Particle::update(double t)
 	return integrate(t);
 }
 
-void Particle::addForceGen(ForceSystem* f)
+void Particle::addForceGen(ForceGen* f)
 {
 	forceGens.push_back(f);
 }

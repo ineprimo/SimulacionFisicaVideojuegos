@@ -16,7 +16,7 @@ protected:
 
 
 	double timeElapsed;
-	double cooldown;
+	double cooldown = 100;
 
 	Vector3 v;
 	Vector3 a;
@@ -47,7 +47,7 @@ public:
 
 	void applyGravity(Particle* p);
 
-	void addParticle(Particle* p);
+	void addParticle();
 
 	void setGravity(Vector3 g_) { g = g_; }
 

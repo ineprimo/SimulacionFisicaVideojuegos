@@ -7,6 +7,7 @@
 #include <cmath>
 
 class ForceSystem;
+class ForceGen;
 
 // clase particle
 
@@ -34,7 +35,7 @@ public:
 	virtual bool update(double t);
 
 
-	void addForceGen(ForceSystem* f);
+	void addForceGen(ForceGen* f);
 	void applyContForce(Vector3 f);
 	void applyInstForce(Vector3 f);
 
@@ -53,6 +54,6 @@ private:
 	float mass;
 
 
-	std::vector<ForceSystem*> forceGens;
+	std::vector<ForceGen*> forceGens;
 
 };

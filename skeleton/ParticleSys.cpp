@@ -7,9 +7,12 @@ ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _va
 {
 
 	timeElapsed = 0.0;
-	cooldown = 2.0;
+	cooldown = 10.0;
 
 	g = {0, -9.8, 0};
+
+
+	gfGen = new GravityForceGenerator(g);
 }
 
 ParticleSys::~ParticleSys()
@@ -35,8 +38,6 @@ void ParticleSys::update(double t)
 
 		Particle* p = *it;
 		if (!p->update(t)) {
-			//	particleListToDelete.push_back(p);
-			//	particleList.erase(it);
 
 			delete p;
 			it = particleList.erase(it);
@@ -93,6 +94,7 @@ void ParticleSys::countCooldown()
 	if (timeElapsed > cooldown) {
 
 		// genera una particula
+		addParticle();
 
 		// genera otro cooldown aleatorio
 		//
@@ -105,13 +107,8 @@ void ParticleSys::countCooldown()
 
 }
 
-void ParticleSys::addParticle(Particle* p)
+void ParticleSys::addParticle()
 {
 	Particle* pr = generateParticle();
-	Vector3 grav = {0, 9.8, 0};
-	gfGen = new GravityForceGenerator(grav);
-
 	pr->addForceGen(gfGen);
-
-
 }

@@ -17,8 +17,9 @@
     <ClCompile Include="SprinklerSystem.cpp" />
     <ClCompile Include="FountainSystem.cpp" />
     <ClCompile Include="BombSys.cpp" />
-    <ClCompile Include="ForceSystem.cpp" />
     <ClCompile Include="GravityForceGenerator.cpp" />
+    <ClCompile Include="ForceSystem.cpp" />
+    <ClCompile Include="ForceGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -37,8 +38,9 @@
     <ClInclude Include="SprinklerSystem.h" />
     <ClInclude Include="FountainSystem.h" />
     <ClInclude Include="BombSys.h" />
-    <ClInclude Include="ForceSystem.h" />
     <ClInclude Include="GravityForceGenerator.h" />
+    <ClInclude Include="ForceSystem.h" />
+    <ClInclude Include="ForceGen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

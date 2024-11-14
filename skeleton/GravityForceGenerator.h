@@ -1,11 +1,10 @@
 #pragma once
-#include "ForceSystem.h"
+//#include "ForceSystem.h"
+#include "ForceGen.h"
 
-
-class GravityForceGenerator :
-    public ForceSystem
+class GravityForceGenerator : public ForceGen
 {
-
+public:
     GravityForceGenerator();
     GravityForceGenerator(Vector3 g);
     ~GravityForceGenerator();
