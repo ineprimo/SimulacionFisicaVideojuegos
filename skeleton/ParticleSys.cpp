@@ -5,7 +5,7 @@
 ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _var, int _med) 
 	: v(_v), a(_a), c(_c), offset(o_), var(_var), med(_med)
 {
-
+	mass = 1;
 	timeElapsed = 0.0;
 	cooldown = 10.0;
 
@@ -72,6 +72,7 @@ Particle* ParticleSys::generateParticle()
 	const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 	Particle* pr = new Particle(p, auxv, g, c);	
+	pr->setMass(mass);
 	particleList.push_back(pr);
 
 	return pr;

@@ -138,14 +138,16 @@ void initPhysics(bool interactive)
 
 	// -------- SISTEMA DE FUERZAS -------------
 	//// pt1
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
-	//GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
-	//sys->setGravForgeGen(aux);
-	//offset = { -200, 0, -400 };
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
+	sys->setMass(1);
+	GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
+	sys->setGravForgeGen(aux);
+	offset = { -200, 0, -400 };
 
-	//sys2 = new ParticleSys(v, a, c, offset, 3, 1);
-	//aux = new GravityForceGenerator({ 10,-9.8, 0 });
-	//sys2->setGravForgeGen(aux);
+	sys2 = new ParticleSys(v, a, c, offset, 3, 1);
+	sys2->setMass(100);
+	aux = new GravityForceGenerator({ 0,-9.8, 0 });
+	sys2->setGravForgeGen(aux);
 
 	// pt2
 

@@ -25,6 +25,7 @@ protected:
 	int var, med;
 
 	Vector3 offset;
+	int mass;
 
 
 	Vector3 g;		// gravedad
@@ -52,5 +53,8 @@ public:
 	void setGravity(Vector3 g_) { g = g_; }
 
 	void setGravForgeGen(GravityForceGenerator* g) { gfGen = g; };
+
+
+	void setMass(int m_) { mass = m_; }
 
 };
