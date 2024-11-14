@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Particle.h"
 #include "GravityForceGenerator.h"
+#include "WindForceGenerator.h"
 
 
 class ParticleSys {
@@ -31,7 +32,8 @@ protected:
 	Vector3 g;		// gravedad
 
 	// fuerzas
-	GravityForceGenerator* gfGen;
+	GravityForceGenerator* gfGen = nullptr;
+	WindForceGenerator* wGen = nullptr;
 
 public:
 	ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _med, int _var);
@@ -53,6 +55,7 @@ public:
 	void setGravity(Vector3 g_) { g = g_; }
 
 	void setGravForgeGen(GravityForceGenerator* g) { gfGen = g; };
+	void setWindForgeGen(WindForceGenerator* g) { wGen = g; };
 
 
 	void setMass(int m_) { mass = m_; }

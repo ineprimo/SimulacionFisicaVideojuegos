@@ -10,7 +10,7 @@ public:
     ~GravityForceGenerator();
 
 
-    void updateGravityForce(double t, Particle* p) override;
+    void updateForce(double t, Particle* p) override;
 
 private:
     Vector3 gravity;

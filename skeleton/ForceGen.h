@@ -13,7 +13,7 @@ public:
 
 	ForceGen();
 
-	virtual void updateGravityForce(double t, Particle* p);
+	virtual void updateForce(double t, Particle* p);
 
 	bool enterZone(Particle* p);
 	void exitZone(Particle* p);

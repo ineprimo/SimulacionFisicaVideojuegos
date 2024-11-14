@@ -5,9 +5,8 @@ ForceGen::ForceGen()
 {
 }
 
-void ForceGen::updateGravityForce(double t, Particle* p)
+void ForceGen::updateForce(double t, Particle* p)
 {
-	//std::cout << "me cago" << std::endl;
 }
 
 bool ForceGen::enterZone(Particle* p)

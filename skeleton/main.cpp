@@ -17,6 +17,7 @@
 #include <vector>
 #include <list>
 
+
 #include <iostream>
 
 std::string display_text = "This is a test";
@@ -150,7 +151,11 @@ void initPhysics(bool interactive)
 	//sys2->setGravForgeGen(aux);
 
 	// pt2
-
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
+	sys->setMass(1);
+	WindForceGenerator* aux = new WindForceGenerator({10,0, 0});
+	sys->setWindForgeGen(aux);
+	offset = { -200, 0, -400 };
 
 }
 

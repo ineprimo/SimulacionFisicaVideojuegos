@@ -19,7 +19,7 @@ GravityForceGenerator::~GravityForceGenerator()
 
 }
 
-void GravityForceGenerator::updateGravityForce(double t, Particle* p)
+void GravityForceGenerator::updateForce(double t, Particle* p)
 {
 	// llama al metodo de la particula ??¿?¿?¿
 	// f = m*a => 

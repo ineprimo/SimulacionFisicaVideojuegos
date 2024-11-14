@@ -6,7 +6,6 @@
 #include "RenderUtils.hpp"
 #include <cmath>
 
-class ForceSystem;
 class ForceGen;
 
 // clase particle
@@ -27,6 +26,8 @@ public:
 	float getMass() { return mass; }
 	Vector3 getAcceleration() { return a; }
 	void setAcceleration(Vector3 a_) { a = a_; }
+	Vector3 getVelocity() { return vel; }
+	void setVelocity(Vector3 v_) { vel = v_; }
 
 	Vector3 getPosition() { return pose.p; }
 

@@ -80,7 +80,7 @@ bool Particle::update(double t)
 {
 	for (auto f : forceGens) {
 		// actualiza
-		f->updateGravityForce(t, this);
+		f->updateForce(t, this);
 	}
 
 

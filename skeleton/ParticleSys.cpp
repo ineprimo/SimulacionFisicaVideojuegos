@@ -110,5 +110,9 @@ void ParticleSys::countCooldown()
 void ParticleSys::addParticle()
 {
 	Particle* pr = generateParticle();
-	pr->addForceGen(gfGen);
+	if (gfGen != nullptr) {
+		pr->addForceGen(gfGen);
+	}
+	if (wGen != nullptr)
+		pr->addForceGen(wGen);
 }
