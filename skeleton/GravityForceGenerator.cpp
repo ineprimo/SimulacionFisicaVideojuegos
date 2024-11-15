@@ -24,13 +24,15 @@ void GravityForceGenerator::updateForce(double t, Particle* p)
 	// llama al metodo de la particula ??¿?¿?¿
 	// f = m*a => 
 	//std::cout << "fuerza/ masa " << gravity.y << "/" << p->getMass() << " = " << gravity.y * p->getMass() << std::endl;
-	Vector3 f = force(p) * t;
-	p->applyInstForce(f);
+	Vector3 f = force(p);
+	p->addForce(f);
+
+	//p->applyInstForce(f);
 
 }
 
 Vector3 GravityForceGenerator::force(Particle* p)
 {
-	Vector3 f = gravity * p->getMass();
+	Vector3 f = gravity;
 	return f;
 }

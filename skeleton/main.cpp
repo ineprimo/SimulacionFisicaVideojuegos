@@ -139,24 +139,30 @@ void initPhysics(bool interactive)
 
 	// -------- SISTEMA DE FUERZAS -------------
 	////// pt1
+	//v = { 0, 0,0 };
+	//offset = { 0, 0, 0 };
 	//sys = new ParticleSys(v, a, c, offset, 3, 1);
 	//sys->setMass(1);
 	//GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
 	//sys->setGravForgeGen(aux);
-	//offset = { -200, 0, -400 };
+	//offset = { -200, 0, 200 };
 
 	//sys2 = new ParticleSys(v, a, c, offset, 3, 1);
-	//sys2->setMass(10);
+	//sys2->setMass(1000);
 	//aux = new GravityForceGenerator({ 0,-9.8, 0 });
 	//sys2->setGravForgeGen(aux);
 
-	// pt2
-	v = { 0, 0,0 };
-	offset = { 0, 0, 0 };
-	sys = new ParticleSys(v, a, c, offset, 3, 1);
-	sys->setMass(1);
-	WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
-	sys->setWindForgeGen(aux);
+	// pt2 viento
+	//v = { 0, 0,0 };
+	//offset = { 0, 0, 0 };
+	//sys = new ParticleSys(v, a, c, offset, 3, 1);
+	//sys->setMass(1);
+	//WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
+	//sys->setWindForgeGen(aux);
+
+
+	// pt3 torbellino
+
 
 }
 

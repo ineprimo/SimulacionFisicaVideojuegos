@@ -97,12 +97,9 @@ void Particle::applyForce()
 		totalForc += f;
 	}
 	forces.clear();
-	// F=m*a
+	// F=m*a -> a = f/m
 	a = totalForc / mass;
 
-	// Aplica la gravedad si es un objeto con gravedad
-	//if (gravitable)
-	//	acceleration += gravity;
 }
 
 void Particle::addForce(Vector3 f)
