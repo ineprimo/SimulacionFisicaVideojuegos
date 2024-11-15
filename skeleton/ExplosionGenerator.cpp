@@ -25,9 +25,6 @@ Vector3 ExplosionGenerator::force(double t, Particle* p)
 
 	std::cout << t << std::endl;
 
-
-	if (time < 0 || time >= 4 * t) return f;
-
 	std::cout << "bomba" << std::endl;
 	// distancia al centro de la explosion
 	float dist = (p->getPosition() - position).magnitude();
