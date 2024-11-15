@@ -82,6 +82,7 @@ bool Particle::update(double t)
 		// actualiza
 		//f->updateForce(t, this);
 		forces.push_back(f->force(this));
+
 	}
 
 	applyForce();
