@@ -9,6 +9,12 @@ void ForceGen::updateForce(double t, Particle* p)
 {
 }
 
+Vector3 ForceGen::force(Particle* P)
+{
+	//std::cout << "vamos no me jodas" << std::endl;
+	return Vector3();
+}
+
 bool ForceGen::enterZone(Particle* p)
 {
 	// si esta dentro de la zona

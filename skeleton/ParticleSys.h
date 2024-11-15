@@ -17,7 +17,7 @@ protected:
 
 
 	double timeElapsed;
-	double cooldown = 100;
+	double cooldown = 300;
 
 	Vector3 v;
 	Vector3 a;

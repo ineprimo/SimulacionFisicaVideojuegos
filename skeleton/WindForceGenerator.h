@@ -7,6 +7,7 @@ public:
 	~WindForceGenerator();
 
 	void updateForce(double t, Particle* p) override;
+	Vector3 force(Particle* p) override;
 
 
 
@@ -15,6 +16,6 @@ private:
 
 	// rozamientos
 	float k1 = 10;
-	Vector3 k2 = { -10,0,0 };
+	Vector3 k2 = { 0,0,0 };
 };
 

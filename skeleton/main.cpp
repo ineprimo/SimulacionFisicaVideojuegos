@@ -151,11 +151,12 @@ void initPhysics(bool interactive)
 	//sys2->setGravForgeGen(aux);
 
 	// pt2
+	v = { 0, 0,0 };
+	offset = { 0, 0, 0 };
 	sys = new ParticleSys(v, a, c, offset, 3, 1);
 	sys->setMass(1);
-	WindForceGenerator* aux = new WindForceGenerator({10,0, 0});
+	WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
 	sys->setWindForgeGen(aux);
-	offset = { -200, 0, -400 };
 
 }
 

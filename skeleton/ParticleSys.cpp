@@ -52,16 +52,25 @@ void ParticleSys::update(double t)
 
 Particle* ParticleSys::generateParticle()
 {
-	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
-	const Vector3 p = {u.x + offset.x, u.y + offset.y, u.z + offset.z}; // 
+
+	const Vector3 u = { 0,0,0 };
+	std::normal_distribution<double> posrand(offset.x, 50.0); // media dispersion
+	int varx = posrand(generator);
+	int vary = posrand(generator);
+	int varz = posrand(generator);
+
+	const Vector3 p = {u.x + offset.x + varx, u.y + offset.y + vary, u.z + offset.z + varz }; // 
 
 	float randx, randy, randz;
-	std::normal_distribution<float> distribution(1.0, 3.0);
+	std::normal_distribution<float> distribution(10.0, 1.0);
+	std::normal_distribution<float> veldy(5.0, 2.0);
+	std::normal_distribution<float> veldz(10.0, 2.0);
+	std::normal_distribution<float> veldx(-10.0, 2.0);
 
 	// con 
-	randx = 1;// distribution(generator);
-	randy = distribution(generator);
-	randz = 1;//distribution(generator);
+	randx = veldx(generator);
+	randy = veldy(generator);
+	randz = veldz(generator);
 
 
 	////std::cout
@@ -92,9 +101,14 @@ void ParticleSys::destroyParticles()
 void ParticleSys::countCooldown()
 {
 	if (timeElapsed > cooldown) {
+		std::uniform_int_distribution<int> numPartsUniform(0, 5); // numero de 0 a restParticles
+		int part = numPartsUniform(generator);
 
-		// genera una particula
-		addParticle();
+		for (int i = 0; i < part; i++) {
+			// genera una particula
+			addParticle();
+
+		}
 
 		// genera otro cooldown aleatorio
 		//

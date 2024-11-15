@@ -35,7 +35,8 @@ public:
 
 	virtual bool update(double t);
 
-
+	void applyForce();
+	void addForce(Vector3 f);
 	void addForceGen(ForceGen* f);
 	void applyContForce(Vector3 f);
 	void applyInstForce(Vector3 f);
@@ -56,5 +57,6 @@ private:
 
 
 	std::vector<ForceGen*> forceGens;
+	std::vector<Vector3> forces;
 
 };

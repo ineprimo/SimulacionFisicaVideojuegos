@@ -80,11 +80,34 @@ bool Particle::update(double t)
 {
 	for (auto f : forceGens) {
 		// actualiza
-		f->updateForce(t, this);
+		//f->updateForce(t, this);
+		forces.push_back(f->force(this));
 	}
 
+	applyForce();
 
 	return integrate(t);
+}
+
+void Particle::applyForce()
+{
+	// calculamos la fuerza acumulada
+	Vector3 totalForc = { 0,0,0 };
+	for (auto f : forces) {
+		totalForc += f;
+	}
+	forces.clear();
+	// F=m*a
+	a = totalForc / mass;
+
+	// Aplica la gravedad si es un objeto con gravedad
+	//if (gravitable)
+	//	acceleration += gravity;
+}
+
+void Particle::addForce(Vector3 f)
+{
+	forces.push_back(f);
 }
 
 void Particle::addForceGen(ForceGen* f)
@@ -101,7 +124,7 @@ void Particle::applyContForce(Vector3 f)
 
 void Particle::applyInstForce(Vector3 f)
 {
-	a = a + f;
+	a = f * mass;
 }
 
 
