@@ -162,7 +162,12 @@ void initPhysics(bool interactive)
 
 
 	// pt3 torbellino
-
+	v = { 10, 0,10 };
+	offset = { 0, 0, 0 };
+	sys = new ParticleSys(v, a, c, offset, 3, 1);
+	sys->setMass(1);
+	TornadoGenerator* aux = new TornadoGenerator({0,0, 0});
+	sys->setTornadoGen(aux);
 
 }
 

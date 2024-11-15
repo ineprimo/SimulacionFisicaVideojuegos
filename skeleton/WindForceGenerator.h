@@ -11,8 +11,9 @@ public:
 
 
 
-private:
+protected:
 	Vector3 v = { 0,0,0 };
+	Vector3 position = { 0,0,0 };
 
 	// rozamientos
 	float k1 = 10;
