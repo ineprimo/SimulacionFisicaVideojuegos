@@ -7,7 +7,7 @@ public:
 	~WindForceGenerator();
 
 	void updateForce(double t, Particle* p) override;
-	virtual Vector3 force(Particle* p) override;
+	virtual Vector3 force(double t, Particle* p) override;
 
 
 

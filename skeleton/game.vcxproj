@@ -255,6 +255,7 @@
   <ItemGroup>
     <ClCompile Include="BombSys.cpp" />
     <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="ExplosionGenerator.cpp" />
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="ForceSystem.cpp" />
     <ClCompile Include="FountainSystem.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="BombSys.h" />
     <ClInclude Include="callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="ExplosionGenerator.h" />
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="ForceSystem.h" />
     <ClInclude Include="FountainSystem.h" />

@@ -15,14 +15,14 @@ WindForceGenerator::~WindForceGenerator()
 void WindForceGenerator::updateForce(double t, Particle* p)
 {
 
-	Vector3 f = force(p);
+	Vector3 f = force(t, p);
 
 	p->addForce(f);
 	//p->applyInstForce(f);
 
 }
 
-Vector3 WindForceGenerator::force(Particle* p)
+Vector3 WindForceGenerator::force(double t, Particle* p)
 {
 	Vector3 f(0, 0, 0);
 	// calculo de la fuerza en un viento no turbulento

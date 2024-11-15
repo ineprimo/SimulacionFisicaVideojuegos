@@ -132,4 +132,7 @@ void ParticleSys::addParticle()
 	if (tGen != nullptr) {
 		pr->addForceGen(tGen);
 	}
+	if (eGen != nullptr) {
+		pr->addForceGen(eGen);
+	}
 }

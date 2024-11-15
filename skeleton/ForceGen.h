@@ -14,7 +14,7 @@ public:
 	ForceGen();
 
 	virtual void updateForce(double t, Particle* p);
-	virtual Vector3 force(Particle* P);
+	virtual Vector3 force(double t, Particle* p);
 
 
 	bool enterZone(Particle* p);

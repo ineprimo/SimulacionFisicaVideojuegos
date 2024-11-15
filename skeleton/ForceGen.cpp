@@ -9,7 +9,7 @@ void ForceGen::updateForce(double t, Particle* p)
 {
 }
 
-Vector3 ForceGen::force(Particle* P)
+Vector3 ForceGen::force(double t, Particle* p)
 {
 	//std::cout << "vamos no me jodas" << std::endl;
 	return Vector3();

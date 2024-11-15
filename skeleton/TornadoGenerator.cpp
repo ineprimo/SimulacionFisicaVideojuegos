@@ -11,12 +11,12 @@ TornadoGenerator::~TornadoGenerator()
 
 void TornadoGenerator::updateForce(double t, Particle* p)
 {
-	Vector3 f = force(p);
+	Vector3 f = force(t, p);
 
 	p->addForce(f);
 }
 
-Vector3 TornadoGenerator::force(Particle* p)
+Vector3 TornadoGenerator::force(double t, Particle* p)
 {
 	
 	Vector3 force(0, 0, 0);

@@ -11,7 +11,7 @@ public:
 
 
     void updateForce(double t, Particle* p) override;
-    Vector3 force(Particle* p) override;
+    Vector3 force(double t, Particle* p) override;
 
 
 private:

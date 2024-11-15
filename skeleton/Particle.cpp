@@ -81,7 +81,7 @@ bool Particle::update(double t)
 	for (auto f : forceGens) {
 		// actualiza
 		//f->updateForce(t, this);
-		forces.push_back(f->force(this));
+		forces.push_back(f->force(t, this));
 
 	}
 
