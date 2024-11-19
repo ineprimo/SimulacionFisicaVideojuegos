@@ -105,7 +105,7 @@ void initPhysics(bool interactive)
 	Vector3 a = {0,2,0};
 	Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 
-	particle = new Particle(p, v, a, c);
+	//particle = new Particle(p, v, a, c);
 
 
 	// ------------------
@@ -173,12 +173,13 @@ void initPhysics(bool interactive)
 
 
 	// pt4 explosion
-	v = { 10, 0,10 };
+	v = { 0, 0,0 };
 	offset = { 0, 0, 0 };
 	sys = new ParticleSys(v, a, c, offset, 3, 1);
 	sys->setMass(1);
 	ExplosionGenerator* aux = new ExplosionGenerator({ 0,0, 0 });
 	sys->setExplosionGen(aux);
+	sys->getExplosionGen()->Activate(false);
 
 
 }
@@ -196,7 +197,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->fetchResults(true);
 
 
-	particle->update(t);
+	//particle->update(t);
 	//for (int i = 0; i < projectileList.size(); i++) {
 	//	if (projectileList[i]->integrate(t)) {
 
@@ -279,6 +280,14 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 			Projectile* pr = new Projectile(p, v, a, c);
 			projectileList.push_back(pr);
+		}
+
+		break;
+	}
+	case 'B':
+	{
+		{
+			sys->getExplosionGen()->Activate(!sys->getExplosionGen()->isActive());
 		}
 
 		break;

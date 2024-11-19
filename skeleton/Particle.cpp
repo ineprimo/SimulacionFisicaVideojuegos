@@ -81,7 +81,9 @@ bool Particle::update(double t)
 	for (auto f : forceGens) {
 		// actualiza
 		//f->updateForce(t, this);
-		forces.push_back(f->force(t, this));
+
+		f->updateForce(t, this);
+		//forces.push_back(f->force(t, this));
 
 	}
 
@@ -100,6 +102,7 @@ void Particle::applyForce()
 	forces.clear();
 	// F=m*a -> a = f/m
 	a = totalForc / mass;
+
 
 }
 

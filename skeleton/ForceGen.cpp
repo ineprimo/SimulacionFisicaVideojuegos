@@ -7,6 +7,7 @@ ForceGen::ForceGen()
 
 void ForceGen::updateForce(double t, Particle* p)
 {
+
 }
 
 Vector3 ForceGen::force(double t, Particle* p)

@@ -52,8 +52,6 @@ public:
 
 	void countCooldown();  
 
-	void applyGravity(Particle* p);
-
 	void addParticle();
 
 	void setGravity(Vector3 g_) { g = g_; }
@@ -62,6 +60,12 @@ public:
 	void setWindForgeGen(WindForceGenerator* g) { wGen = g; };
 	void setTornadoGen(TornadoGenerator* g) { tGen = g; };
 	void setExplosionGen(ExplosionGenerator* g) { eGen = g; };
+
+	ForceGen* getGravForgeGen() { return gfGen; };
+	ForceGen* getWindForgeGen() { return wGen; };
+	ForceGen* getTornadoGen() { return tGen; };
+	ForceGen* getExplosionGen() { return eGen; };
+
 
 
 	void setMass(int m_) { mass = m_; }

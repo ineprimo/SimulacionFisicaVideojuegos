@@ -13,16 +13,17 @@ void ExplosionGenerator::updateForce(double t, Particle* p)
 {
 	Vector3 f = { 0,0,0 };
 
-	std::cout << t << std::endl;
-	f = force(t, p);
+	if (active) {
 
-	p->addForce(f);
+		f = force(t, p);
+		p->addForce(f);
+
+	}
 }
 
 Vector3 ExplosionGenerator::force(double t, Particle* p)
 {
 	Vector3 f(0, 0, 0);
-
 
 	// distancia al centro de la explosion
 	float dist = (p->getPosition() - position).magnitude();

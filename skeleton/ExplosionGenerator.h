@@ -10,6 +10,8 @@ public:
 	void updateForce(double t, Particle* p) override;
 	Vector3 force(double t, Particle* p) override;
 
+
+
 private:
 	float k = 100;
 	float tau = 0.05;
@@ -18,5 +20,7 @@ private:
 	float radio = 100;
 
 	Vector3 position = {0,0,0};
+
+
 };
 

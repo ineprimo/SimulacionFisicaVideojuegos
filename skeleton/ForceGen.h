@@ -22,5 +22,13 @@ public:
 	void applyForce();
 	bool isInside(Vector3 pos);
 
+
+	void Activate(bool a) { active = a; }
+	bool isActive() { return active; }
+
+protected:
+
+	bool active = true;
+
 };
 
