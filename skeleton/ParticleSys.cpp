@@ -136,3 +136,18 @@ void ParticleSys::addParticle()
 		pr->addForceGen(eGen);
 	}
 }
+
+void ParticleSys::hide()
+{
+	for (auto p : particleList) {
+		if(p != nullptr)
+			p->setVisibility(false);
+	}
+}
+
+void ParticleSys::show()
+{
+	for (auto p : particleList) {
+		p->setVisibility(true);
+	}
+}

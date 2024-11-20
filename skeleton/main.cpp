@@ -289,13 +289,25 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 		break;
 	}
-	case 'N':
+	case 'M':
 	{
 		{
 			std::cout << "NEXT SCENE " << std::endl;
 			int n = sceneManager->Current() + 1;
 			if (n >= sceneManager->getScenes().size())
 				n = 0;
+			sceneManager->nextScene(n);
+		}
+
+		break;
+	}
+	case 'N':
+	{
+		{
+			std::cout << "PREVIOUS SCENE " << std::endl;
+			int n = sceneManager->Current() - 1;
+			if (n < 0)
+				n = sceneManager->getScenes().size() - 1;
 			sceneManager->nextScene(n);
 		}
 

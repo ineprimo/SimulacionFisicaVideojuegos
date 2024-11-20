@@ -41,6 +41,9 @@ public:
 	void applyContForce(Vector3 f);
 	void applyInstForce(Vector3 f);
 
+
+	void setVisibility(bool a);
+
 private:
 
 	Vector3 vel;	// vel

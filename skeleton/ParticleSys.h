@@ -70,4 +70,8 @@ public:
 
 	void setMass(int m_) { mass = m_; }
 
+
+	void hide();
+	void show();
+
 };

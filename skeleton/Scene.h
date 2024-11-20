@@ -25,6 +25,9 @@ public:
 	virtual void setScene() {} ;
 	virtual void keyPressed(unsigned char key, const physx::PxTransform& camera) {};
 
+	void show();
+	void hide();
+
 protected:
 
 	// vector de sistemas

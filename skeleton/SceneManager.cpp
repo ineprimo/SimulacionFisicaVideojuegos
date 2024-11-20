@@ -4,6 +4,7 @@
 SceneManager::SceneManager()
 {
 
+	current = -1;
 }
 
 SceneManager::~SceneManager()
@@ -19,7 +20,14 @@ void SceneManager::update(float t)
 {
 	// cambia de escena si es necesario
 	if (next != current) {
+		// limpia la escena
+		if(current != -1)
+			scenes[current].scene->hide();
+
 		changeScene(next);
+
+		scenes[current].scene->show();
+
 	}
 
 
@@ -43,6 +51,8 @@ void SceneManager::addScene(Scene* s)
 	SceneInfo aux;
 	aux.scene = s;
 	aux.it = scenes.size();
+
+	//s->hide();
 
 	scenes.push_back(aux);
 }

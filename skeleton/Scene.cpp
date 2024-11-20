@@ -19,3 +19,27 @@ void Scene::update(float t)
 	}
 	
 }
+
+void Scene::show()
+{
+	for (auto s : systems) {
+		s->show();
+	}
+	for (auto g : generators) {
+		g->Activate(true);
+	}
+}
+
+void Scene::hide()
+{
+
+	std::cout << "ou";
+	for (auto s : systems) {
+		s->hide();
+	}
+	for (auto g : generators) {
+		g->Activate(false);
+	}
+
+
+}

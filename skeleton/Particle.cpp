@@ -128,4 +128,15 @@ void Particle::applyInstForce(Vector3 f)
 	a = f * mass;
 }
 
+void Particle::setVisibility(bool a)
+{
+	if (renderItem != nullptr) {
+
+		if (a)
+			RegisterRenderItem(renderItem);
+		else 
+			DeregisterRenderItem(renderItem);
+	}
+}
+
 
