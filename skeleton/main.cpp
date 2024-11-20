@@ -17,6 +17,9 @@
 #include <vector>
 #include <list>
 
+#include "SceneManager.h"
+#include "ExplosionScene.h"
+
 
 #include <iostream>
 
@@ -63,7 +66,9 @@ RenderItem* zone;
 std::vector<Projectile*> projectileList;
 
 
-// ------------
+// ------------ SCENES ---------------
+
+SceneManager* sceneManager = nullptr;
 
 
 // Initialize physics engine
@@ -91,96 +96,110 @@ void initPhysics(bool interactive)
 	gScene = gPhysics->createScene(sceneDesc);
 	
 
-	// crear esfera
-	xrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &xTransform, {1.0, 0.7, 0.8, 1.0});
-	yrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &yTransform, {0.0, 1.0, 0.9, 1.0});
-	zrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &zTransform, {0.0, 0.0, 0.9, 1.0});
-	orenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &oTransform, {0.0, 0.0, 0.0, 1.0});
+	//// crear esfera
+	//xrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &xTransform, {1.0, 0.7, 0.8, 1.0});
+	//yrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &yTransform, {0.0, 1.0, 0.9, 1.0});
+	//zrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &zTransform, {0.0, 0.0, 0.9, 1.0});
+	//orenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &oTransform, {0.0, 0.0, 0.0, 1.0});
 
 
-	// ------------------
+	//// ------------------
 
-	Vector3 p = {0,0,0};
-	Vector3 v = {0,2,0};
-	Vector3 a = {0,2,0};
-	Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
+	//Vector3 p = {0,0,0};
+	//Vector3 v = {0,2,0};
+	//Vector3 a = {0,2,0};
+	//Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 
-	//particle = new Particle(p, v, a, c);
-
-
-	// ------------------
-	// Particle system
-	// ------------------
-	Vector3 offset = { 500, 0, 500 };
-
-	v = { 1,1,1 };
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
+	////particle = new Particle(p, v, a, c);
 
 
-	// ------------------  ASPERSOR
-	v = { 10,10,1 };
-	offset = { 200, 0, 200 };
-	//sys = new SprinklerSystem(v, a, c, offset, 3, 1, 5, 2, 5);
-	
+	//// ------------------
+	//// Particle system
+	//// ------------------
+	//Vector3 offset = { 500, 0, 500 };
+
+	//v = { 1,1,1 };
+	////sys = new ParticleSys(v, a, c, offset, 3, 1);
 
 
-	// ----------------- ONDAs EXPANSIVAs
-	a = { 0,0,0 };
-	v = { 1,0,1 };
-	//c = { 0.87, 0.34, 0.57, 1.0 };
-	//sys = new BombSys(v, a, c, offset, 20);
+	//// ------------------  ASPERSOR
+	//v = { 10,10,1 };
+	//offset = { 200, 0, 200 };
+	////sys = new SprinklerSystem(v, a, c, offset, 3, 1, 5, 2, 5);
+	//
 
 
-	// --------------- fuente
-	offset = { -400, 0, -400 };
-	//sys = new FountainSystem(v, a, c, offset);
-	
+	//// ----------------- ONDAs EXPANSIVAs
+	//a = { 0,0,0 };
+	//v = { 1,0,1 };
+	////c = { 0.87, 0.34, 0.57, 1.0 };
+	////sys = new BombSys(v, a, c, offset, 20);
 
 
-	// -------- SISTEMA DE FUERZAS -------------
-	////// pt1
+	//// --------------- fuente
+	//offset = { -400, 0, -400 };
+	////sys = new FountainSystem(v, a, c, offset);
+	//
+
+
+	//// -------- SISTEMA DE FUERZAS -------------
+	//////// pt1
+	////v = { 0, 0,0 };
+	////offset = { 0, 0, 0 };
+	////sys = new ParticleSys(v, a, c, offset, 3, 1);
+	////sys->setMass(1);
+	////GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
+	////sys->setGravForgeGen(aux);
+	////offset = { -200, 0, 200 };
+
+	////sys2 = new ParticleSys(v, a, c, offset, 3, 1);
+	////sys2->setMass(1000);
+	////aux = new GravityForceGenerator({ 0,-9.8, 0 });
+	////sys2->setGravForgeGen(aux);
+
+	//// pt2 viento
+	////v = { 0, 0,0 };
+	////offset = { 0, 0, 0 };
+	////sys = new ParticleSys(v, a, c, offset, 3, 1);
+	////sys->setMass(1);
+	////WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
+	////sys->setWindForgeGen(aux);
+
+
+	////// pt3 torbellino
+	////v = { 10, 0,10 };
+	////offset = { 0, 0, 0 };
+	////sys = new ParticleSys(v, a, c, offset, 3, 1);
+	////sys->setMass(1);
+	////TornadoGenerator* aux = new TornadoGenerator({0,0, 0});
+	////sys->setTornadoGen(aux);
+
+
+
+
+	//// pt4 explosion
 	//v = { 0, 0,0 };
 	//offset = { 0, 0, 0 };
 	//sys = new ParticleSys(v, a, c, offset, 3, 1);
 	//sys->setMass(1);
-	//GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
-	//sys->setGravForgeGen(aux);
-	//offset = { -200, 0, 200 };
-
-	//sys2 = new ParticleSys(v, a, c, offset, 3, 1);
-	//sys2->setMass(1000);
-	//aux = new GravityForceGenerator({ 0,-9.8, 0 });
-	//sys2->setGravForgeGen(aux);
-
-	// pt2 viento
-	//v = { 0, 0,0 };
-	//offset = { 0, 0, 0 };
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
-	//sys->setMass(1);
-	//WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
-	//sys->setWindForgeGen(aux);
-
-
-	//// pt3 torbellino
-	//v = { 10, 0,10 };
-	//offset = { 0, 0, 0 };
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
-	//sys->setMass(1);
-	//TornadoGenerator* aux = new TornadoGenerator({0,0, 0});
-	//sys->setTornadoGen(aux);
+	//ExplosionGenerator* aux = new ExplosionGenerator({ 0,0, 0 });
+	//sys->setExplosionGen(aux);
+	//sys->getExplosionGen()->Activate(false);
 
 
 
+	// GESTION DE ESCENAS
 
-	// pt4 explosion
-	v = { 0, 0,0 };
-	offset = { 0, 0, 0 };
-	sys = new ParticleSys(v, a, c, offset, 3, 1);
-	sys->setMass(1);
-	ExplosionGenerator* aux = new ExplosionGenerator({ 0,0, 0 });
-	sys->setExplosionGen(aux);
-	sys->getExplosionGen()->Activate(false);
+	// crea un manager+
+	sceneManager = new SceneManager();
 
+	// crea una escena
+	Scene* explosionScene = new ExplosionScene();
+
+	// la mete en el manager
+	sceneManager->addScene(explosionScene);
+	explosionScene->Activate(true);
+	sceneManager->nextScene(0);
 
 }
 
@@ -206,27 +225,30 @@ void stepPhysics(bool interactive, double t)
 	//	}
 	//}
 
-	for (auto it = projectileList.begin(); it != projectileList.end(); ) {
-	
-		Particle* p = *it;
-		if (!p->update(t)) {
+	//for (auto it = projectileList.begin(); it != projectileList.end(); ) {
+	//
+	//	Particle* p = *it;
+	//	if (!p->update(t)) {
 
-			delete p;
-			it = projectileList.erase(it);
-		}
-		else
-			++it;
-	}
+	//		delete p;
+	//		it = projectileList.erase(it);
+	//	}
+	//	else
+	//		++it;
+	//}
 
-	// --------------------
-	if(sys != nullptr)
-		sys->update(t);	
+	//// --------------------
+	//if(sys != nullptr)
+	//	sys->update(t);	
 
-	//std::cout << "---------------------------------------" << std::endl;
-	if(sys2 != nullptr)
-		sys2->update(t);
-	//std::cout << "---------------------------------------" << std::endl << std::endl << std::endl << std::endl << std::endl;
+	////std::cout << "---------------------------------------" << std::endl;
+	//if(sys2 != nullptr)
+	//	sys2->update(t);
+	////std::cout << "---------------------------------------" << std::endl << std::endl << std::endl << std::endl << std::endl;
 
+
+	// GESTION DE ESCENAS
+	sceneManager->update(t);
 
 }
 
@@ -236,18 +258,18 @@ void cleanupPhysics(bool interactive)
 {
 	PX_UNUSED(interactive);
 
-	//
-	DeregisterRenderItem(xrenderItem);
-	DeregisterRenderItem(yrenderItem);
-	DeregisterRenderItem(zrenderItem);
-	DeregisterRenderItem(orenderItem);
+	////
+	//DeregisterRenderItem(xrenderItem);
+	//DeregisterRenderItem(yrenderItem);
+	//DeregisterRenderItem(zrenderItem);
+	//DeregisterRenderItem(orenderItem);
 
 
-	//  ¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
-	delete particle;
-	for (int i = 0; i < projectileList.size(); i++) {
-		delete projectileList[i];
-	}
+	////  ¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
+	//delete particle;
+	//for (int i = 0; i < projectileList.size(); i++) {
+	//	delete projectileList[i];
+	//}
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
 	gScene->release();
@@ -273,13 +295,13 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case 'P':
 	{
 		{
-			Vector3 p = camera.p;// { 0,0,0 };
-			Vector3 v = GetCamera()->getDir() * 5;
-			Vector3 a = { 0,-9.8,0 };
-			Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
+			//Vector3 p = camera.p;// { 0,0,0 };
+			//Vector3 v = GetCamera()->getDir() * 5;
+			//Vector3 a = { 0,-9.8,0 };
+			//Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 
-			Projectile* pr = new Projectile(p, v, a, c);
-			projectileList.push_back(pr);
+			//Projectile* pr = new Projectile(p, v, a, c);
+			//projectileList.push_back(pr);
 		}
 
 		break;
@@ -287,7 +309,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case 'B':
 	{
 		{
-			sys->getExplosionGen()->Activate(!sys->getExplosionGen()->isActive());
+			//sys->getExplosionGen()->Activate(!sys->getExplosionGen()->isActive());
 		}
 
 		break;

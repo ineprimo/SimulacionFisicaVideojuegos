@@ -7,50 +7,145 @@
     <ClCompile Include="Render\Render.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderUtils.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="callbacks.cpp" />
-    <ClCompile Include="Vector3D.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="ParticleSys.cpp" />
-    <ClCompile Include="SprinklerSystem.cpp" />
-    <ClCompile Include="FountainSystem.cpp" />
-    <ClCompile Include="BombSys.cpp" />
-    <ClCompile Include="GravityForceGenerator.cpp" />
-    <ClCompile Include="ForceSystem.cpp" />
-    <ClCompile Include="ForceGen.cpp" />
-    <ClCompile Include="WindForceGenerator.cpp" />
-    <ClCompile Include="TornadoGenerator.cpp" />
-    <ClCompile Include="ExplosionGenerator.cpp" />
+    <ClCompile Include="BombSys.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="FountainSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ForceSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSys.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SprinklerSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="ForceGen.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="GravityForceGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="WindForceGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3D.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUtils.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="callbacks.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core.hpp" />
     <ClInclude Include="Render\Camera.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Render\Render.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="RenderUtils.hpp" />
-    <ClInclude Include="callbacks.hpp" />
-    <ClInclude Include="Vector3D.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="ParticleSys.h" />
-    <ClInclude Include="SprinklerSystem.h" />
-    <ClInclude Include="FountainSystem.h" />
-    <ClInclude Include="BombSys.h" />
-    <ClInclude Include="GravityForceGenerator.h" />
-    <ClInclude Include="ForceSystem.h" />
-    <ClInclude Include="ForceGen.h" />
-    <ClInclude Include="WindForceGenerator.h" />
-    <ClInclude Include="TornadoGenerator.h" />
-    <ClInclude Include="ExplosionGenerator.h" />
+    <ClInclude Include="BombSys.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="FountainSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="ForceSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSys.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SprinklerSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="ForceGen.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="GravityForceGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="WindForceGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtils.hpp">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="core.hpp">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="callbacks.hpp">
+      <Filter>Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
       <UniqueIdentifier>{d04b4f9f-5a69-465e-8070-25c6d0bcd3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems">
+      <UniqueIdentifier>{224e7bd2-1dee-413e-92f2-24c1c7b18f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generators">
+      <UniqueIdentifier>{cd242fd5-bbad-445d-ad15-8439b1459edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bases">
+      <UniqueIdentifier>{b6f29dd6-f783-44b7-9b66-f617a2fd0aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{cdbcd633-9389-4e1e-bc90-0485403ab333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\others">
+      <UniqueIdentifier>{e52784ca-934f-4bc5-98f0-04cbee90451d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

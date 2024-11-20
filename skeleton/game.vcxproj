@@ -256,6 +256,7 @@
     <ClCompile Include="BombSys.cpp" />
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="ExplosionGenerator.cpp" />
+    <ClCompile Include="ExplosionScene.cpp" />
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="ForceSystem.cpp" />
     <ClCompile Include="FountainSystem.cpp" />
@@ -267,6 +268,8 @@
     <ClCompile Include="RenderUtils.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Render.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SprinklerSystem.cpp" />
     <ClCompile Include="TornadoGenerator.cpp" />
     <ClCompile Include="Vector3D.cpp" />
@@ -277,6 +280,7 @@
     <ClInclude Include="callbacks.hpp" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="ExplosionGenerator.h" />
+    <ClInclude Include="ExplosionScene.h" />
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="ForceSystem.h" />
     <ClInclude Include="FountainSystem.h" />
@@ -287,6 +291,8 @@
     <ClInclude Include="RenderUtils.hpp" />
     <ClInclude Include="Render\Camera.h" />
     <ClInclude Include="Render\Render.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SprinklerSystem.h" />
     <ClInclude Include="TornadoGenerator.h" />
     <ClInclude Include="Vector3D.h" />
