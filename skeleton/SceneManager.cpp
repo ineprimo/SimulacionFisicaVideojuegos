@@ -62,12 +62,12 @@ Scene* SceneManager::getScene(int i)
 	return scenes[i].scene;
 }
 
-Scene* SceneManager::Current()
+int SceneManager::Current()
 {
-	return scenes[current].scene;
+	return current;
 }
 
-Scene* SceneManager::Next()
+int SceneManager::Next()
 {
-	return scenes[next].scene;
+	return next;
 }

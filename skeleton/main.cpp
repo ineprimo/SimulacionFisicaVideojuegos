@@ -19,6 +19,9 @@
 
 #include "SceneManager.h"
 #include "ExplosionScene.h"
+#include "TornadoScene.h"
+#include "WindScene.h"
+#include "GravityScene.h"
 
 
 #include <iostream>
@@ -142,63 +145,33 @@ void initPhysics(bool interactive)
 	//
 
 
-	//// -------- SISTEMA DE FUERZAS -------------
-	//////// pt1
-	////v = { 0, 0,0 };
-	////offset = { 0, 0, 0 };
-	////sys = new ParticleSys(v, a, c, offset, 3, 1);
-	////sys->setMass(1);
-	////GravityForceGenerator* aux = new GravityForceGenerator({0,-9.8, 0});
-	////sys->setGravForgeGen(aux);
-	////offset = { -200, 0, 200 };
 
-	////sys2 = new ParticleSys(v, a, c, offset, 3, 1);
-	////sys2->setMass(1000);
-	////aux = new GravityForceGenerator({ 0,-9.8, 0 });
-	////sys2->setGravForgeGen(aux);
-
-	//// pt2 viento
-	////v = { 0, 0,0 };
-	////offset = { 0, 0, 0 };
-	////sys = new ParticleSys(v, a, c, offset, 3, 1);
-	////sys->setMass(1);
-	////WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
-	////sys->setWindForgeGen(aux);
-
-
-	////// pt3 torbellino
-	////v = { 10, 0,10 };
-	////offset = { 0, 0, 0 };
-	////sys = new ParticleSys(v, a, c, offset, 3, 1);
-	////sys->setMass(1);
-	////TornadoGenerator* aux = new TornadoGenerator({0,0, 0});
-	////sys->setTornadoGen(aux);
-
-
-
-
-	//// pt4 explosion
-	//v = { 0, 0,0 };
-	//offset = { 0, 0, 0 };
-	//sys = new ParticleSys(v, a, c, offset, 3, 1);
-	//sys->setMass(1);
-	//ExplosionGenerator* aux = new ExplosionGenerator({ 0,0, 0 });
-	//sys->setExplosionGen(aux);
-	//sys->getExplosionGen()->Activate(false);
-
-
-
-	// GESTION DE ESCENAS
+	// FUERZAS
 
 	// crea un manager+
 	sceneManager = new SceneManager();
 
-	// crea una escena
-	Scene* explosionScene = new ExplosionScene();
+	// ------------- GRAVITY ---------------
+	Scene* gravityScene = new GravityScene();
+	sceneManager->addScene(gravityScene);
+	gravityScene->Activate(true);
 
-	// la mete en el manager
+	// -------------- WIND ----------------
+	Scene* windScene = new WindScene();
+	sceneManager->addScene(windScene);
+	windScene->Activate(true);
+
+	// ------------- TORNADO ---------------
+	Scene* tornadoScene = new TornadoScene();
+	sceneManager->addScene(tornadoScene);
+	tornadoScene->Activate(true);
+
+	// ------------ EXPLOSION -------------
+	Scene* explosionScene = new ExplosionScene();
 	sceneManager->addScene(explosionScene);
 	explosionScene->Activate(true);
+
+
 	sceneManager->nextScene(0);
 
 }
@@ -288,6 +261,8 @@ void keyPress(unsigned char key, const PxTransform& camera)
 {
 	PX_UNUSED(camera);
 
+	sceneManager->getScenes()[sceneManager->Current()].scene->keyPressed(key, camera);
+
 	switch(toupper(key))
 	{
 	//case 'B': break;
@@ -310,6 +285,18 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	{
 		{
 			//sys->getExplosionGen()->Activate(!sys->getExplosionGen()->isActive());
+		}
+
+		break;
+	}
+	case 'N':
+	{
+		{
+			std::cout << "NEXT SCENE " << std::endl;
+			int n = sceneManager->Current() + 1;
+			if (n >= sceneManager->getScenes().size())
+				n = 0;
+			sceneManager->nextScene(n);
 		}
 
 		break;

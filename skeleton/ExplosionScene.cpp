@@ -29,6 +29,7 @@ void ExplosionScene::setScene()
 	ParticleSys* sys = new ParticleSys(v, a, c, offset, 3, 1);
 	sys->setMass(1);
 	ExplosionGenerator* aux = new ExplosionGenerator({ 0,0, 0 });
+	gen = aux;
 	sys->setExplosionGen(aux);
 	sys->getExplosionGen()->Activate(false);
 
@@ -45,7 +46,7 @@ void ExplosionScene::keyPressed(unsigned char key, const physx::PxTransform& cam
 	case 'B':
 	{
 		{
-			std::cout << "HOLAAAAA" << std::endl;
+			gen->Activate(!gen->isActive());
 		}
 
 		break;

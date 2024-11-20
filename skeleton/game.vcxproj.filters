@@ -62,6 +62,15 @@
     <ClCompile Include="ExplosionScene.cpp">
       <Filter>Scenes\others</Filter>
     </ClCompile>
+    <ClCompile Include="TornadoScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
+    <ClCompile Include="GravityScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
+    <ClCompile Include="WindScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -125,6 +134,15 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ExplosionScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
+    <ClInclude Include="GravityScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
+    <ClInclude Include="WindScene.h">
       <Filter>Scenes\others</Filter>
     </ClInclude>
   </ItemGroup>

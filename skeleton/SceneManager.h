@@ -36,8 +36,8 @@ public:
 	void addSceneInfo(SceneInfo s);
 	std::vector<SceneInfo> getScenes();
 	Scene* getScene(int i);
-	Scene* Current();
-	Scene* Next();
+	int Current();
+	int Next();
 
 
 

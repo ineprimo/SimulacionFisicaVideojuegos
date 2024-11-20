@@ -1,12 +1,12 @@
 #pragma once
 #include "Scene.h"
-
-class ExplosionScene : public Scene
+class TornadoScene : public Scene
 {
 
+
 public:
-	ExplosionScene();
-	~ExplosionScene();
+	TornadoScene();
+	~TornadoScene();
 
 
 private:
@@ -16,6 +16,6 @@ private:
 	void keyPressed(unsigned char key, const physx::PxTransform& camera) override;
 
 
-	ExplosionGenerator* gen;
+	TornadoGenerator* gen;
 };
 
