@@ -135,6 +135,9 @@ void ParticleSys::addParticle()
 	if (eGen != nullptr) {
 		pr->addForceGen(eGen);
 	}
+	if (sGen != nullptr) {
+		pr->addForceGen(sGen);
+	}
 }
 
 void ParticleSys::hide()

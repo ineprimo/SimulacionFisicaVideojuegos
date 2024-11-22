@@ -7,6 +7,7 @@
 #include "WindForceGenerator.h"
 #include "TornadoGenerator.h"
 #include "ExplosionGenerator.h"
+#include "SpringForceGenerator.h"
 
 
 class ParticleSys {
@@ -38,6 +39,7 @@ protected:
 	WindForceGenerator* wGen = nullptr;
 	TornadoGenerator* tGen = nullptr;
 	ExplosionGenerator* eGen = nullptr;
+	SpringForceGenerator* sGen = nullptr;
 
 public:
 	ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _med, int _var);
@@ -60,11 +62,13 @@ public:
 	void setWindForgeGen(WindForceGenerator* g) { wGen = g; };
 	void setTornadoGen(TornadoGenerator* g) { tGen = g; };
 	void setExplosionGen(ExplosionGenerator* g) { eGen = g; };
+	void setSpringForceGen(SpringForceGenerator* g) { sGen = g; };
 
 	ForceGen* getGravForgeGen() { return gfGen; };
 	ForceGen* getWindForgeGen() { return wGen; };
 	ForceGen* getTornadoGen() { return tGen; };
 	ForceGen* getExplosionGen() { return eGen; };
+	ForceGen* getSpringGen() { return sGen; };
 
 
 
