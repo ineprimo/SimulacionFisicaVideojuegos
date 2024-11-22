@@ -98,7 +98,8 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 	
-
+	/*
+	
 	//// crear esfera
 	//xrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &xTransform, {1.0, 0.7, 0.8, 1.0});
 	//yrenderItem = new RenderItem(CreateShape(PxSphereGeometry(1)), &yTransform, {0.0, 1.0, 0.9, 1.0});
@@ -144,6 +145,7 @@ void initPhysics(bool interactive)
 	////sys = new FountainSystem(v, a, c, offset);
 	//
 
+	*/
 
 
 	// FUERZAS

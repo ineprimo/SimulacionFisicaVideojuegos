@@ -33,6 +33,6 @@ void GravityForceGenerator::updateForce(double t, Particle* p)
 
 Vector3 GravityForceGenerator::force(double t, Particle* p)
 {
-	Vector3 f = gravity;
+	Vector3 f = gravity * p->getMass();
 	return f;
 }

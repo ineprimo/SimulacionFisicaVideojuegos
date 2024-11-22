@@ -52,7 +52,6 @@ private:
 	float rad = 5;			// radio de la particula
 	physx::PxTransform pose;	// posicion
 	RenderItem* renderItem;		// para verlo
-
 	double maxt;
 	Vector3 maxp;
 

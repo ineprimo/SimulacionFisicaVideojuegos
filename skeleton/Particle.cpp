@@ -101,7 +101,8 @@ void Particle::applyForce()
 	}
 	forces.clear();
 	// F=m*a -> a = f/m
-	a = totalForc / mass;
+	a += totalForc / mass;
+	std::cout << "particula de masa " << mass << " " << a.y << std::endl;
 
 
 }
