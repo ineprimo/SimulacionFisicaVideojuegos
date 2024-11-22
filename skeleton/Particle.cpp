@@ -82,6 +82,7 @@ bool Particle::update(double t)
 		// actualiza
 		//f->updateForce(t, this);
 
+		// el mete la fuerza a la particula
 		f->updateForce(t, this);
 		//forces.push_back(f->force(t, this));
 
@@ -97,12 +98,24 @@ void Particle::applyForce()
 	// calculamos la fuerza acumulada
 	Vector3 totalForc = { 0,0,0 };
 	for (auto f : forces) {
+
 		totalForc += f;
+
+
+
+
 	}
 	forces.clear();
 	// F=m*a -> a = f/m
 	a += totalForc / mass;
-	std::cout << "particula de masa " << mass << " " << a.y << std::endl;
+	/*
+	std::cout << "fuerzaaaaaaaaaa" << std::endl;
+	std::cout << "total a: " << a.x << " " << a.y << " " << a.z << std::endl;
+	std::cout << "-------------------" << std::endl;*/
+
+
+
+	//std::cout << "total force: " << totalForc.x << " " << totalForc.y << " " << totalForc.z << std::endl;
 
 
 }

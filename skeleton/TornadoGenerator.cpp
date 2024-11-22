@@ -1,8 +1,8 @@
 #include "TornadoGenerator.h"
 #include "Particle.h"
 
-TornadoGenerator::TornadoGenerator(Vector3 v_)
-	: WindForceGenerator(v_)
+TornadoGenerator::TornadoGenerator(Vector3 v_, float k1_, Vector3 k2_, float k_)
+	: WindForceGenerator(v_, k1_, k2_), k(k_)
 {
 }
 TornadoGenerator::~TornadoGenerator()

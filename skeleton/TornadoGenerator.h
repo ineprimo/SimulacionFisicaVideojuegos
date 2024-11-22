@@ -5,7 +5,7 @@
 class TornadoGenerator : public WindForceGenerator
 {
 public:
-	TornadoGenerator(Vector3 v_);
+	TornadoGenerator(Vector3 v_, float k1_, Vector3 k2_, float k_);
 	~TornadoGenerator ();
 
 	void updateForce(double t, Particle* p) override;

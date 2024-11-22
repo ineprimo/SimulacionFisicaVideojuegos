@@ -24,7 +24,7 @@ void WindScene::setScene()
 	Vector4 c = { 0.0, 1.0, 0.9, 1.0 };
 	ParticleSys* sys = new ParticleSys(v, a, c, offset, 3, 1);
 	sys->setMass(1);
-	WindForceGenerator* aux = new WindForceGenerator({10,10, -10});
+	WindForceGenerator* aux = new WindForceGenerator({ 10,0, 0 }, 10, {0,0,0});
 	gen = aux;
 	sys->setWindForgeGen(aux);
 

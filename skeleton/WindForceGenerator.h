@@ -3,7 +3,7 @@
 class WindForceGenerator : public ForceGen
 {
 public:
-	WindForceGenerator(Vector3 v_);
+	WindForceGenerator(Vector3 v_, float k1_, Vector3 k2_);
 	~WindForceGenerator();
 
 	void updateForce(double t, Particle* p) override;
