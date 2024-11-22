@@ -271,6 +271,8 @@
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp" />
+    <ClCompile Include="SpringScene.cpp" />
     <ClCompile Include="SprinklerSystem.cpp" />
     <ClCompile Include="TornadoGenerator.cpp" />
     <ClCompile Include="TornadoScene.cpp" />
@@ -297,6 +299,8 @@
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SpringForceGenerator.h" />
+    <ClInclude Include="SpringScene.h" />
     <ClInclude Include="SprinklerSystem.h" />
     <ClInclude Include="TornadoGenerator.h" />
     <ClInclude Include="TornadoScene.h" />

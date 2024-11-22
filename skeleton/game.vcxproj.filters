@@ -71,6 +71,8 @@
     <ClCompile Include="WindScene.cpp">
       <Filter>Scenes\others</Filter>
     </ClCompile>
+    <ClCompile Include="SpringScene.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -145,6 +147,8 @@
     <ClInclude Include="WindScene.h">
       <Filter>Scenes\others</Filter>
     </ClInclude>
+    <ClInclude Include="SpringScene.h" />
+    <ClInclude Include="SpringForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
