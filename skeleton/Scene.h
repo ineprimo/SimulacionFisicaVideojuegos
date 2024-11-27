@@ -31,7 +31,9 @@ public:
 protected:
 
 	// vector de sistemas
-	std::vector<ParticleSys*> systems;
+	std::vector<System*> systems;
+	// 
+	std::vector<Object*> objects;
 	// vector de sistemas
 	std::vector<ForceGen*> generators;
 

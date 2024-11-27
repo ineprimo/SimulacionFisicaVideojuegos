@@ -3,6 +3,7 @@
 #include <random>
 #include <iostream>
 #include "Particle.h"
+#include "System.h"
 #include "GravityForceGenerator.h"
 #include "WindForceGenerator.h"
 #include "TornadoGenerator.h"
@@ -10,7 +11,7 @@
 #include "SpringForceGenerator.h"
 
 
-class ParticleSys {
+class ParticleSys : public System {
 protected:
 	std::list<Particle*> particleList;
 	std::list<Particle*> particleListToDelete;
@@ -46,7 +47,7 @@ public:
 	~ParticleSys();
 
 
-	void update(double t);
+	void update(double t) override;
 
 	virtual Particle* generateParticle();
 
@@ -62,7 +63,7 @@ public:
 	void setWindForgeGen(WindForceGenerator* g) { wGen = g; };
 	void setTornadoGen(TornadoGenerator* g) { tGen = g; };
 	void setExplosionGen(ExplosionGenerator* g) { eGen = g; };
-	void setSpringForceGen(SpringForceGenerator* g) { sGen = g; };
+	void setSpringGen(SpringForceGenerator* g) { sGen = g; };
 
 	ForceGen* getGravForgeGen() { return gfGen; };
 	ForceGen* getWindForgeGen() { return wGen; };

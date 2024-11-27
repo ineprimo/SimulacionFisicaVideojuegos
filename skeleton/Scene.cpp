@@ -22,6 +22,9 @@ void Scene::update(float t)
 
 void Scene::show()
 {
+	for (auto o : objects) {
+		o->setVisibility(true);
+	}
 	for (auto s : systems) {
 		s->show();
 	}
@@ -34,6 +37,9 @@ void Scene::hide()
 {
 
 	std::cout << "ou";
+	for (auto o : objects) {
+		o->setVisibility(false);
+	}
 	for (auto s : systems) {
 		s->hide();
 	}

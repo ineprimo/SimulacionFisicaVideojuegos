@@ -71,8 +71,17 @@
     <ClCompile Include="WindScene.cpp">
       <Filter>Scenes\others</Filter>
     </ClCompile>
-    <ClCompile Include="SpringScene.cpp" />
-    <ClCompile Include="SpringForceGenerator.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringSystem.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="Object.cpp">
+      <Filter>Bases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -147,8 +156,17 @@
     <ClInclude Include="WindScene.h">
       <Filter>Scenes\others</Filter>
     </ClInclude>
-    <ClInclude Include="SpringScene.h" />
-    <ClInclude Include="SpringForceGenerator.h" />
+    <ClInclude Include="SpringForceGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringSystem.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="Object.h">
+      <Filter>Bases</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

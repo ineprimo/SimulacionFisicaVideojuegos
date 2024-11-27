@@ -4,13 +4,14 @@
 #include <PxPhysicsAPI.h>
 #include "core.hpp"
 #include "RenderUtils.hpp"
+#include "Object.h"
 #include <cmath>
 
 class ForceGen;
 
 // clase particle
 
-class Particle {
+class Particle : public Object {
 public: 
 
 	Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_);
@@ -42,7 +43,7 @@ public:
 	void applyInstForce(Vector3 f);
 
 
-	void setVisibility(bool a);
+	void setVisibility(bool a) override;
 
 private:
 

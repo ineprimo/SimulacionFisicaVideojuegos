@@ -2,6 +2,7 @@
 #include "ForceSystem.h"
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
+	: Object()
 {
 	pose = physx::PxTransform(p_);
 	vel = v_;
@@ -15,6 +16,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
+	: Object()
 {
 	pose = physx::PxTransform(p_);
 	vel = v_;
@@ -28,6 +30,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, float r_)
+	: Object()
 {
 
 	pose = physx::PxTransform(p_);

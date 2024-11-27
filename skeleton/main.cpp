@@ -22,6 +22,7 @@
 #include "TornadoScene.h"
 #include "WindScene.h"
 #include "GravityScene.h"
+#include "SpringScene.h"
 
 
 #include <iostream>
@@ -172,6 +173,13 @@ void initPhysics(bool interactive)
 	Scene* explosionScene = new ExplosionScene();
 	sceneManager->addScene(explosionScene);
 	explosionScene->Activate(true);
+
+
+
+	// ------------ MUELLE --------------
+	Scene* springScene = new SpringScene();
+	sceneManager->addScene(springScene);
+	springScene->Activate(true);
 
 
 	sceneManager->nextScene(0);

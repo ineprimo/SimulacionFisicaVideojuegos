@@ -32,7 +32,7 @@ Vector3 SpringForceGenerator::force(double t, Particle* p)
 	// distancia
 	Vector3 d = anchor->getPosition() - p->getPosition();
 
-	float delta = d.normalize() - rest;
+	const float delta = d.normalize() - rest;
 
 	f = -k * delta * d;
 

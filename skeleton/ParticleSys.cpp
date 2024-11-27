@@ -3,7 +3,7 @@
 #include "GravityForceGenerator.h"
 
 ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _var, int _med) 
-	: v(_v), a(_a), c(_c), offset(o_), var(_var), med(_med)
+	: v(_v), a(_a), c(_c), offset(o_), var(_var), med(_med), System()
 {
 	mass = 1;
 	timeElapsed = 0.0;
