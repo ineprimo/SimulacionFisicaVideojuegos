@@ -33,7 +33,7 @@ Particle* FountainSystem::generateParticle()
 		const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 		pr = new Particle(p, auxv, g, c);
-		particleList.push_back(pr);
+		particles.push_back(pr);
 	}
 
 	return pr;

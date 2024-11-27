@@ -2,12 +2,21 @@
 
 void System::hide()
 {
-
-	// TO DO
+	for (auto p : particles) {
+		if (p != nullptr)
+			p->setVisibility(false);
+	}
 }
 
 void System::show()
 {
+	for (auto p : particles) {
+		if (p != nullptr)
+			p->setVisibility(true);
+	}
+}
 
-	// TO DO
+void System::addParticle(Particle* p)
+{
+	particles.push_back(p);
 }

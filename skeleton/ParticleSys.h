@@ -13,7 +13,6 @@
 
 class ParticleSys : public System {
 protected:
-	std::list<Particle*> particleList;
 	std::list<Particle*> particleListToDelete;
 
 	//std::uniform_real_distribution<double> d(0,1);

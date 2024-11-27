@@ -1,4 +1,7 @@
 #pragma once
+#include "Particle.h"
+#include <list>
+
 
 class System
 {
@@ -12,8 +15,13 @@ public:
 	void hide();
 	void show();
 
+	void addParticle(Particle* p);
 
-private:
+
+protected:
+
+
+	std::list<Particle*> particles;
 
 };
 

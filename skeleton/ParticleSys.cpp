@@ -23,23 +23,24 @@ ParticleSys::~ParticleSys()
 		delete p;
 		particleListToDelete.pop_front();
 	}
-	for (auto it = particleList.begin(); it != particleList.end(); ++it) {
+	for (auto it = particles.begin(); it != particles.end(); ++it) {
 
 		Particle* p = *it;
 		delete p;
-		particleList.pop_front();
+		particles.pop_front();
 	}
 }
 
 void ParticleSys::update(double t)
 {
-	for (auto it = particleList.begin(); it != particleList.end(); ) {
+	auto it = particles.begin();
+	for (it; it != particles.end(); ) {
 
 		Particle* p = *it;
 		if (!p->update(t)) {
 
 			delete p;
-			it = particleList.erase(it);
+			it = particles.erase(it);
 		}
 		else
 			++it;
@@ -82,7 +83,7 @@ Particle* ParticleSys::generateParticle()
 
 	Particle* pr = new Particle(p, auxv, g, c);	
 	pr->setMass(mass);
-	particleList.push_back(pr);
+	particles.push_back(pr);
 
 	return pr;
 
@@ -107,7 +108,6 @@ void ParticleSys::countCooldown()
 		for (int i = 0; i < part; i++) {
 			// genera una particula
 			addParticle();
-
 		}
 
 		// genera otro cooldown aleatorio
@@ -142,7 +142,7 @@ void ParticleSys::addParticle()
 
 void ParticleSys::hide()
 {
-	for (auto p : particleList) {
+	for (auto p : particles) {
 		if(p != nullptr)
 			p->setVisibility(false);
 	}
@@ -150,7 +150,7 @@ void ParticleSys::hide()
 
 void ParticleSys::show()
 {
-	for (auto p : particleList) {
+	for (auto p : particles) {
 		p->setVisibility(true);
 	}
 }
