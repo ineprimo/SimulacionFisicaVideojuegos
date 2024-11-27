@@ -25,7 +25,7 @@ void SpringScene::setScene()
 {
 	// particula anchor
 	Particle* anchor = new Particle({ 0,50,0 }, { 0,0,0 }, { 0,0,0 }, { 0.87, 0.34, 0.57, 1.0 });
-	Particle* part = new Particle({ 0,30,0 }, { 0,0,0 }, { 0,-9.8,0 }, { 0.87, 0, 0, 1.0 });
+	Particle* part = new Particle({ 0,30,0 }, { 0,0,0 }, { 0,-9.8,0 }, { 0.87, 0, 0, 1.0 }, 0.5);
 
 	anchor->setMass(1);
 	part->setMass(2);
