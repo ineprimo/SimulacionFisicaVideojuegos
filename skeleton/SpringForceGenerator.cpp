@@ -19,7 +19,8 @@ void SpringForceGenerator::updateForce(double t, Particle* p)
 
 	if (active) {
 
-		f = force(t, p);
+		if(p != anchor)
+			f = force(t, p);
 		p->addForce(f);
 
 	}

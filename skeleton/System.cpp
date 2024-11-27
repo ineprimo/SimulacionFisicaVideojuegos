@@ -1,5 +1,23 @@
 #include "System.h"
 
+void System::update(double t)
+{
+	auto it = particles.begin();
+	for (it; it != particles.end(); ) {
+
+		Particle* p = *it;
+		if (!p->update(t)) {
+
+			delete p;
+			it = particles.erase(it);
+		}
+		else
+			++it;
+	}
+
+
+}
+
 void System::hide()
 {
 	for (auto p : particles) {
@@ -20,3 +38,16 @@ void System::addParticle(Particle* p)
 {
 	particles.push_back(p);
 }
+
+void System::addForceGenerator(ForceGen* f, Particle* p)
+{
+	p->addForceGen(f);
+}
+
+void System::addForceGeneratorToAll(ForceGen* f)
+{
+	for (auto p : particles) {
+		p->addForceGen(f);
+	}
+}
+

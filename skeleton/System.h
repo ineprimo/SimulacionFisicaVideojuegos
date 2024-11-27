@@ -9,7 +9,7 @@ public:
 	System() {};
 	~System() {};
 
-	virtual void update(double t) {};
+	virtual void update(double t);
 
 
 	void hide();
@@ -17,6 +17,8 @@ public:
 
 	void addParticle(Particle* p);
 
+	void addForceGenerator(ForceGen* f, Particle* p);
+	void addForceGeneratorToAll(ForceGen* f);
 
 protected:
 

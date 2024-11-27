@@ -33,19 +33,7 @@ ParticleSys::~ParticleSys()
 
 void ParticleSys::update(double t)
 {
-	auto it = particles.begin();
-	for (it; it != particles.end(); ) {
-
-		Particle* p = *it;
-		if (!p->update(t)) {
-
-			delete p;
-			it = particles.erase(it);
-		}
-		else
-			++it;
-	}
-
+	System::update(t);
 	countCooldown();
 
 	//destroyParticles();

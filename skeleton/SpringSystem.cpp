@@ -5,6 +5,9 @@ SpringSystem::SpringSystem(Particle* anchor_, Particle* particle_)
 {
 
 
+	particles.push_back(anchor);
+	particles.push_back(particle);
+
 }
 
 SpringSystem::~SpringSystem()
