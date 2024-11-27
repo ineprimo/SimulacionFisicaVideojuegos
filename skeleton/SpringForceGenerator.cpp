@@ -31,12 +31,13 @@ Vector3 SpringForceGenerator::force(double t, Particle* p)
 	Vector3 f = { 0,0,0 };
 
 	// distancia
-	Vector3 d = anchor->getPosition() - p->getPosition();
-	float l = d.magnitude();
-	const float delta = d.normalize() - rest;
+	Vector3 relative_pos = anchor->getPosition() - p->getPosition();
+
+	float length = relative_pos.normalize();
+	const float delta = length - rest;
 	//const float delta = max(0.0f, d.normalize() - rest);
 
-	f = k * delta * d;
+	f = relative_pos * delta * k;
 
 	if (p != anchor)
 		std::cout << f.y << std::endl;
