@@ -103,10 +103,6 @@ void Particle::applyForce()
 	for (auto f : forces) {
 
 		totalForc += f;
-
-
-
-
 	}
 	forces.clear();
 	// F=m*a -> a = f/m

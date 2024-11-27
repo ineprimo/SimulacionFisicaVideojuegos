@@ -38,7 +38,7 @@ void SpringScene::setScene()
 	// 
 
 	// TO DO
-	SpringForceGenerator* aux = new SpringForceGenerator(50, 1, anchor);
+	SpringForceGenerator* aux = new SpringForceGenerator(2, 1, anchor);
 	gen = aux;
 	sys->addForceGeneratorToAll(aux);
 
