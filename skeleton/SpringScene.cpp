@@ -76,12 +76,12 @@ void SpringScene::setScene()
 	SpringForceGenerator* aux4 = new SpringForceGenerator(20, 15, part3);
 	//gen = aux2;
 	sys2->addForceGeneratorToAll(aux2);
-	sys2->addForceGeneratorToAll(aux3);
-	sys2->addForceGeneratorToAll(aux4);
+	sys3->addForceGeneratorToAll(aux3);
+	sys4->addForceGeneratorToAll(aux4);
 
 	sys2->addForceGenerator(gravity, part2);
-	sys2->addForceGenerator(gravity, part3);
-	sys2->addForceGenerator(gravity, part4);
+	sys3->addForceGenerator(gravity, part3);
+	sys4->addForceGenerator(gravity, part4);
 
 	systems.push_back(sys2);
 	systems.push_back(sys3);
