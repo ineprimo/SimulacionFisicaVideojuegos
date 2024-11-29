@@ -23,7 +23,7 @@
 #include "WindScene.h"
 #include "GravityScene.h"
 #include "SpringScene.h"
-
+#include "BuoyancyScene.h"
 
 #include <iostream>
 
@@ -179,7 +179,13 @@ void initPhysics(bool interactive)
 	// ------------ MUELLE --------------
 	Scene* springScene = new SpringScene();
 	sceneManager->addScene(springScene);
-	springScene->Activate(true);
+	springScene->Activate(true);	
+	
+
+	// ------------ BUOYANCY ------------
+	Scene* buoyancyScene = new BuoyancyScene();
+	sceneManager->addScene(buoyancyScene);
+	buoyancyScene->Activate(true);
 
 
 	sceneManager->nextScene(0);

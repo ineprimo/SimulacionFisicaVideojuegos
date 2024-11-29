@@ -254,6 +254,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BombSys.cpp" />
+    <ClCompile Include="BuoyancyForceGenerator.cpp" />
+    <ClCompile Include="BuoyancyParticleSystem.cpp" />
+    <ClCompile Include="BuoyancyScene.cpp" />
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="ExplosionGenerator.cpp" />
     <ClCompile Include="ExplosionScene.cpp" />
@@ -285,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BombSys.h" />
+    <ClInclude Include="BuoyancyForceGenerator.h" />
+    <ClInclude Include="BuoyancyParticleSystem.h" />
+    <ClInclude Include="BuoyancyScene.h" />
     <ClInclude Include="callbacks.hpp" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="ExplosionGenerator.h" />

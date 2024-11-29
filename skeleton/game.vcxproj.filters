@@ -82,6 +82,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>Bases</Filter>
     </ClCompile>
+    <ClCompile Include="BuoyancyScene.cpp" />
+    <ClCompile Include="BuoyancyForceGenerator.cpp" />
+    <ClCompile Include="BuoyancyParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -167,6 +170,9 @@
     <ClInclude Include="Object.h">
       <Filter>Bases</Filter>
     </ClInclude>
+    <ClInclude Include="BuoyancyScene.h" />
+    <ClInclude Include="BuoyancyForceGenerator.h" />
+    <ClInclude Include="BuoyancyParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
