@@ -4,7 +4,7 @@ SpringSystem::SpringSystem(Particle* anchor_, Particle* particle_)
 	: anchor(anchor_), particle(particle_), System()
 {
 
-
+	particle->setDumping(0.5);
 	particles.push_back(anchor);
 	particles.push_back(particle);
 

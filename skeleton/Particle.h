@@ -29,6 +29,7 @@ public:
 	void setAcceleration(Vector3 a_) { a = a_; }
 	Vector3 getVelocity() { return vel; }
 	void setVelocity(Vector3 v_) { vel = v_; }
+	void setDumping(float d) { dump = d; };
 
 	Vector3 getPosition() { return pose.p; }
 

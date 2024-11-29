@@ -106,7 +106,9 @@ void Particle::applyForce()
 	}
 	forces.clear();
 	// F=m*a -> a = f/m
-	a += totalForc / mass;
+
+	a = totalForc / mass;
+	std::cout << "FUERZA TOTAL EN Y  " << totalForc.y << std::endl;
 	/*
 	std::cout << "fuerzaaaaaaaaaa" << std::endl;
 	std::cout << "total a: " << a.x << " " << a.y << " " << a.z << std::endl;
