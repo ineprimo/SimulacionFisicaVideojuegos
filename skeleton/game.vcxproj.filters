@@ -14,9 +14,6 @@
     <ClCompile Include="FountainSystem.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
-    <ClCompile Include="ForceSystem.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSys.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
@@ -85,6 +82,9 @@
     <ClCompile Include="BuoyancyScene.cpp" />
     <ClCompile Include="BuoyancyForceGenerator.cpp" />
     <ClCompile Include="BuoyancyParticleSystem.cpp" />
+    <ClCompile Include="ForceSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -92,9 +92,6 @@
     </ClInclude>
     <ClInclude Include="Render\Render.h">
       <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="BombSys.h">
-      <Filter>Systems</Filter>
     </ClInclude>
     <ClInclude Include="FountainSystem.h">
       <Filter>Systems</Filter>
@@ -173,6 +170,9 @@
     <ClInclude Include="BuoyancyScene.h" />
     <ClInclude Include="BuoyancyForceGenerator.h" />
     <ClInclude Include="BuoyancyParticleSystem.h" />
+    <ClInclude Include="BombSys.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
