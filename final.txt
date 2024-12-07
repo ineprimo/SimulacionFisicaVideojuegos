@@ -1,0 +1,10 @@
+DONE 	generador 1 -> sprinkler
+generador 2 -> nausea como victoria lmao
+partículas distinta masa -> semillas?? lanzar semillas (proyectil)
+DONE 	fuerza 1 -> gravedad
+fuerza 2 -> explosion
+muelle/buoyancy 
+solido rigido 
+solido con distinto tamaño forma masa etc
+DONE 	creación y destrucción de instancias
+interacción -> lanzar semillas? mover sprinkler
