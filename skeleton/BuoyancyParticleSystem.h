@@ -9,6 +9,7 @@ public:
 	~BuoyancyParticleSystem();
 
 
+	void setParticles(std::vector<Particle*> part);
 
 private:
 

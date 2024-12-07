@@ -188,7 +188,7 @@ void initPhysics(bool interactive)
 	buoyancyScene->Activate(true);
 
 
-	sceneManager->nextScene(0);
+	sceneManager->nextScene(5);
 
 }
 

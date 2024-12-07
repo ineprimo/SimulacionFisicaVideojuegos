@@ -12,3 +12,9 @@ BuoyancyParticleSystem::~BuoyancyParticleSystem()
 
 
 }
+
+void BuoyancyParticleSystem::setParticles(std::vector<Particle*> part)
+{
+	for (auto p : part)
+		particles.push_back(p);
+}

@@ -1,0 +1,109 @@
+﻿  BuoyancyParticleSystem.cpp
+  BuoyancyScene.cpp
+C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19): warning C5220:          que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19):
+      vea la declaración de 'physx::PxLightCpuTask::mRefCount'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19): warning C5220:          que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326,19):
+      vea la declaración de 'physx::PxLightCpuTask::mRefCount'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Object.h(8,3): warning C4265: "Object": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Object.h(11,34): warning C4100: 'a': parámetro formal sin referencia
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Particle.h(20,3): warning C4265: "Particle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Object.h(8,3): warning C4265: "Object": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Object.h(11,34): warning C4100: 'a': parámetro formal sin referencia
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Particle.h(20,3): warning C4265: "Particle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\System.h(10,3): warning C4265: "System": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyParticleSystem.h(9,3): warning C4265: "BuoyancyParticleSystem": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyParticleSystem.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\System.h(10,3): warning C4265: "System": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ForceGen.h(33,1): warning C5204: "ForceGen": la clase tiene funciones virtuales, pero su destructor trivial no es virtual; puede que las instancias de objetos derivados de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\GravityForceGenerator.h(10,6): warning C4265: "GravityForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\WindForceGenerator.h(7,3): warning C4265: "WindForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\TornadoGenerator.h(9,3): warning C4265: "TornadoGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ExplosionGenerator.h(7,3): warning C4265: "ExplosionGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\SpringForceGenerator.h(9,3): warning C4265: "SpringForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(46,3): warning C4265: "ParticleSys": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(61,46): warning C4458: la declaración de 'g' oculta el miembro de clase
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(35,10):
+      vea la declaración de 'ParticleSys::g'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(62,43): warning C4458: la declaración de 'g' oculta el miembro de clase
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(35,10):
+      vea la declaración de 'ParticleSys::g'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(63,39): warning C4458: la declaración de 'g' oculta el miembro de clase
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(35,10):
+      vea la declaración de 'ParticleSys::g'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(64,43): warning C4458: la declaración de 'g' oculta el miembro de clase
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(35,10):
+      vea la declaración de 'ParticleSys::g'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(65,42): warning C4458: la declaración de 'g' oculta el miembro de clase
+  (compilando archivo de origen "BuoyancyScene.cpp")
+      C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\ParticleSys.h(35,10):
+      vea la declaración de 'ParticleSys::g'
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Scene.h(19,3): warning C4265: "Scene": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Scene.h(26,71): warning C4100: 'camera': parámetro formal sin referencia
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\Scene.h(26,40): warning C4100: 'key': parámetro formal sin referencia
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyScene.h(9,3): warning C4265: "BuoyancyScene": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyParticleSystem.h(9,3): warning C4265: "BuoyancyParticleSystem": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyForceGenerator.h(8,3): warning C4265: "BuoyancyForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
+  (compilando archivo de origen "BuoyancyScene.cpp")
+  
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyScene.cpp(14,34): warning C4100: 't': parámetro formal sin referencia
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyScene.cpp(49,77): warning C4100: 'camera': parámetro formal sin referencia
+C:\GITHUB\SimulacionFisicaVideojuegos\skeleton\BuoyancyScene.cpp(49,46): warning C4100: 'key': parámetro formal sin referencia
+  game.vcxproj -> C:\GITHUB\SimulacionFisicaVideojuegos\bin\game.exe
