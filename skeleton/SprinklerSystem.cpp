@@ -35,7 +35,7 @@ Particle* SprinklerSystem::generateParticle()
 
 			const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
-			pr = new Particle(p, auxv, g, c);
+			pr = new Particle(p, auxv, {0,0,0}, c);
 			particles.push_back(pr);
 
 			particlecount++;
@@ -43,11 +43,14 @@ Particle* SprinklerSystem::generateParticle()
 		else {
 			counter = 0;
 			particlecount = 0;
+			return nullptr;
+
 		}
 	}
 	else {
 
 		counter++;
+		return nullptr;
 	}
 
 	return pr;

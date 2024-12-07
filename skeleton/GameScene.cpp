@@ -1,5 +1,7 @@
 #include "GameScene.h"
 #include "SolidoRigido.h"
+#include "SprinklerSystem.h"
+#include "GravityForceGenerator.h"
 
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
@@ -14,8 +16,23 @@ GameScene::~GameScene()
 
 void GameScene::update(float t)
 {
+
+	updateSprinkler(direction);
+
+	Scene::update(t);
+
+	dircd -= 1;
 }
 
+
+void GameScene::createSprinkler(Vector3 pos)
+{
+	// ------------------  ASPERSOR
+	Vector3 v = { 50,0,50 };
+	sprinkler = new SprinklerSystem(v, { 0,0,0 }, { 0,0,1,1 }, pos, 3, 1, 5, 2, 5);
+	systems.push_back(sprinkler);
+
+}
 void GameScene::setScene()
 {
 	// PxScene* _scene, PxPhysics* _physics, 
@@ -24,14 +41,16 @@ void GameScene::setScene()
 	auto* solid = new SolidoRigido(_scene, _phisics, {0,0,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1});
 	objects.push_back(solid);
 
-
-	/*auto* suelo = new SolidoRigido();
-	suelo->StaticRigidSolid(_scene, _phisics, {0,0,0}, {10,0.2,10}, {0,1,0,1});
-	suelo->Static()->setGlobalPose({0,-10, 0});
-
-	objects.push_back(suelo);*/
+	// suelo (tierra)
 	createFloor(10,10);
 
+	// aspersor
+	createSprinkler({ 0,0,0 });
+
+	// settea la gravedad
+	gravity = new GravityForceGenerator({0,-9.8,0});
+	//sprinkler->addForceGeneratorToAll(gravity);
+	sprinkler->setGravForgeGen(gravity);
 
 	//GetCamera()->getTransform().p = {0,50,50};
 	//GetCamera()->getDir() = {0,-0.5,-1};
@@ -39,6 +58,58 @@ void GameScene::setScene()
 
 void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 {
+	PX_UNUSED(camera);
+
+	switch (toupper(key))
+	{
+	case 'J':
+	{
+		{
+			if (dircd <= 0) {
+				direction = {1,0,0};
+			}
+		}
+
+		break;
+	}
+	case 'L':
+	{
+		{
+			if (dircd <= 0) {
+				direction = {-1,0,0};
+			}
+		}
+
+		break;
+	}
+	case 'I':
+	{
+		{
+			if (dircd <= 0) {
+				direction = { 0,0,1 };
+			}
+		}
+
+		break;
+	}
+	case 'K':
+	{
+		{
+			if (dircd <= 0) {
+				direction = { 0,0,-1 };
+			}
+		}
+
+		break;
+	}
+	case ' ':
+	{
+		break;
+	}
+	default:
+		break;
+	}
+
 }
 
 void GameScene::createFloor(int l, int w)
@@ -46,6 +117,7 @@ void GameScene::createFloor(int l, int w)
 	float posx = (float)- l;
 	float posz = (float)- w;
 	int color = 0;
+	
 
 	std::vector<Block> aux;
 	for (int i = 0; i < l; i++) {
@@ -82,6 +154,28 @@ void GameScene::updateDirt()
 		for (int j = 0; j < flooring.size(); j++) {
 			// TO DO
 		}
+	}
+}
+
+
+
+void GameScene::updateSprinkler(Vector3 dir)
+{
+	// movimiento
+	if (dir.x == 1) {
+		sprinkler->setOffset({sprinkler->getOffset().x + 4, sprinkler->getOffset().y, sprinkler->getOffset().z});
+	}
+	else if (dir.z == 1) {
+		sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 4 });
+
+	}
+	else if (dir.x == -1) {
+		sprinkler->setOffset({ sprinkler->getOffset().x - 4, sprinkler->getOffset().y, sprinkler->getOffset().z });
+
+	}
+	else if (dir.z == -1) {
+		sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z -4 });
+
 	}
 }
 

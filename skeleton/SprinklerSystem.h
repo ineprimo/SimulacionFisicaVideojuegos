@@ -24,6 +24,10 @@ public:
 
 	Particle* generateParticle() override;
 
+	void setOffset(Vector3 o) {
+		offset = o;
+	};
+	Vector3 getOffset() { return offset; }
 	void setCD(int c);
 	void setPartNum(int p);
 };

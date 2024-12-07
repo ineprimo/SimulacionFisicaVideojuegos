@@ -2,6 +2,8 @@
 #include "Scene.h"
 class SolidoRigido;
 
+class SprinklerSystem;
+class GravityForceGenerator;
 
 class GameScene : public Scene
 {
@@ -16,6 +18,9 @@ public:
 
 private:
 
+
+	Vector3 direction;
+	int dircd = 10;
 	PxScene* _scene;
 	PxPhysics* _phisics;
 
@@ -34,6 +39,9 @@ private:
 
 	std::vector<Vector4> colors;
 
+	SprinklerSystem* sprinkler;
+	GravityForceGenerator* gravity;
+
 
 	// para crear el suelo con bloques
 	void createFloor(int l, int w);
@@ -41,6 +49,11 @@ private:
 	// para el crecimiento de las plantas (cambia el color)
 	void updateDirt();
 
+	// aspersor
+	void createSprinkler(Vector3 pos);
+
+	// para mover el sprinkler
+	void updateSprinkler(Vector3 dir);
 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();

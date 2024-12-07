@@ -47,7 +47,7 @@ private:
 	Vector3 vel;	// vel
 	Vector3 a;		// aceleracion
 	double dump = 0.98;		// dumping, [0,1]
-	float rad = 5;			// radio de la particula
+	float rad = 1;			// radio de la particula
 	physx::PxTransform pose;	// posicion
 	RenderItem* renderItem;		// para verlo
 	double maxt;

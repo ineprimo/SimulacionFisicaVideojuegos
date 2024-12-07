@@ -29,6 +29,7 @@ protected:
 	int var, med;
 
 	Vector3 offset;
+	Vector3 position;
 	int mass;
 
 

@@ -11,6 +11,8 @@ ParticleSys::ParticleSys(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, int _va
 
 	g = {0, -9.8, 0};
 
+	position = { 0,0,0 };
+
 
 }
 
@@ -112,6 +114,7 @@ void ParticleSys::countCooldown()
 void ParticleSys::addParticle()
 {
 	Particle* pr = generateParticle();
+	if (pr == nullptr) return;
 	if (gfGen != nullptr) {
 		pr->addForceGen(gfGen);
 	}
