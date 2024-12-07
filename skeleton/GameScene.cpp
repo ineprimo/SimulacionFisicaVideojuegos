@@ -4,6 +4,7 @@
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
 {
+	prepareColors();
 	setScene();
 }
 
@@ -24,11 +25,12 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 
-	auto* suelo = new SolidoRigido();
+	/*auto* suelo = new SolidoRigido();
 	suelo->StaticRigidSolid(_scene, _phisics, {0,0,0}, {10,0.2,10}, {0,1,0,1});
 	suelo->Static()->setGlobalPose({0,-10, 0});
 
-	objects.push_back(suelo);
+	objects.push_back(suelo);*/
+	createFloor(10,10);
 
 
 	//GetCamera()->getTransform().p = {0,50,50};
@@ -37,4 +39,52 @@ void GameScene::setScene()
 
 void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 {
+}
+
+void GameScene::createFloor(int l, int w)
+{
+	float posx = (float)- l;
+	float posz = (float)- w;
+
+	std::vector<Block> aux;
+	for (int i = 0; i < l; i++) {
+		for (int j = 0; j < w; j++) {
+
+			auto* block = new SolidoRigido();
+			block->StaticRigidSolid(_scene, _phisics, { 0,0,0 }, { 2,1,2 }, { 0,1,0,1 });
+			block->Static()->setGlobalPose({ posx,-10, posz });
+
+			Block b = Block();
+			b.solid = block;
+			b.state = DirtState::UNREADY;
+
+			aux.push_back(b);
+
+			posx += 2;
+			
+
+		}
+		posz += 2;
+		posx = (float)-w;
+
+		flooring.push_back(aux);
+		aux.clear();
+	}
+}
+
+void GameScene::updateDirt()
+{
+	for (int i = 0; i < flooring.size(); i++) {
+		for (int j = 0; j < flooring.size(); j++) {
+			// TO DO
+		}
+	}
+}
+
+void GameScene::prepareColors()
+{
+	colors[0] = {0.678,0.631,0.482,1};
+	colors[1] = { 0.541,0.333,0.267,1};
+	colors[2] = { 0.365,0.4,0.286,1};
+	colors[3] = { 0.502,0.62,0.204,1};	// verde
 }
