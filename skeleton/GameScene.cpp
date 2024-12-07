@@ -45,14 +45,15 @@ void GameScene::createFloor(int l, int w)
 {
 	float posx = (float)- l;
 	float posz = (float)- w;
+	int color = 0;
 
 	std::vector<Block> aux;
 	for (int i = 0; i < l; i++) {
 		for (int j = 0; j < w; j++) {
 
 			auto* block = new SolidoRigido();
-			block->StaticRigidSolid(_scene, _phisics, { 0,0,0 }, { 2,1,2 }, { 0,1,0,1 });
-			block->Static()->setGlobalPose({ posx,-10, posz });
+			block->StaticRigidSolid(_scene, _phisics, { 0,0,0 }, { 2,1,2 }, colors[color]);
+			block->Static()->setGlobalPose({ posx,-15, posz });
 
 			Block b = Block();
 			b.solid = block;
@@ -60,11 +61,14 @@ void GameScene::createFloor(int l, int w)
 
 			aux.push_back(b);
 
-			posx += 2;
+			color++;
+			if (color == 4)
+				color = 0;
+			posx += 4;
 			
 
 		}
-		posz += 2;
+		posz += 4;
 		posx = (float)-w;
 
 		flooring.push_back(aux);
@@ -83,8 +87,8 @@ void GameScene::updateDirt()
 
 void GameScene::prepareColors()
 {
-	colors[0] = {0.678,0.631,0.482,1};
-	colors[1] = { 0.541,0.333,0.267,1};
-	colors[2] = { 0.365,0.4,0.286,1};
-	colors[3] = { 0.502,0.62,0.204,1};	// verde
+	colors.push_back({ 0.678,0.631,0.482,1 });
+	colors.push_back({ 0.541,0.333,0.267,1 });
+	colors.push_back({ 0.365,0.4,0.286,1 });
+	colors.push_back({ 0.502,0.62,0.204,1 });
 }
