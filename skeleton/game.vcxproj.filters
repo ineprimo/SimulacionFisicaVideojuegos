@@ -74,16 +74,30 @@
     <ClCompile Include="SpringScene.cpp">
       <Filter>Scenes\others</Filter>
     </ClCompile>
-    <ClCompile Include="SpringSystem.cpp" />
-    <ClCompile Include="System.cpp" />
-    <ClCompile Include="Object.cpp">
-      <Filter>Bases</Filter>
-    </ClCompile>
-    <ClCompile Include="BuoyancyScene.cpp" />
-    <ClCompile Include="BuoyancyForceGenerator.cpp" />
-    <ClCompile Include="BuoyancyParticleSystem.cpp" />
     <ClCompile Include="ForceSystem.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="BuoyancyForceGenerator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="BuoyancyParticleSystem.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="BuoyancyScene.cpp">
+      <Filter>Scenes\others</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="SolidoRigido.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,16 +176,30 @@
     <ClInclude Include="SpringScene.h">
       <Filter>Scenes\others</Filter>
     </ClInclude>
-    <ClInclude Include="SpringSystem.h" />
-    <ClInclude Include="System.h" />
-    <ClInclude Include="Object.h">
-      <Filter>Bases</Filter>
-    </ClInclude>
-    <ClInclude Include="BuoyancyScene.h" />
-    <ClInclude Include="BuoyancyForceGenerator.h" />
-    <ClInclude Include="BuoyancyParticleSystem.h" />
     <ClInclude Include="BombSys.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="BuoyancyForceGenerator.h">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="BuoyancyParticleSystem.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="BuoyancyScene.h">
+      <Filter>Scenes\others</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="SolidoRigido.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +220,12 @@
     </Filter>
     <Filter Include="Scenes\others">
       <UniqueIdentifier>{e52784ca-934f-4bc5-98f0-04cbee90451d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Final">
+      <UniqueIdentifier>{eab68107-3a47-4863-a5fe-0ddb751dc2ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{79641677-00e1-44cf-92ce-067d1a0a5837}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

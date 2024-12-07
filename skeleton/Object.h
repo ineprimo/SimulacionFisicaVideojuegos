@@ -1,16 +1,42 @@
 #pragma once
+#include <PxPhysicsAPI.h>
+#include "core.hpp"
+#include "RenderUtils.hpp"
+
+using namespace physx;
+
+
 class Object
 {
 
+private:
+
+	Vector3 position;
+	bool active, visible;
 public:
 
 	Object() {};
+	Object(bool v, bool a, Vector3 p);
 	~Object() {};
 
+	// mira si este objeto y el dado colisionan
+	bool collides(Object* o);
 
-	virtual void setVisibility(bool a) {};
+	// visible
+	virtual void setVisibility(bool a) { visible = a; }
 
-private:
+	// set active
+	void Active(bool a) { active = a; }
+	// is active
+	bool Active() { return active; }
 
+	// set position
+	void Position(Vector3 p) { position = p; }
+	// return position
+	Vector3 Position() { return position; }
+
+	// orientation????
+	//
+
+	//
 };
-

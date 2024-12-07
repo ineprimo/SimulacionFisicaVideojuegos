@@ -14,7 +14,6 @@
 #include "BombSys.h"
 #include "FountainSystem.h"
 #include "ForceSystem.h"
-#include <vector>
 #include <list>
 
 #include "SceneManager.h"
@@ -24,6 +23,7 @@
 #include "GravityScene.h"
 #include "SpringScene.h"
 #include "BuoyancyScene.h"
+#include "GameScene.h"
 
 #include <iostream>
 
@@ -154,6 +154,12 @@ void initPhysics(bool interactive)
 	// crea un manager+
 	sceneManager = new SceneManager();
 
+	// ------------ GAME ------------
+	Scene* gameScene = new GameScene();
+	sceneManager->addScene(gameScene);
+	gameScene->Activate(true);
+
+
 	// ------------- GRAVITY ---------------
 	Scene* gravityScene = new GravityScene();
 	sceneManager->addScene(gravityScene);
@@ -174,13 +180,10 @@ void initPhysics(bool interactive)
 	sceneManager->addScene(explosionScene);
 	explosionScene->Activate(true);
 
-
-
 	// ------------ MUELLE --------------
 	Scene* springScene = new SpringScene();
 	sceneManager->addScene(springScene);
 	springScene->Activate(true);	
-	
 
 	// ------------ BUOYANCY ------------
 	Scene* buoyancyScene = new BuoyancyScene();
@@ -188,7 +191,7 @@ void initPhysics(bool interactive)
 	buoyancyScene->Activate(true);
 
 
-	sceneManager->nextScene(5);
+	sceneManager->nextScene(0);
 
 }
 

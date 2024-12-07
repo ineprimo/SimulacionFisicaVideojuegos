@@ -263,6 +263,7 @@
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="ForceSystem.cpp" />
     <ClCompile Include="FountainSystem.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GravityForceGenerator.cpp" />
     <ClCompile Include="GravityScene.cpp" />
     <ClCompile Include="main.cpp" />
@@ -275,6 +276,7 @@
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SolidoRigido.cpp" />
     <ClCompile Include="SpringForceGenerator.cpp" />
     <ClCompile Include="SpringScene.cpp" />
     <ClCompile Include="SpringSystem.cpp" />
@@ -298,6 +300,7 @@
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="ForceSystem.h" />
     <ClInclude Include="FountainSystem.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GravityForceGenerator.h" />
     <ClInclude Include="GravityScene.h" />
     <ClInclude Include="Object.h" />
@@ -309,6 +312,7 @@
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SolidoRigido.h" />
     <ClInclude Include="SpringForceGenerator.h" />
     <ClInclude Include="SpringScene.h" />
     <ClInclude Include="SpringSystem.h" />
