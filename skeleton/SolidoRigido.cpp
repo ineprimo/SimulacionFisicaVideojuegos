@@ -44,3 +44,17 @@ bool SolidoRigido::update(double t)
 void SolidoRigido::applyForce(Vector3 f)
 {
 }
+
+void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color)
+{
+	//createCaja(ori.p, tam.x, tam.y, tam.z);
+	_static = _physics->createRigidStatic(ori);
+	_static->setGlobalPose(ori);
+	Transform(ori);
+	PxShape* shapeEstatic = CreateShape(PxBoxGeometry(size));
+	_static->attachShape(*shapeEstatic);
+	_scene->addActor(*_static);
+
+	_item = new RenderItem(shapeEstatic, _static, color);
+
+}

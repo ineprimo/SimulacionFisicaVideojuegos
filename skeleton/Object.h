@@ -12,6 +12,7 @@ class Object
 private:
 
 	Vector3 position;
+	PxTransform transform;
 	bool active, visible;
 
 
@@ -44,6 +45,11 @@ public:
 	void Position(Vector3 p) { position = p; }
 	// return position
 	Vector3 Position() { return position; }
+
+	// set position
+	void Transform(PxTransform p) { transform = p; }
+	// return position
+	PxTransform Transform() { return transform; }
 
 	// orientation????
 	//
