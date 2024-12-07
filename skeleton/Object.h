@@ -13,6 +13,12 @@ private:
 
 	Vector3 position;
 	bool active, visible;
+
+
+protected:
+
+	float mass = 1;
+
 public:
 
 	Object() {};
