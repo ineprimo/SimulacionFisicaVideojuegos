@@ -19,6 +19,8 @@ public:
 	Object(bool v, bool a, Vector3 p);
 	~Object() {};
 
+	virtual bool update(double t);
+
 	// mira si este objeto y el dado colisionan
 	bool collides(Object* o);
 

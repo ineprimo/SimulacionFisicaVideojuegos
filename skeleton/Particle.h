@@ -1,9 +1,5 @@
 #pragma once
 
-
-#include <PxPhysicsAPI.h>
-#include "core.hpp"
-#include "RenderUtils.hpp"
 #include "Object.h"
 #include <cmath>
 
@@ -35,7 +31,7 @@ public:
 
 	bool integrate(double t);
 
-	virtual bool update(double t);
+	virtual bool update(double t) override;
 
 	void applyForce();
 	void addForce(Vector3 f);

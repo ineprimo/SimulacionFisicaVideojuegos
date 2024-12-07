@@ -12,9 +12,7 @@ SolidoRigido::~SolidoRigido()
 {
 }
 
-//bool SolidoRigido::update(float t)
-//{
-//
-//
-//	return false;
-//}
+bool SolidoRigido::update(double t)
+{
+	return false;
+}
