@@ -13,6 +13,8 @@ public:
 
 	bool update(double t) override;
 
+	void applyForce(Vector3 f);
+
 
 private:
 	RenderItem* _item = nullptr;

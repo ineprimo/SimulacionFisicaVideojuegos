@@ -25,9 +25,22 @@ SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori
 
 SolidoRigido::~SolidoRigido()
 {
+
 }
 
 bool SolidoRigido::update(double t)
 {
-	return false;
+	lifetime -= t;
+
+	if (lifetime <= 0)
+		//Active(false);
+		;
+
+	//applyForce();
+
+	return Active();
+}
+
+void SolidoRigido::applyForce(Vector3 f)
+{
 }

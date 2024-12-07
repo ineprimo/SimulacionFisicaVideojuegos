@@ -27,6 +27,8 @@ public:
 
 	virtual bool update(double t);
 
+	
+
 	// mira si este objeto y el dado colisionan
 	bool collides(Object* o);
 

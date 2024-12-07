@@ -155,7 +155,7 @@ void initPhysics(bool interactive)
 	sceneManager = new SceneManager();
 
 	// ------------ GAME ------------
-	Scene* gameScene = new GameScene();
+	Scene* gameScene = new GameScene(gScene, gPhysics);
 	sceneManager->addScene(gameScene);
 	gameScene->Activate(true);
 
