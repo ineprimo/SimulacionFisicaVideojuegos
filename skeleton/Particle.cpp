@@ -2,7 +2,7 @@
 #include "ForceSystem.h"
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
-	: Object()
+	: Object(true, true, p_)
 {
 	pose = physx::PxTransform(p_);
 	vel = v_;
@@ -16,7 +16,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
-	: Object()
+	: Object(true, true, p_)
 {
 	pose = physx::PxTransform(p_);
 	vel = v_;
@@ -30,7 +30,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, float r_)
-	: Object()
+	: Object(true, true, p_)
 {
 
 	pose = physx::PxTransform(p_);
@@ -108,7 +108,7 @@ void Particle::applyForce()
 	// F=m*a -> a = f/m
 
 	a = totalForc / mass;
-	std::cout << "FUERZA TOTAL EN Y  " << totalForc.y << std::endl;
+	//std::cout << "FUERZA TOTAL EN Y  " << totalForc.y << std::endl;
 	/*
 	std::cout << "fuerzaaaaaaaaaa" << std::endl;
 	std::cout << "total a: " << a.x << " " << a.y << " " << a.z << std::endl;

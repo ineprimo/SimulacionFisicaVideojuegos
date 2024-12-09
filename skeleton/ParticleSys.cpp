@@ -91,6 +91,8 @@ void ParticleSys::destroyParticles()
 
 void ParticleSys::countCooldown()
 {
+	if(!active) return;
+
 	if (timeElapsed > cooldown) {
 		std::uniform_int_distribution<int> numPartsUniform(0, 5); // numero de 0 a restParticles
 		int part = numPartsUniform(generator);
