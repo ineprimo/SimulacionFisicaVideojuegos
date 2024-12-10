@@ -2,9 +2,20 @@
 #include <cmath>
 
 Object::Object(bool v, bool a, Vector3 p)
+	: position(p), visible(v), active(a), _item(new RenderItem())
 {
 }
+
+Object::Object(bool v, bool a, Vector3 p, RenderItem* it)
+	: position(p), visible(v), active(a), _item(it)
+{
 
+}
+Object::Object(bool v, bool a, Vector3 p, PxShape* s, Vector4 color)
+	: position(p), visible(v), active(a), _item(new RenderItem(s, new PxTransform(p), color))
+{
+	
+}
 bool Object::update(double t)
 {
 	return false;

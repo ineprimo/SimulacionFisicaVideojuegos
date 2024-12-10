@@ -128,8 +128,8 @@ void GameScene::createFloor(int l, int w)
 		for (int j = 0; j < w; j++) {
 
 			auto* block = new SolidoRigido();
-			block->StaticRigidSolid(_scene, _phisics, { 0,0,0 }, { 2,1,2 }, colors[color]);
-			block->Static()->setGlobalPose({ posx,-15, posz });
+			block->StaticRigidSolid(_scene, _phisics, { posx,-15, posz }, { 2,1,2 }, colors[color]);
+			//block->Static()->setGlobalPose({  });
 
 			Block b = Block();
 			b.solid = block;

@@ -5,6 +5,7 @@ SolidoRigido::SolidoRigido()
 }
 
 SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 vel, Vector3 ang_vel, Vector3 size, float density, Vector4 color)
+	: Object()
 {
 	_solid = _physics->createRigidDynamic(ori);
 	_solid->setLinearVelocity(vel);
@@ -18,8 +19,7 @@ SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori
 
 	_scene->addActor(*_solid);
 
-	_item = new RenderItem(shape, _solid, color);
-
+	Object::_item = new RenderItem(shape, _solid, color);
 
 }
 
@@ -57,7 +57,7 @@ void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTran
 
 	Object::Transform(ori);
 	Object::Position(ori.p);
-	_item = new RenderItem(shapeEstatic, _static, color);
+	Object::_item = new RenderItem(shapeEstatic, _static, color);
 
 }
 

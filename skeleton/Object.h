@@ -27,11 +27,17 @@ protected:
 
 	float mass = 1;
 
+	RenderItem* _item;
+
 public:
 
 	Object() {};
 	Object(bool v, bool a, Vector3 p);
-	~Object() {};
+	Object(bool v, bool a, Vector3 p, RenderItem* it);
+	Object(bool v, bool a, Vector3 p, PxShape* s, Vector4 color);
+	~Object() {
+		DeregisterRenderItem(_item);
+	};
 
 	virtual bool update(double t);
 
@@ -60,6 +66,8 @@ public:
 
 	// orientation????
 	//
+
+	RenderItem* getRenderItem() { return _item; }
 
 	// BOUNDING BOX
 	void setBoundingBox(float minX_, float maxX_,
