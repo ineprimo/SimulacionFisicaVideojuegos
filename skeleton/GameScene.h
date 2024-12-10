@@ -42,6 +42,7 @@ private:
 	};
 
 	std::vector<std::vector<Block>> flooring;
+	std::vector<Particle*> debugPart;
 
 	std::vector<Vector4> colors;
 

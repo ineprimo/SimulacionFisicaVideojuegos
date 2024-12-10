@@ -36,6 +36,7 @@ Particle* SprinklerSystem::generateParticle()
 			const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 			pr = new Particle(p, auxv, {0,0,0}, c);
+			//pr->setBoundingBox(0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
 			particles.push_back(pr);
 
 			particlecount++;

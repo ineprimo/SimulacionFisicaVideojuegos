@@ -11,6 +11,9 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
 
+	setBoundingBox(rad/2, rad/2, rad / 2, rad / 2, rad / 2, rad / 2);
+
+
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 
 }
@@ -25,6 +28,8 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
 
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
+
+	setBoundingBox(rad / 2, rad / 2, rad / 2, rad / 2, rad / 2, rad / 2);
 
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }
@@ -41,6 +46,8 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, fl
 
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
+	setBoundingBox(rad / 2, rad / 2, rad / 2, rad / 2, rad / 2, rad / 2);
+
 
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }

@@ -17,7 +17,10 @@ GameScene::~GameScene()
 void GameScene::update(float t)
 {
 
-	updateSprinkler(direction);
+	for (auto p : debugPart)
+		p->update(t);
+
+	// updateSprinkler(direction);
 
 	Scene::update(t);
 
@@ -40,21 +43,21 @@ void GameScene::setScene()
 	// PxScene* _scene, PxPhysics* _physics, 
 	// PxTransform ori, Vector3 vel, Vector3 ang_vel, 
 	// Vector3 size, float density, Vector4 color
-	auto* solid = new SolidoRigido(_scene, _phisics, {0,0,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1});
+	auto* solid = new SolidoRigido(_scene, _phisics, {10,0,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1});
 	objects.push_back(solid);
 
 	// suelo (tierra)
 	createFloor(10,10);
 
 	// aspersor
-	createSprinkler({ 0,-10,0 });
+	//createSprinkler({ 0,-10,0 });
 	
 	prepareCollisionDebug();
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
 	//sprinkler->addForceGeneratorToAll(gravity);
-	sprinkler->setGravForgeGen(gravity);
+	//sprinkler->setGravForgeGen(gravity);
 
 	//GetCamera()->getTransform().p = {0,50,50};
 	//GetCamera()->getDir() = {0,-0.5,-1};
@@ -167,9 +170,17 @@ void GameScene::updateDirt()
 void GameScene::prepareCollisionDebug()
 {
 	// particula como sprinkler
-	sprinkler->Active(false);
+	/*sprinkler->Active(false);
 	sprinkler->setCD(0);
-	sprinkler->addParticle();
+	sprinkler->addParticle();*/
+
+	auto pr = new Particle({0,0,0}, {0,-4,0}, {0,0,0}, {1,0,0,1});
+	
+	debugPart.push_back(pr);
+
+	//ParticleSys* sys = new ParticleSys({0,0,0}, {0,0,0}, {1,0,0,1}, {0,0,0}, 0,0);
+	//sys->addForceGeneratorToAll(gravity);
+	//systems.push_back(sys);
 
 }
 
@@ -198,11 +209,13 @@ void GameScene::checkCollisions()
 	// miki no veas esto
 	// lia cuando veas esto quiero que sepas que esto realmente es una guarrada
 	// pero no se como hacer colisiones si no
-	auto p = sprinkler->getParticles();
+	// auto p = sprinkler->getParticles();
+
+	// DEBUG: para quitar el debug cambiar debugPart por p
 
 	for (auto a : flooring) {
 		for (auto b : a) {
-			for (auto part : p) {
+			for (auto part : debugPart) {
 				if (part->isInside(b.solid)) {
 					std::cout << "COLISIONAAAAA" << std::endl;
 

@@ -2,6 +2,7 @@
 #include <cmath>
 
 Object::Object(bool v, bool a, Vector3 p)
+	: position(p), visible(v), active(a)
 {
 }
 
@@ -23,9 +24,9 @@ bool Object::isInside(Object* b)
 	std::pair<float, float> pz = {position.z - bb.minZ, position.z + bb.maxZ};
 
 	// posicion del objeto dado
-	std::pair<float, float> ox = { position.x - bb.minX, position.x + bb.maxX };
-	std::pair<float, float> oy = { position.y - bb.minY, position.y + bb.maxY };
-	std::pair<float, float> oz = { position.z - bb.minZ, position.z + bb.maxZ };
+	std::pair<float, float> ox = { b->position.x - b->BB().minX, b->position.x + b->BB().maxX};
+	std::pair<float, float> oy = { b->position.y - b->BB().minY, b->position.y + b->BB().maxY };
+	std::pair<float, float> oz = { b->position.z - b->BB().minZ, b->position.z + b->BB().maxZ };
 
 	// distancia entre ambos (por eje)
 	float dx = abs(position.x - b->position.x);
@@ -39,9 +40,9 @@ bool Object::isInside(Object* b)
 	float rz = abs(pz.first - oz.first);
 
 	if (dx - rx <= 0 && dy <= ry && dz <= rz)
-		return true;
+		return false;
 
-	return false;
+	return true;
 }
 
 
