@@ -21,6 +21,8 @@ void GameScene::update(float t)
 
 	Scene::update(t);
 
+	checkCollisions();
+
 	dircd -= 1;
 }
 
@@ -28,7 +30,7 @@ void GameScene::update(float t)
 void GameScene::createSprinkler(Vector3 pos)
 {
 	// ------------------  ASPERSOR
-	Vector3 v = { 50,0,50 };
+	Vector3 v = { 5,0,5 };
 	sprinkler = new SprinklerSystem(v, { 0,0,0 }, { 0,0,1,1 }, pos, 3, 1, 5, 2, 5);
 	systems.push_back(sprinkler);
 
@@ -45,7 +47,9 @@ void GameScene::setScene()
 	createFloor(10,10);
 
 	// aspersor
-	createSprinkler({ 0,0,0 });
+	createSprinkler({ 0,-10,0 });
+	
+	prepareCollisionDebug();
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
@@ -130,6 +134,7 @@ void GameScene::createFloor(int l, int w)
 			Block b = Block();
 			b.solid = block;
 			b.state = DirtState::UNREADY;
+			b.cd = 10;
 
 			aux.push_back(b);
 
@@ -159,6 +164,15 @@ void GameScene::updateDirt()
 
 
 
+void GameScene::prepareCollisionDebug()
+{
+	// particula como sprinkler
+	sprinkler->Active(false);
+	sprinkler->setCD(0);
+	sprinkler->addParticle();
+
+}
+
 void GameScene::updateSprinkler(Vector3 dir)
 {
 	// movimiento
@@ -179,10 +193,64 @@ void GameScene::updateSprinkler(Vector3 dir)
 	}
 }
 
+void GameScene::checkCollisions()
+{
+	// miki no veas esto
+	// lia cuando veas esto quiero que sepas que esto realmente es una guarrada
+	// pero no se como hacer colisiones si no
+	auto p = sprinkler->getParticles();
+
+	for (auto a : flooring) {
+		for (auto b : a) {
+			for (auto part : p) {
+				if (part->isInside(b.solid)) {
+					std::cout << "COLISIONAAAAA" << std::endl;
+
+					//std::cout << b.solid->Position().z << std::endl;
+					if (b.cd < b.timer) {
+						// cambia de estado
+						b.Next();
+						b.UpdateColor(this);
+						b.timer = 0;
+					}
+					else
+						b.timer++;
+				}
+			}
+
+		}
+	}
+
+}
+
 void GameScene::prepareColors()
 {
 	colors.push_back({ 0.678,0.631,0.482,1 });
 	colors.push_back({ 0.541,0.333,0.267,1 });
 	colors.push_back({ 0.365,0.4,0.286,1 });
 	colors.push_back({ 0.502,0.62,0.204,1 });
+}
+
+void GameScene::Block::Next()
+{
+	switch (state) {
+	case 0:
+		state = DirtState::INPROGRESS;
+		break;
+	case 1:
+		state = DirtState::READY;
+		break;
+	case 2:
+		state = DirtState::DONE;
+		break;
+	case 3:
+		state = DirtState::UNREADY;
+		break;
+	}
+}
+
+void GameScene::Block::UpdateColor(GameScene* s)
+{
+	solid->Color(s->colors[(int)state]);
+
 }

@@ -33,6 +33,12 @@ private:
 	struct Block {
 		DirtState state;
 		SolidoRigido* solid;
+		float cd;
+		float timer = 0;
+
+		void Next();
+
+		void UpdateColor(GameScene* s);
 	};
 
 	std::vector<std::vector<Block>> flooring;
@@ -54,6 +60,11 @@ private:
 
 	// para mover el sprinkler
 	void updateSprinkler(Vector3 dir);
+
+	// para mirar las colisiones
+	void checkCollisions();
+
+	void prepareCollisionDebug();
 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();

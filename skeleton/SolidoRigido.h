@@ -20,6 +20,8 @@ public:
 	PxRigidDynamic* Dynamic() { if (_solid != nullptr) return _solid; }
 	PxRigidStatic* Static() { if (_static != nullptr) return _static; }
 
+	void Color(Vector4 c);
+
 private:
 	RenderItem* _item = nullptr;
 	PxRigidDynamic* _solid = nullptr;

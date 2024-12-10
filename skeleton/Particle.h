@@ -39,6 +39,7 @@ public:
 	void applyContForce(Vector3 f);
 	void applyInstForce(Vector3 f);
 
+	bool collides();
 
 	void setVisibility(bool a) override;
 
