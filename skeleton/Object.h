@@ -84,5 +84,5 @@ public:
 
 	BoundingBox BB() { return bb; }
 
-	bool isInside(Object* b);
+	bool isInsideStatic(Object* b);
 };

@@ -16,6 +16,8 @@ GameScene::~GameScene()
 
 void GameScene::update(float t)
 {
+	for (auto d : debug)
+		d->update(t);
 
 	updateSprinkler(direction);
 
@@ -168,8 +170,11 @@ void GameScene::prepareCollisionDebug()
 {
 	// particula como sprinkler
 	sprinkler->Active(false);
-	sprinkler->setCD(0);
-	sprinkler->addParticle();
+	//sprinkler->setCD(0);
+	//sprinkler->addParticle();
+
+	auto pr = new Particle({ 0,0,0 }, { 0,-5,0 }, { 0,0,0 }, { 1,0,0,1 });
+	debug.push_back(pr);
 
 }
 
@@ -202,8 +207,8 @@ void GameScene::checkCollisions()
 
 	for (auto a : flooring) {
 		for (auto b : a) {
-			for (auto part : p) {
-				if (part->isInside(b.solid)) {
+			for (auto part : debug) {
+				if (part->isInsideStatic(b.solid)) {
 					std::cout << "COLISIONAAAAA" << std::endl;
 
 					//std::cout << b.solid->Position().z << std::endl;

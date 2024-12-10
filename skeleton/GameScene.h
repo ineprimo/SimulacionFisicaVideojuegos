@@ -44,6 +44,7 @@ private:
 	std::vector<std::vector<Block>> flooring;
 
 	std::vector<Vector4> colors;
+	std::vector<Particle*> debug;
 
 	SprinklerSystem* sprinkler;
 	GravityForceGenerator* gravity;

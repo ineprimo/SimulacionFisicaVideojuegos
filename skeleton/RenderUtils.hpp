@@ -32,6 +32,7 @@ public:
 		RegisterRenderItem(this);
 	}
 
+
 	RenderItem() : shape(NULL), transform(NULL), references(1) {}
 
 	void addReference()

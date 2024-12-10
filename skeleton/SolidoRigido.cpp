@@ -55,9 +55,9 @@ void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTran
 	_static->attachShape(*shapeEstatic);
 	_scene->addActor(*_static);
 
-	Object::Transform(ori);
-	Object::Position(ori.p);
-	Object::_item = new RenderItem(shapeEstatic, _static, color);
+	Transform(ori);
+	Position(ori.p);
+	_item = new RenderItem(shapeEstatic, _static, color);
 
 }
 

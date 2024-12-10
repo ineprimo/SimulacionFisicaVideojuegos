@@ -26,10 +26,10 @@ bool Object::collides(Object* o)
 	return false;
 }
 
-bool Object::isInside(Object* b)
+bool Object::isInsideStatic(Object* b)
 {
 	const PxTransform* p_pos = _item->transform;
-	const PxTransform* b_pos = b->getRenderItem()->transform;
+	Vector3 b_pos = b->Position();
 
 	// posicion en el mundo del objeto 
 	std::pair<float, float> px = { p_pos->p.x - bb.minX, p_pos->p.x + bb.maxX};
@@ -37,9 +37,9 @@ bool Object::isInside(Object* b)
 	std::pair<float, float> pz = { p_pos->p.z - bb.minZ, p_pos->p.z + bb.maxZ};
 
 	// posicion del objeto dado
-	std::pair<float, float> ox = { b_pos->p.x - b->BB().minX, b_pos->p.x + b->BB().maxX};
-	std::pair<float, float> oy = { b_pos->p.y - b->BB().minY, b_pos->p.y + b->BB().maxY };
-	std::pair<float, float> oz = { b_pos->p.z - b->BB().minZ, b_pos->p.z + b->BB().maxZ };
+	std::pair<float, float> ox = { b_pos.x - b->BB().minX, b_pos.x + b->BB().maxX};
+	std::pair<float, float> oy = { b_pos.y - b->BB().minY, b_pos.y + b->BB().maxY };
+	std::pair<float, float> oz = { b_pos.z - b->BB().minZ, b_pos.z + b->BB().maxZ };
 
 	// distancia entre ambos (por eje)
 	float dx = abs(position.x - b->position.x);
