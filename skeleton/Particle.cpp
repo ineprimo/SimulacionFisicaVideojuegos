@@ -14,7 +14,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 	setBoundingBox(rad/2, rad/2, rad / 2, rad / 2, rad / 2, rad / 2);
 
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	Object::_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 
 }
 
@@ -31,7 +31,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
 
 	setBoundingBox(rad / 2, rad / 2, rad / 2, rad / 2, rad / 2, rad / 2);
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	Object::_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, float r_)
@@ -49,12 +49,12 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, fl
 	setBoundingBox(rad / 2, rad / 2, rad / 2, rad / 2, rad / 2, rad / 2);
 
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	Object::_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }
 
 Particle::~Particle()
 {
-	DeregisterRenderItem(renderItem);
+	DeregisterRenderItem(Object::_item);
 }
 
 
@@ -152,12 +152,12 @@ void Particle::applyInstForce(Vector3 f)
 
 void Particle::setVisibility(bool a)
 {
-	if (renderItem != nullptr) {
+	if (Object::_item != nullptr) {
 
 		if (a)
-			RegisterRenderItem(renderItem);
+			RegisterRenderItem(Object::_item);
 		else 
-			DeregisterRenderItem(renderItem);
+			DeregisterRenderItem(Object::_item);
 	}
 }
 

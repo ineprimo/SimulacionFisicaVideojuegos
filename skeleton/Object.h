@@ -27,6 +27,8 @@ protected:
 
 	float mass = 1;
 
+	RenderItem* _item = nullptr;
+
 public:
 
 	Object() {};
@@ -60,6 +62,9 @@ public:
 
 	// orientation????
 	//
+
+	// render item
+	RenderItem* getRenderItem() { return _item; }
 
 	// BOUNDING BOX
 	void setBoundingBox(float minX_, float maxX_,

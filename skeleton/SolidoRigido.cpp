@@ -20,7 +20,7 @@ SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori
 
 	_scene->addActor(*_solid);
 
-	_item = new RenderItem(shape, _solid, color);
+	Object::_item = new RenderItem(shape, _solid, color);
 
 	setBoundingBox(size.x/2, size.x/2, size.y/2, size.y/2, size.z/2, size.z/2);
 
@@ -63,11 +63,12 @@ void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTran
 
 	Object::Transform(ori);
 	Object::Position(ori.p);
-	_item = new RenderItem(shapeEstatic, _static, color);
+	Object::_item = new RenderItem(shapeEstatic, &ori, _static, color);
+	//Object::_item->transform = &ori;
 
 }
 
 void SolidoRigido::Color(Vector4 c)
 {
-	_item->color = c;
+	Object::_item->color = c;
 }

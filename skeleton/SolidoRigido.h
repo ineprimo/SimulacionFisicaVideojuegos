@@ -23,7 +23,7 @@ public:
 	void Color(Vector4 c);
 
 private:
-	RenderItem* _item = nullptr;
+	//RenderItem* _item = nullptr;
 	PxRigidDynamic* _solid = nullptr;
 	PxRigidStatic* _static = nullptr;
 	Vector3 _size;
