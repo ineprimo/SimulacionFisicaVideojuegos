@@ -18,7 +18,6 @@ public:
 
 	void setMaxTime(double t_) { maxt = t_; }
 	void setMaxPos(Vector3 mp_) { maxp = mp_; }
-	RenderItem* getRenderItem() { return renderItem; }
 	void setMass(float m) { mass = m; }
 	float getMass() { return mass; }
 	Vector3 getAcceleration() { return a; }
@@ -50,7 +49,6 @@ private:
 	double dump = 0.98;		// dumping, [0,1]
 	float rad = 1;			// radio de la particula
 	physx::PxTransform pose;	// posicion
-	RenderItem* renderItem;		// para verlo
 	double maxt;
 	Vector3 maxp;
 

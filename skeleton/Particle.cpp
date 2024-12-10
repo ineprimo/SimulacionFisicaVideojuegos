@@ -11,7 +11,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_)
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 
 }
 
@@ -26,7 +26,7 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_)
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }
 
 Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, float r_)
@@ -42,12 +42,11 @@ Particle::Particle(Vector3 p_, Vector3 v_, Vector3 a_, Vector4 c_, double d_, fl
 	maxp = { 500, 500, 500 };
 	maxt = 1000;
 
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
+	_item = new RenderItem(CreateShape(physx::PxSphereGeometry(rad)), &pose, c_);
 }
 
 Particle::~Particle()
 {
-	DeregisterRenderItem(renderItem);
 }
 
 
@@ -145,12 +144,12 @@ void Particle::applyInstForce(Vector3 f)
 
 void Particle::setVisibility(bool a)
 {
-	if (renderItem != nullptr) {
+	if (_item != nullptr) {
 
 		if (a)
-			RegisterRenderItem(renderItem);
+			RegisterRenderItem(_item);
 		else 
-			DeregisterRenderItem(renderItem);
+			DeregisterRenderItem(_item);
 	}
 }
 

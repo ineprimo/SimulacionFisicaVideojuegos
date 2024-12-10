@@ -28,15 +28,18 @@ bool Object::collides(Object* o)
 
 bool Object::isInside(Object* b)
 {
+	const PxTransform* p_pos = _item->transform;
+	const PxTransform* b_pos = b->getRenderItem()->transform;
+
 	// posicion en el mundo del objeto 
-	std::pair<float, float> px = {position.x - bb.minX, position.x + bb.maxX};
-	std::pair<float, float> py = {position.y - bb.minY, position.y + bb.maxY};
-	std::pair<float, float> pz = {position.z - bb.minZ, position.z + bb.maxZ};
+	std::pair<float, float> px = { p_pos->p.x - bb.minX, p_pos->p.x + bb.maxX};
+	std::pair<float, float> py = { p_pos->p.y - bb.minY, p_pos->p.y + bb.maxY};
+	std::pair<float, float> pz = { p_pos->p.z - bb.minZ, p_pos->p.z + bb.maxZ};
 
 	// posicion del objeto dado
-	std::pair<float, float> ox = { position.x - bb.minX, position.x + bb.maxX };
-	std::pair<float, float> oy = { position.y - bb.minY, position.y + bb.maxY };
-	std::pair<float, float> oz = { position.z - bb.minZ, position.z + bb.maxZ };
+	std::pair<float, float> ox = { b_pos->p.x - b->BB().minX, b_pos->p.x + b->BB().maxX};
+	std::pair<float, float> oy = { b_pos->p.y - b->BB().minY, b_pos->p.y + b->BB().maxY };
+	std::pair<float, float> oz = { b_pos->p.z - b->BB().minZ, b_pos->p.z + b->BB().maxZ };
 
 	// distancia entre ambos (por eje)
 	float dx = abs(position.x - b->position.x);
