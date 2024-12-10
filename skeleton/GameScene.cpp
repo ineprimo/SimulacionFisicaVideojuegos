@@ -46,7 +46,7 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 	// suelo (tierra)
-	createFloor(10,10);
+	createFloor(10, 10);
 
 	// aspersor
 	createSprinkler({ 0,-10,0 });
