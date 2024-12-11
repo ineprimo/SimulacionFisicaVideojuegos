@@ -5,7 +5,8 @@ Object::Object(bool v, bool a, Vector3 p)
 	: position(p), visible(v), active(a), _item(new RenderItem())
 {
 }
-
+
+
 Object::Object(bool v, bool a, Vector3 p, RenderItem* it)
 	: position(p), visible(v), active(a), _item(it)
 {

@@ -23,6 +23,8 @@ void GameScene::update(float t)
 
 	Scene::update(t);
 
+	updateFlooring();
+
 	checkCollisions();
 
 	dircd -= 1;
@@ -51,7 +53,7 @@ void GameScene::setScene()
 	// aspersor
 	createSprinkler({ 0,-10,0 });
 	
-	prepareCollisionDebug();
+	//prepareCollisionDebug();
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
@@ -71,6 +73,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'J':
 	{
 		{
+			//sprinkler->setOffset({ sprinkler->getOffset().x + 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
+
 			if (dircd <= 0) {
 				direction = {1,0,0};
 			}
@@ -125,7 +129,7 @@ void GameScene::createFloor(int l, int w)
 	int color = 0;
 	
 
-	std::vector<Block> aux;
+	std::vector<Block*> aux;
 	for (int i = 0; i < l; i++) {
 		for (int j = 0; j < w; j++) {
 
@@ -133,10 +137,11 @@ void GameScene::createFloor(int l, int w)
 			block->StaticRigidSolid(_scene, _phisics, { posx,-15, posz }, { 2,1,2 }, colors[color]);
 			//block->Static()->setGlobalPose({  });
 
-			Block b = Block();
-			b.solid = block;
-			b.state = DirtState::UNREADY;
-			b.cd = 10;
+			Block* b = new Block();
+			b->solid = block;
+			b->state = DirtState::UNREADY;
+			b->cd = 100;
+			b->timer = 100;
 
 			aux.push_back(b);
 
@@ -180,26 +185,30 @@ void GameScene::prepareCollisionDebug()
 
 void GameScene::updateSprinkler(Vector3 dir)
 {
+	std::cout << sprinkler->getOffset().x << std::endl;
+
 	// movimiento
-	if (dir.x == 1) {
-		sprinkler->setOffset({sprinkler->getOffset().x + 4, sprinkler->getOffset().y, sprinkler->getOffset().z});
-	}
-	else if (dir.z == 1) {
-		sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 4 });
+	//if (dir.x == 1) {
+	//	sprinkler->setOffset({sprinkler->getOffset().x + 4, sprinkler->getOffset().y, sprinkler->getOffset().z});
+	//}
+	//else if (dir.z == 1) {
+	//	sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 4 });
 
-	}
-	else if (dir.x == -1) {
-		sprinkler->setOffset({ sprinkler->getOffset().x - 4, sprinkler->getOffset().y, sprinkler->getOffset().z });
+	//}
+	//else if (dir.x == -1) {
+	//	sprinkler->setOffset({ sprinkler->getOffset().x - 4, sprinkler->getOffset().y, sprinkler->getOffset().z });
 
-	}
-	else if (dir.z == -1) {
-		sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z -4 });
+	//}
+	//else if (dir.z == -1) {
+	//	sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z -4 });
 
-	}
+	//}
 }
 
 void GameScene::checkCollisions()
 {
+
+
 	// miki no veas esto
 	// lia cuando veas esto quiero que sepas que esto realmente es una guarrada
 	// pero no se como hacer colisiones si no
@@ -207,19 +216,20 @@ void GameScene::checkCollisions()
 
 	for (auto a : flooring) {
 		for (auto b : a) {
-			for (auto part : debug) {
-				if (part->isInsideStatic(b.solid)) {
-					std::cout << "COLISIONAAAAA" << std::endl;
+			for (auto part : p) {
+				if (part->isInsideStatic(b->solid)) {
+					//std::cout << "COLISIONAAAAA" << std::endl;
 
 					//std::cout << b.solid->Position().z << std::endl;
-					if (b.cd < b.timer) {
+					if (b->cd <= b->timer) {
 						// cambia de estado
-						b.Next();
-						b.UpdateColor(this);
-						b.timer = 0;
+						b->Next();
+						b->UpdateColor(this);
+						b->resetTimer();
 					}
 					else
-						b.timer++;
+						b->addTimer(1);
+
 				}
 			}
 
@@ -234,6 +244,19 @@ void GameScene::prepareColors()
 	colors.push_back({ 0.541,0.333,0.267,1 });
 	colors.push_back({ 0.365,0.4,0.286,1 });
 	colors.push_back({ 0.502,0.62,0.204,1 });
+}
+
+void GameScene::updateFlooring()
+{
+
+	/*for (std::vector<Block*> a : flooring) {
+		for (Block* b : a) {
+			b->addTimer(1);
+			std::cout << "timer " << b->timer << std::endl;
+		}
+	}*/
+
+
 }
 
 void GameScene::Block::Next()
@@ -258,4 +281,9 @@ void GameScene::Block::UpdateColor(GameScene* s)
 {
 	solid->Color(s->colors[(int)state]);
 
+}
+
+void GameScene::Block::addTimer(int a)
+{
+	timer += a;
 }

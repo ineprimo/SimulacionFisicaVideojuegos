@@ -30,18 +30,24 @@ private:
 		INPROGRESS,		// hay que regar
 		DONE			// hechoooo
 	};
+
+	int omfg = 0;
 	struct Block {
 		DirtState state;
 		SolidoRigido* solid;
-		float cd;
-		float timer = 0;
+		int cd;
+		int timer;
 
 		void Next();
 
 		void UpdateColor(GameScene* s);
+
+		void addTimer(int a);
+		int Cd() { return cd; }
+		void resetTimer() { timer = 0; }
 	};
 
-	std::vector<std::vector<Block>> flooring;
+	std::vector<std::vector<Block*>> flooring;
 
 	std::vector<Vector4> colors;
 	std::vector<Particle*> debug;
@@ -65,7 +71,11 @@ private:
 	// para mirar las colisiones
 	void checkCollisions();
 
+	//
 	void prepareCollisionDebug();
+
+	// 
+	void updateFlooring();
 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();
