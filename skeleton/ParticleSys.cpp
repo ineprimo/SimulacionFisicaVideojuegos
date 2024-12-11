@@ -41,8 +41,9 @@ void ParticleSys::update(double t)
 	//destroyParticles();
 }
 
-Particle* ParticleSys::generateParticle()
+std::vector<Particle*> ParticleSys::generateParticle()
 {
+	std::vector<Particle*> aux;
 
 	const Vector3 u = { 0,0,0 };
 	std::normal_distribution<double> posrand(offset.x, 50.0); // media dispersion
@@ -75,7 +76,9 @@ Particle* ParticleSys::generateParticle()
 	pr->setMass(mass);
 	particles.push_back(pr);
 
-	return pr;
+	aux.push_back(pr);
+
+	return aux;
 
 }
 
@@ -115,22 +118,25 @@ void ParticleSys::countCooldown()
 
 void ParticleSys::addParticle()
 {
-	Particle* pr = generateParticle();
-	if (pr == nullptr) return;
-	if (gfGen != nullptr) {
-		pr->addForceGen(gfGen);
+	std::vector<Particle*> p = generateParticle();
+	for (auto pr : p) {
+		if (pr == nullptr) return;
+		if (gfGen != nullptr) {
+			pr->addForceGen(gfGen);
+		}
+		if (wGen != nullptr)
+			pr->addForceGen(wGen);
+		if (tGen != nullptr) {
+			pr->addForceGen(tGen);
+		}
+		if (eGen != nullptr) {
+			pr->addForceGen(eGen);
+		}
+		if (sGen != nullptr) {
+			pr->addForceGen(sGen);
+		}
 	}
-	if (wGen != nullptr)
-		pr->addForceGen(wGen);
-	if (tGen != nullptr) {
-		pr->addForceGen(tGen);
-	}
-	if (eGen != nullptr) {
-		pr->addForceGen(eGen);
-	}
-	if (sGen != nullptr) {
-		pr->addForceGen(sGen);
-	}
+	
 }
 
 void ParticleSys::hide()

@@ -2,6 +2,7 @@
 #include "SolidoRigido.h"
 #include "SprinklerSystem.h"
 #include "GravityForceGenerator.h"
+#include "BombSys.h"
 
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
@@ -27,8 +28,11 @@ void GameScene::update(float t)
 
 	checkCollisions();
 
-	if (isComplete()) {
+	if (!ended && isComplete()) {
+
+		celebrate();
 		std::cout << "WELL DONE!" << std::endl;
+		ended = true;
 	}
 
 	dircd -= 1;
@@ -289,6 +293,17 @@ bool GameScene::isComplete()
 	}
 
 	return i >= complete.size() - 1 && j >= complete[i].size() - 1;
+}
+
+void GameScene::celebrate()
+{
+	Vector3 a = { 0,0,0 };
+	Vector3 v = { 10,10,0 };
+	Vector3 offset = { 0,0,0 };
+	Vector4 c = { 0.87, 0.34, 0.57, 1.0 };
+	celebration = new BombSys(v, a, c, offset, 20);
+	celebration->Active(true);
+	systems.push_back(celebration);
 }
 
 void GameScene::Block::Next()

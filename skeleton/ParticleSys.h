@@ -49,7 +49,7 @@ public:
 
 	void update(double t) override;
 
-	virtual Particle* generateParticle();
+	virtual std::vector<Particle*> generateParticle();
 
 	void destroyParticles();
 

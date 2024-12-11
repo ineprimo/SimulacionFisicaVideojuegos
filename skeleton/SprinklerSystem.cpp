@@ -10,9 +10,10 @@ SprinklerSystem::~SprinklerSystem()
 {
 }
 
-Particle* SprinklerSystem::generateParticle()
+std::vector<Particle*> SprinklerSystem::generateParticle()
 {
 	Particle* pr;
+	std::vector<Particle*> aux;
 	if (counter >= cooldown) {
 
 		if (particlecount <= particlenum) {
@@ -38,22 +39,23 @@ Particle* SprinklerSystem::generateParticle()
 			pr = new Particle(p, auxv, {0,0,0}, c);
 			particles.push_back(pr);
 
+			aux.push_back(pr);
 			particlecount++;
 		}
 		else {
 			counter = 0;
 			particlecount = 0;
-			return nullptr;
+			return aux;
 
 		}
 	}
 	else {
 
 		counter++;
-		return nullptr;
+		return aux;
 	}
 
-	return pr;
+	return aux;
 }
 
 void SprinklerSystem::setCD(int c)

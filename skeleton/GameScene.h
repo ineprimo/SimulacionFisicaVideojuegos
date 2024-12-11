@@ -4,6 +4,7 @@ class SolidoRigido;
 
 class SprinklerSystem;
 class GravityForceGenerator;
+class BombSys;
 
 class GameScene : public Scene
 {
@@ -51,6 +52,7 @@ private:
 
 	std::vector<std::vector<Block*>> flooring;
 	std::vector<std::vector<bool>> complete;
+	bool ended = false;
 
 
 	std::vector<Vector4> colors;
@@ -58,6 +60,7 @@ private:
 
 	SprinklerSystem* sprinkler;
 	GravityForceGenerator* gravity;
+	BombSys* celebration;
 
 
 	// para crear el suelo con bloques
@@ -84,6 +87,9 @@ private:
 	//
 	bool isComplete();
 
+	// 
+	void celebrate();
+	 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();
 

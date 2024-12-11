@@ -11,7 +11,7 @@ private:
 
 
 
-    int cooldown = 5;
+    int cooldown = 3;
     int count = 0;
 
 public:
@@ -20,7 +20,7 @@ public:
     BombSys(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 _o, int p);
     ~BombSys();
 
-    Particle* generateParticle() override;
+    std::vector<Particle*> generateParticle() override;
 
 };
 

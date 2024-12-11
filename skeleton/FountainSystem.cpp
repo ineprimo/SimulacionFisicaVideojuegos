@@ -10,10 +10,10 @@ FountainSystem::~FountainSystem()
 {
 }
 
-Particle* FountainSystem::generateParticle()
+std::vector<Particle*> FountainSystem::generateParticle()
 {
 	// settea randoms
-
+	std::vector<Particle*> aux;
 
 	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
 	const Vector3 p = { u.x + offset.x,
@@ -34,7 +34,8 @@ Particle* FountainSystem::generateParticle()
 
 		pr = new Particle(p, auxv, g, c);
 		particles.push_back(pr);
+		aux.push_back(pr);
 	}
 
-	return pr;
+	return aux;
 }

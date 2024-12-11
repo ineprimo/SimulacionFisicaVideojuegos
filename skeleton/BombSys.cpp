@@ -7,22 +7,22 @@ BombSys::BombSys(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::Px
 
 }
 
-Particle* BombSys::generateParticle()
+std::vector<Particle*> BombSys::generateParticle()
 {
-	Particle* pr;
-
+	Particle* pr = nullptr;
+	std::vector<Particle*> aux;
 
 	// si no ha explotado, explota (cooldown?)
 	if (!exploded) {
 		int alpha = 1;
 		int a = 360 / partnum;
 
-		const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
-		std::uniform_int_distribution<int> distribution_bomb(-100, 100);
+		const Vector3 u = { 0,0,0 };
+		std::uniform_int_distribution<int> distribution_bomb(-15, 15);
 
 		int posxo = distribution_bomb(generator);
 		int posyo = distribution_bomb(generator);
-		int poszo = distribution_bomb(generator);
+		int poszo = -20; //distribution_bomb(generator);
 
 		const Vector3 p = { u.x + offset.x + posxo,
 							u.y + offset.y + posyo,
@@ -33,8 +33,8 @@ Particle* BombSys::generateParticle()
 			float randx = 1, randy = 1, randz = 1;
 
 			randx *= cos(alpha * pi / 180);
-			randy *= 1;
-			randz *= sin(alpha * pi / 180);
+			randy *= sin(alpha * pi / 180);
+			randz *= 1;
 
 			alpha += a;
 
@@ -42,6 +42,7 @@ Particle* BombSys::generateParticle()
 
 			Particle* pr = new Particle(p, auxv, g, c);
 			particles.push_back(pr);
+			aux.push_back(pr);
 		}
 
 		exploded = true;
@@ -60,6 +61,6 @@ Particle* BombSys::generateParticle()
 		}
 	}
 
-	return pr;
+	return aux;
 
 }

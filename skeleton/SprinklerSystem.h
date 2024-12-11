@@ -22,7 +22,7 @@ public:
 
 
 
-	Particle* generateParticle() override;
+	std::vector<Particle*> generateParticle() override;
 
 	void setOffset(Vector3 o) {
 		offset = o;
