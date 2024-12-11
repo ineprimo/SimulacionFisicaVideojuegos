@@ -5,6 +5,7 @@ class SolidoRigido;
 
 class SprinklerSystem;
 class GravityForceGenerator;
+class ExlosionGenerator;
 class BombSys;
 class FountainSys;
 
@@ -52,6 +53,9 @@ private:
 		void resetTimer() { timer = 0; }
 	};
 
+	// tipos de particulas
+	// 0 = agua
+	// 1 = estiercol
 
 
 	std::vector<std::vector<Block*>> flooring;
@@ -64,6 +68,7 @@ private:
 
 	SprinklerSystem* sprinkler;
 	GravityForceGenerator* gravity;
+	ExplosionGenerator* explosion;
 	BombSys* celebration;
 	FountainSystem* manure;
 

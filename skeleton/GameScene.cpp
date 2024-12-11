@@ -2,6 +2,7 @@
 #include "SolidoRigido.h"
 #include "SprinklerSystem.h"
 #include "GravityForceGenerator.h"
+#include "ExplosionGenerator.h"
 #include "BombSys.h"
 #include "FountainSystem.h"
 
@@ -69,9 +70,12 @@ void GameScene::setScene()
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
-	//sprinkler->addForceGeneratorToAll(gravity);
+	explosion = new ExplosionGenerator({0,0,0});
+	explosion->Activate(false);
 	sprinkler->setGravForgeGen(gravity);
 	manure->setGravForgeGen(gravity);
+	sprinkler->setExplosionGen(explosion);
+	manure->setExplosionGen(explosion);
 
 	//GetCamera()->getTransform().p = {0,50,50};
 	//GetCamera()->getDir() = {0,-0.5,-1};
@@ -127,6 +131,38 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	{
 		{
 			manure->Active(!manure->Active());
+		}
+
+		break;
+	}
+	case 'U':
+	{
+		{
+			current_sys->setMass(current_sys->getMass() + 1);
+			std::cout << current_sys->getMass() << std::endl;
+		}
+
+		break;
+	}	
+	case 'O':
+	{
+		{
+			if(current_sys->getMass() > 1)
+				current_sys->setMass(current_sys->getMass() - 1);
+			std::cout << current_sys->getMass() << std::endl;
+
+		}
+
+		break;
+	}
+
+	case 'B':
+	{
+		{
+			// bomba
+			std::cout << "BOMBA" << std::endl;
+			explosion->Activate(!explosion->isActive());
+
 		}
 
 		break;
@@ -257,6 +293,7 @@ void GameScene::checkCollisions()
 	// lia cuando veas esto quiero que sepas que esto realmente es una guarrada
 	// pero no se como hacer colisiones si no
 	auto p = sprinkler->getParticles();
+	auto m = manure->getParticles();
 
 	int i = 0, j = 0;
 
@@ -269,18 +306,38 @@ void GameScene::checkCollisions()
 
 					//std::cout << b.solid->Position().z << std::endl;
 					if (b->cd <= b->timer) {
-						// cambia de estado
-						b->Next();
-						b->UpdateColor(this);
-						b->resetTimer();
-						if (b->state == DirtState::DONE) {
-							complete[i][j] = true;
+						if (b->state == DirtState::READY || b->state == DirtState::INPROGRESS) {
+							b->Next();
+							b->UpdateColor(this);
+							b->resetTimer();
 						}
 					}
 					else
 						b->addTimer(1);
 
 				}
+			}
+
+			for (auto part : m) {
+				if (part->isInsideStatic(b->solid)) {
+					//std::cout << "COLISIONAAAAA" << std::endl;
+
+					//std::cout << b.solid->Position().z << std::endl;
+					if (b->cd <= b->timer) {
+						if (b->state == DirtState::UNREADY) {
+							// cambia de estado
+							b->Next();
+							b->UpdateColor(this);
+							b->resetTimer();
+						}
+					}
+					else
+						b->addTimer(1);
+				}
+			}
+
+			if (b->state == DirtState::DONE) {
+				complete[i][j] = true;
 			}
 			j++;
 		}

@@ -33,6 +33,8 @@ std::vector<Particle*> FountainSystem::generateParticle()
 		const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 		pr = new Particle(p, auxv, g, c);
+		pr->setType(1);
+		pr->setMass(mass);
 		particles.push_back(pr);
 		aux.push_back(pr);
 	}

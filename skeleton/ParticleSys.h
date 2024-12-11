@@ -77,6 +77,7 @@ public:
 	Vector3 getOffset() { return offset; }
 
 	void setMass(int m_) { mass = m_; }
+	int getMass() { return mass; }
 
 
 	void hide();

@@ -27,5 +27,6 @@ public:
 
 	void setCD(int c);
 	void setPartNum(int p);
+
 };
 

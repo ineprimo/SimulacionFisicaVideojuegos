@@ -38,6 +38,8 @@ public:
 	void applyContForce(Vector3 f);
 	void applyInstForce(Vector3 f);
 
+	void setType(int i) { type = i; }
+
 	bool collides();
 
 	void setVisibility(bool a) override;
@@ -54,6 +56,7 @@ private:
 
 	float mass;
 
+	int type = -1;
 
 	std::vector<ForceGen*> forceGens;
 	std::vector<Vector3> forces;
