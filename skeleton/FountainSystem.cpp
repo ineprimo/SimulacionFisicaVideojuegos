@@ -15,7 +15,7 @@ std::vector<Particle*> FountainSystem::generateParticle()
 	// settea randoms
 	std::vector<Particle*> aux;
 
-	const Vector3 u = GetCamera()->getTransform().p;// { 0,0,0 };
+	const Vector3 u = { 0,0,0 };
 	const Vector3 p = { u.x + offset.x,
 						u.y + offset.y,
 						u.z + offset.z}; // 

@@ -3,6 +3,7 @@
 #include "SprinklerSystem.h"
 #include "GravityForceGenerator.h"
 #include "BombSys.h"
+#include "FountainSystem.h"
 
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
@@ -56,10 +57,13 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 	// suelo (tierra)
-	createFloor(2, 2);
+	createFloor(10, 10);
 
 	// aspersor
 	createSprinkler({ 0,-10,0 });
+
+	//
+	setManure();
 	
 	//prepareCollisionDebug();
 
@@ -67,6 +71,7 @@ void GameScene::setScene()
 	gravity = new GravityForceGenerator({0,-9.8,0});
 	//sprinkler->addForceGeneratorToAll(gravity);
 	sprinkler->setGravForgeGen(gravity);
+	manure->setGravForgeGen(gravity);
 
 	//GetCamera()->getTransform().p = {0,50,50};
 	//GetCamera()->getDir() = {0,-0.5,-1};
@@ -112,6 +117,14 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 		{
 			if (sprinkler->getOffset().z < stage_bounds.z)
 				sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 1});
+		}
+
+		break;
+	}
+	case 'P':
+	{
+		{
+			manure->Active(!manure->Active());
 		}
 
 		break;
@@ -270,13 +283,6 @@ void GameScene::prepareColors()
 void GameScene::updateFlooring()
 {
 
-	/*for (std::vector<Block*> a : flooring) {
-		for (Block* b : a) {
-			b->addTimer(1);
-			std::cout << "timer " << b->timer << std::endl;
-		}
-	}*/
-
 
 }
 
@@ -304,6 +310,18 @@ void GameScene::celebrate()
 	celebration = new BombSys(v, a, c, offset, 20);
 	celebration->Active(true);
 	systems.push_back(celebration);
+}
+
+void GameScene::setManure()
+{
+
+	Vector3 a = { 0,0,0 };
+	Vector3 v = { 1,0,1 };
+	Vector4 c = { 0.741, 0.565, 0.251, 1.0 };
+	Vector3 offset = { 0, 0, 0};
+	manure = new FountainSystem(v, a, c, offset);
+	manure->Active(false);
+	systems.push_back(manure);
 }
 
 void GameScene::Block::Next()

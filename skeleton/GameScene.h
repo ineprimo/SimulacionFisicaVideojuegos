@@ -1,10 +1,12 @@
 #pragma once
+#include "FountainSystem.h"
 #include "Scene.h"
 class SolidoRigido;
 
 class SprinklerSystem;
 class GravityForceGenerator;
 class BombSys;
+class FountainSys;
 
 class GameScene : public Scene
 {
@@ -50,6 +52,8 @@ private:
 		void resetTimer() { timer = 0; }
 	};
 
+
+
 	std::vector<std::vector<Block*>> flooring;
 	std::vector<std::vector<bool>> complete;
 	bool ended = false;
@@ -61,7 +65,7 @@ private:
 	SprinklerSystem* sprinkler;
 	GravityForceGenerator* gravity;
 	BombSys* celebration;
-
+	FountainSystem* manure;
 
 	// para crear el suelo con bloques
 	void createFloor(int l, int w);
@@ -89,6 +93,9 @@ private:
 
 	// 
 	void celebrate();
+
+	// 
+	void setManure();
 	 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();
