@@ -71,7 +71,10 @@ public:
 	ForceGen* getExplosionGen() { return eGen; };
 	ForceGen* getSpringGen() { return sGen; };
 
-
+	void setOffset(Vector3 o) {
+		offset = o;
+	};
+	Vector3 getOffset() { return offset; }
 
 	void setMass(int m_) { mass = m_; }
 

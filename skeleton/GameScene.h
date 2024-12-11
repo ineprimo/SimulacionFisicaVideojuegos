@@ -67,6 +67,8 @@ private:
 	BombSys* celebration;
 	FountainSystem* manure;
 
+	ParticleSys* current_sys = nullptr;
+
 	// para crear el suelo con bloques
 	void createFloor(int l, int w);
 

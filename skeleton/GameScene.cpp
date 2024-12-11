@@ -75,6 +75,8 @@ void GameScene::setScene()
 
 	//GetCamera()->getTransform().p = {0,50,50};
 	//GetCamera()->getDir() = {0,-0.5,-1};
+
+	current_sys = sprinkler;
 }
 
 void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
@@ -86,8 +88,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'J':
 	{
 		{
-			if(sprinkler->getOffset().x > -stage_bounds.x)
-				sprinkler->setOffset({ sprinkler->getOffset().x - 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
+			if(current_sys->getOffset().x > -stage_bounds.x)
+				current_sys->setOffset({ current_sys->getOffset().x - 1, current_sys->getOffset().y, current_sys->getOffset().z });
 		}
 
 		break;
@@ -95,8 +97,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'L':
 	{
 		{
-			if (sprinkler->getOffset().x < stage_bounds.x)
-				sprinkler->setOffset({ sprinkler->getOffset().x + 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
+			if (current_sys->getOffset().x < stage_bounds.x)
+				current_sys->setOffset({ current_sys->getOffset().x + 1, current_sys->getOffset().y, current_sys->getOffset().z });
 
 		}
 
@@ -105,8 +107,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'I':
 	{
 		{
-			if (sprinkler->getOffset().z > -stage_bounds.z)
-				sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z - 1});
+			if (current_sys->getOffset().z > -stage_bounds.z)
+				current_sys->setOffset({ current_sys->getOffset().x, current_sys->getOffset().y, current_sys->getOffset().z - 1});
 
 		}
 
@@ -115,8 +117,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'K':
 	{
 		{
-			if (sprinkler->getOffset().z < stage_bounds.z)
-				sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 1});
+			if (current_sys->getOffset().z < stage_bounds.z)
+				current_sys->setOffset({ current_sys->getOffset().x, current_sys->getOffset().y, current_sys->getOffset().z + 1});
 		}
 
 		break;
@@ -125,6 +127,22 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	{
 		{
 			manure->Active(!manure->Active());
+		}
+
+		break;
+	}
+	case '1':
+	{
+		{
+			current_sys = sprinkler;
+		}
+
+		break;
+	}
+	case '2':
+	{
+		{
+			current_sys = manure;
 		}
 
 		break;
