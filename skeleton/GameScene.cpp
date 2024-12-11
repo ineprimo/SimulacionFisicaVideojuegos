@@ -27,6 +27,10 @@ void GameScene::update(float t)
 
 	checkCollisions();
 
+	if (isComplete()) {
+		std::cout << "WELL DONE!" << std::endl;
+	}
+
 	dircd -= 1;
 }
 
@@ -48,7 +52,7 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 	// suelo (tierra)
-	createFloor(10, 10);
+	createFloor(2, 2);
 
 	// aspersor
 	createSprinkler({ 0,-10,0 });
@@ -130,6 +134,7 @@ void GameScene::createFloor(int l, int w)
 	
 
 	std::vector<Block*> aux;
+	std::vector<bool> comp;
 	for (int i = 0; i < l; i++) {
 		for (int j = 0; j < w; j++) {
 
@@ -150,6 +155,7 @@ void GameScene::createFloor(int l, int w)
 				color = 0;
 			posx += 4;
 			
+			comp.push_back(false);
 
 		}
 		posz += 4;
@@ -158,7 +164,9 @@ void GameScene::createFloor(int l, int w)
 
 
 		flooring.push_back(aux);
+		complete.push_back(comp);
 		aux.clear();
+		comp.clear();
 	}
 }
 
@@ -187,7 +195,6 @@ void GameScene::prepareCollisionDebug()
 
 void GameScene::updateSprinkler(Vector3 dir)
 {
-	std::cout << sprinkler->getOffset().z << std::endl;
 
 	// movimiento
 	//if (dir.x == 1) {
@@ -216,8 +223,11 @@ void GameScene::checkCollisions()
 	// pero no se como hacer colisiones si no
 	auto p = sprinkler->getParticles();
 
+	int i = 0, j = 0;
+
 	for (auto a : flooring) {
 		for (auto b : a) {
+
 			for (auto part : p) {
 				if (part->isInsideStatic(b->solid)) {
 					//std::cout << "COLISIONAAAAA" << std::endl;
@@ -228,14 +238,19 @@ void GameScene::checkCollisions()
 						b->Next();
 						b->UpdateColor(this);
 						b->resetTimer();
+						if (b->state == DirtState::DONE) {
+							complete[i][j] = true;
+						}
 					}
 					else
 						b->addTimer(1);
 
 				}
 			}
-
+			j++;
 		}
+		j = 0;
+		i++;
 	}
 
 }
@@ -261,6 +276,21 @@ void GameScene::updateFlooring()
 
 }
 
+bool GameScene::isComplete()
+{
+	bool aux = true;
+	int i = 0, j = 0;
+	while (i < complete.size() && j < complete[i].size() && complete[i][j]) {
+		j++;
+		if (j >= complete[i].size()) {
+			i++;
+			j = 0;
+		}
+	}
+
+	return i >= complete.size() - 1 && j >= complete[i].size() - 1;
+}
+
 void GameScene::Block::Next()
 {
 	switch (state) {
@@ -274,7 +304,7 @@ void GameScene::Block::Next()
 		state = DirtState::DONE;
 		break;
 	case 3:
-		state = DirtState::UNREADY;
+		//state = DirtState::UNREADY;
 		break;
 	}
 }

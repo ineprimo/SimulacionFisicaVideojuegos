@@ -50,6 +50,8 @@ private:
 	};
 
 	std::vector<std::vector<Block*>> flooring;
+	std::vector<std::vector<bool>> complete;
+
 
 	std::vector<Vector4> colors;
 	std::vector<Particle*> debug;
@@ -78,6 +80,9 @@ private:
 
 	// 
 	void updateFlooring();
+
+	//
+	bool isComplete();
 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();
