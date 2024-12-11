@@ -24,6 +24,8 @@ private:
 	PxScene* _scene;
 	PxPhysics* _phisics;
 
+	Vector3 stage_bounds;
+
 	enum DirtState {
 		UNREADY,		// hay que prepararla
 		READY,			// hay que plantar

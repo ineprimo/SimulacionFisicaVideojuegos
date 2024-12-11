@@ -73,11 +73,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'J':
 	{
 		{
-			//sprinkler->setOffset({ sprinkler->getOffset().x + 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
-
-			if (dircd <= 0) {
-				direction = {1,0,0};
-			}
+			if(sprinkler->getOffset().x > -stage_bounds.x)
+				sprinkler->setOffset({ sprinkler->getOffset().x - 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
 		}
 
 		break;
@@ -85,9 +82,9 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'L':
 	{
 		{
-			if (dircd <= 0) {
-				direction = {-1,0,0};
-			}
+			if (sprinkler->getOffset().x < stage_bounds.x)
+				sprinkler->setOffset({ sprinkler->getOffset().x + 1, sprinkler->getOffset().y, sprinkler->getOffset().z });
+
 		}
 
 		break;
@@ -95,9 +92,9 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'I':
 	{
 		{
-			if (dircd <= 0) {
-				direction = { 0,0,1 };
-			}
+			if (sprinkler->getOffset().z > -stage_bounds.z)
+				sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z - 1});
+
 		}
 
 		break;
@@ -105,9 +102,8 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 	case 'K':
 	{
 		{
-			if (dircd <= 0) {
-				direction = { 0,0,-1 };
-			}
+			if (sprinkler->getOffset().z < stage_bounds.z)
+				sprinkler->setOffset({ sprinkler->getOffset().x, sprinkler->getOffset().y, sprinkler->getOffset().z + 1});
 		}
 
 		break;
@@ -124,8 +120,12 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 
 void GameScene::createFloor(int l, int w)
 {
-	float posx = (float)- l;
-	float posz = (float)- w;
+	stage_bounds = {((float)l/2)*4, 1, ((float)w/2) *4};
+
+	float posx = (float)- l/2;
+	posx *= 4;
+	float posz = (float)- w/2;
+	posz *= 4;
 	int color = 0;
 	
 
@@ -153,7 +153,9 @@ void GameScene::createFloor(int l, int w)
 
 		}
 		posz += 4;
-		posx = (float)-w;
+		posx = (float)-w/2;
+		posx *= 4;
+
 
 		flooring.push_back(aux);
 		aux.clear();
@@ -185,7 +187,7 @@ void GameScene::prepareCollisionDebug()
 
 void GameScene::updateSprinkler(Vector3 dir)
 {
-	std::cout << sprinkler->getOffset().x << std::endl;
+	std::cout << sprinkler->getOffset().z << std::endl;
 
 	// movimiento
 	//if (dir.x == 1) {
