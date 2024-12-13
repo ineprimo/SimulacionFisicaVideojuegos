@@ -24,7 +24,7 @@ void BuoyancyScene::setScene()
 	BuoyancyParticleSystem* sys = new BuoyancyParticleSystem(part_vec);
 
 	GravityForceGenerator* gravity = new GravityForceGenerator({ 0, -9.8, 0 });
-	BuoyancyForceGenerator* bouyancy_force = new BuoyancyForceGenerator({ 0,0,0 }, 1, 5, 5);
+	BuoyancyForceGenerator* bouyancy_force = new BuoyancyForceGenerator({ 0,0,0 }, 1, 1, 5);
 
 	float posx = 0;
 	float posy = 0;
@@ -33,7 +33,7 @@ void BuoyancyScene::setScene()
 	for (int i = 0; i < n; i++) {
 		Particle* part = new Particle({ posx, posy, 0 }, { 0,0,0 }, { 0,0,0 }, { 0.87, 0.34, 0.57, 1.0 });
 		part->setVisibility(false);
-		part->setMass(1);
+		part->setMass(0.5);
 		part_vec.push_back(part);
 
 		posx += 5;

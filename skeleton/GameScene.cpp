@@ -58,7 +58,7 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 	// suelo (tierra)
-	createFloor(10, 10);
+	createFloor(2, 2);
 
 	// aspersor
 	createSprinkler({ 0,-10,0 });
@@ -373,7 +373,11 @@ bool GameScene::isComplete()
 		}
 	}
 
-	return i >= complete.size() - 1 && j >= complete[i].size() - 1;
+	if (i >= complete.size()) {
+			return true;
+	}
+	return false;
+
 }
 
 void GameScene::celebrate()

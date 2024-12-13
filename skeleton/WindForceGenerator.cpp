@@ -18,8 +18,8 @@ void WindForceGenerator::updateForce(double t, Particle* p)
 
 	Vector3 f = force(t, p);
 
-	//p->addForce(f);
-	p->applyInstForce(f);
+	p->addForce(f);
+	//p->applyInstForce(f);
 
 }
 
