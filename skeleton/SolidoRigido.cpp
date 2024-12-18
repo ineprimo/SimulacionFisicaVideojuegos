@@ -1,17 +1,19 @@
 #include "SolidoRigido.h"
+#include "ForceGen.h"
 
 SolidoRigido::SolidoRigido()
 {
 }
 
-SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 vel, Vector3 ang_vel, Vector3 size, float density, Vector4 color)
+SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 vel, Vector3 ang_vel, Vector3 size, float density, Vector4 color, int type)
 	: Object()
 {
 	_solid = _physics->createRigidDynamic(ori);
 	_solid->setLinearVelocity(vel);
 	_solid->setAngularVelocity(ang_vel);
+	PxShape* shape;
 
-	PxShape* shape = CreateShape(PxBoxGeometry(size));
+	shape = CreateShape(PxBoxGeometry(size));
 	_solid->attachShape(*shape);
 
 	PxRigidBodyExt::updateMassAndInertia(*_solid, density);	
@@ -46,7 +48,15 @@ bool SolidoRigido::update(double t)
 
 void SolidoRigido::applyForce(Vector3 f)
 {
+
 }
+
+void SolidoRigido::AddForceGen(ForceGen* f)
+{
+	if (f != nullptr)
+		forceGens.push_back(f);
+}
+
 
 void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color)
 {

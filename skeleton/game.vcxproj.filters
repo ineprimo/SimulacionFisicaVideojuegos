@@ -99,6 +99,7 @@
     <ClCompile Include="Object.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="SolidoRigidoSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Camera.h">
@@ -201,6 +202,7 @@
     <ClInclude Include="Object.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="SolidoRigidoSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

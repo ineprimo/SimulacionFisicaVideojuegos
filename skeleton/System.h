@@ -1,6 +1,7 @@
 #pragma once
 #include "Particle.h"
 #include <list>
+#include "SolidoRigido.h"
 
 
 class System
@@ -33,6 +34,7 @@ protected:
 
 	bool active;
 	std::list<Particle*> particles;
+	std::list<SolidoRigido*> solids;
 
 };
 

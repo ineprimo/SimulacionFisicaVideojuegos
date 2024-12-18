@@ -6,6 +6,7 @@
 #include "BombSys.h"
 #include "FountainSystem.h"
 #include "BuoyancyForceGenerator.h"
+#include "SolidoRigidoSystem.h"
 
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
@@ -55,7 +56,7 @@ void GameScene::setScene()
 	// PxScene* _scene, PxPhysics* _physics, 
 	// PxTransform ori, Vector3 vel, Vector3 ang_vel, 
 	// Vector3 size, float density, Vector4 color
-	auto* solid = new SolidoRigido(_scene, _phisics, {0,0,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1});
+	auto* solid = new SolidoRigido(_scene, _phisics, {0,20,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1}, 2);
 	objects.push_back(solid);
 
 	// suelo (tierra)
@@ -70,6 +71,9 @@ void GameScene::setScene()
 	// 
 	prepareSea();
 	
+	//
+	CascadeSolidRigid();
+
 	//prepareCollisionDebug();
 
 	// settea la gravedad
@@ -344,6 +348,7 @@ void GameScene::checkCollisions()
 				}
 			}
 
+
 			if (b->state == DirtState::DONE) {
 				complete[i][j] = true;
 			}
@@ -423,6 +428,13 @@ void GameScene::setManure()
 	manure = new FountainSystem(v, a, c, offset, 40, 9000);
 	manure->Active(false);
 	systems.push_back(manure);
+}
+
+void GameScene::CascadeSolidRigid()
+{
+	PxTransform pos = { 0,0,0 };
+	cascade = new SolidoRigidoSystem(_scene, _phisics, pos);
+	systems.push_back(cascade);
 }
 
 void GameScene::prepareSea()

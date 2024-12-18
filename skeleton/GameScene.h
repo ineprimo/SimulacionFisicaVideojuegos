@@ -1,7 +1,7 @@
 #pragma once
 #include "FountainSystem.h"
 #include "Scene.h"
-class SolidoRigido;
+#include "SolidoRigido.h"
 
 class SprinklerSystem;
 class GravityForceGenerator;
@@ -9,6 +9,7 @@ class ExlosionGenerator;
 class BombSys;
 class FountainSys;
 class BuoyancyForceGenerator;
+class SolidoRigidoSystem;
 
 class GameScene : public Scene
 {
@@ -73,6 +74,7 @@ private:
 	ExplosionGenerator* explosion;
 	BombSys* celebration;
 	FountainSystem* manure;
+	SolidoRigidoSystem* cascade;
 	BuoyancyForceGenerator* buoyancy;
 
 	// sistema de solidorigidos
@@ -112,6 +114,9 @@ private:
 
 	// 
 	void prepareSea();
+
+	// 
+	void CascadeSolidRigid();
 	 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();

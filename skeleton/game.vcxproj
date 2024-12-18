@@ -277,6 +277,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SolidoRigido.cpp" />
+    <ClCompile Include="SolidoRigidoSystem.cpp" />
     <ClCompile Include="SpringForceGenerator.cpp" />
     <ClCompile Include="SpringScene.cpp" />
     <ClCompile Include="SpringSystem.cpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SolidoRigido.h" />
+    <ClInclude Include="SolidoRigidoSystem.h" />
     <ClInclude Include="SpringForceGenerator.h" />
     <ClInclude Include="SpringScene.h" />
     <ClInclude Include="SpringSystem.h" />

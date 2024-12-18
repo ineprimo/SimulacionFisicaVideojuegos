@@ -15,6 +15,19 @@ void System::update(double t)
 			++it;
 	}
 
+	auto its = solids.begin();
+	for (its; its != solids.end(); ) {
+
+		SolidoRigido* s = *its;
+		if (!s->update(t)) {
+
+			delete s;
+			its = solids.erase(its);
+		}
+		else
+			++its;
+	}
+
 
 }
 
