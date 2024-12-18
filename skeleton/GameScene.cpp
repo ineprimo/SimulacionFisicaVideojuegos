@@ -59,7 +59,7 @@ void GameScene::setScene()
 	objects.push_back(solid);
 
 	// suelo (tierra)
-	createFloor(2, 2);
+	createFloor(10, 10);
 
 	// aspersor
 	createSprinkler({ 0,10,0 });
@@ -327,6 +327,8 @@ void GameScene::checkCollisions()
 				if (part->isInsideStatic(b->solid)) {
 					//std::cout << "COLISIONAAAAA" << std::endl;
 
+					part->Alive(false);
+
 					//std::cout << b.solid->Position().z << std::endl;
 					if (b->cd <= b->timer) {
 						if (b->state == DirtState::UNREADY) {
@@ -334,6 +336,7 @@ void GameScene::checkCollisions()
 							b->Next();
 							b->UpdateColor(this);
 							b->resetTimer();
+
 						}
 					}
 					else

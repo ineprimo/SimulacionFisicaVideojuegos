@@ -98,7 +98,7 @@ bool Particle::update(double t)
 
 	applyForce();
 
-	return integrate(t);
+	return integrate(t) && Object::alive;
 }
 
 void Particle::applyForce()

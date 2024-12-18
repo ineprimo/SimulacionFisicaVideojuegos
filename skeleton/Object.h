@@ -29,6 +29,8 @@ protected:
 
 	RenderItem* _item;
 
+	bool alive = true;
+
 public:
 
 	Object() {};
@@ -41,6 +43,8 @@ public:
 
 	virtual bool update(double t);
 
+	
+	void Alive(bool a) { alive = a; };
 	
 
 	// mira si este objeto y el dado colisionan
