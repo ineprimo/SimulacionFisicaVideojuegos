@@ -62,7 +62,7 @@ void GameScene::setScene()
 	createFloor(2, 2);
 
 	// aspersor
-	createSprinkler({ 0,-10,0 });
+	createSprinkler({ 0,10,0 });
 
 	//
 	setManure();
@@ -75,7 +75,7 @@ void GameScene::setScene()
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
 	explosion = new ExplosionGenerator({0,0,0});
-	buoyancy = new BuoyancyForceGenerator({0,0,0}, 10, 10, 10); // kg/m^3
+	buoyancy = new BuoyancyForceGenerator({0,0,0}, 998, 10, 4); // kg/m^3
 	explosion->Activate(false);
 	sprinkler->setGravForgeGen(gravity);
 	manure->setGravForgeGen(gravity);
@@ -215,7 +215,7 @@ void GameScene::createFloor(int l, int w)
 		for (int j = 0; j < w; j++) {
 
 			auto* block = new SolidoRigido();
-			block->StaticRigidSolid(_scene, _phisics, { posx,-15, posz }, { 2,1,2 }, colors[color]);
+			block->StaticRigidSolid(_scene, _phisics, { posx,5, posz }, { 2,1,2 }, colors[color]);
 			//block->Static()->setGlobalPose({  });
 
 			Block* b = new Block();
@@ -416,8 +416,8 @@ void GameScene::setManure()
 	Vector3 a = { 0,0,0 };
 	Vector3 v = { 1,0,1 };
 	Vector4 c = { 0.741, 0.565, 0.251, 1.0 };
-	Vector3 offset = { 0, 0, 0};
-	manure = new FountainSystem(v, a, c, offset, 10, 10);
+	Vector3 offset = { 0, 10, 0};
+	manure = new FountainSystem(v, a, c, offset, 40, 9000);
 	manure->Active(false);
 	systems.push_back(manure);
 }
@@ -426,7 +426,7 @@ void GameScene::prepareSea()
 {
 	// bloque que hace de agua
 	sea = new SolidoRigido();
-	sea->StaticRigidSolid(_scene, _phisics, { 0,-20, 0 }, { 200,0.3,200 }, {0.376,0.741,0.761,1});
+	sea->StaticRigidSolid(_scene, _phisics, { 0,0, 0 }, { 200,0.3,200 }, {0.376,0.741,0.761,1});
 
 }
 
