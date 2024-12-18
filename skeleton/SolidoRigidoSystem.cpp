@@ -26,6 +26,8 @@ std::vector<SolidoRigido*> SolidoRigidoSystem::generateSolids()
 
 	for (int i = 0; i < partcant; i++) {
 
+		// AQUI Y FALTA AJUSTA LOS TIPOS DE FORMAAAAAAAAAS
+
 		float randx = rand(generator);
 		float randy = rand(generator);
 		float randz = rand(generator);
