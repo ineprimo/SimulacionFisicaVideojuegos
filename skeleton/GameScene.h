@@ -75,6 +75,8 @@ private:
 	FountainSystem* manure;
 	BuoyancyForceGenerator* buoyancy;
 
+	// sistema de solidorigidos
+
 
 	ParticleSys* current_sys = nullptr;
 
