@@ -6,6 +6,11 @@ SprinklerSystem::SprinklerSystem(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_,
 
 }
 
+SprinklerSystem::SprinklerSystem(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, float vol, int _med, int _var, int pnum, int cd, int angles)
+: ParticleSys(_v, _a, _c, o_, _med, _var), particlenum(pnum), volume(vol), cooldown(cd), anglesum(angles) {
+
+}
+
 SprinklerSystem::~SprinklerSystem()
 {
 }
@@ -37,6 +42,7 @@ std::vector<Particle*> SprinklerSystem::generateParticle()
 			const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 			pr = new Particle(p, auxv, {0,0,0}, c);
+			pr->setVolume(volume);
 			pr->setType(0);
 			pr->setMass(mass);
 			particles.push_back(pr);

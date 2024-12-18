@@ -44,7 +44,7 @@ Vector3 BuoyancyForceGenerator::force(double t, Particle* p)
 		immersed = (h0 - h) / _height + 0.5;
 	}
 	 
-	f.y = _liquid_density * _volume * immersed * 9.8;
+	f.y = _liquid_density * p->getVolume() * immersed * 9.8;
 
 	return f; 
 }

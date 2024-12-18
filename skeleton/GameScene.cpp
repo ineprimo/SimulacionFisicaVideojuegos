@@ -5,6 +5,7 @@
 #include "ExplosionGenerator.h"
 #include "BombSys.h"
 #include "FountainSystem.h"
+#include "BuoyancyForceGenerator.h"
 
 GameScene::GameScene(PxScene* scene_, PxPhysics* phisics_)
 	: _scene(scene_), _phisics(phisics_)
@@ -65,12 +66,16 @@ void GameScene::setScene()
 
 	//
 	setManure();
+
+	// 
+	prepareSea();
 	
 	//prepareCollisionDebug();
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
 	explosion = new ExplosionGenerator({0,0,0});
+	buoyancy = new BuoyancyForceGenerator({0,0,0}, 10, 10, 10); // kg/m^3
 	explosion->Activate(false);
 	sprinkler->setGravForgeGen(gravity);
 	manure->setGravForgeGen(gravity);
@@ -345,6 +350,20 @@ void GameScene::checkCollisions()
 		i++;
 	}
 
+
+
+	// mira si colisiona con el agua
+	for (auto part : m) {
+		if (part->isInsideStatic(sea) && !part->HasBuoyancy()) {
+			// le mete buoyancy
+
+			std::cout << "buoyancy" << std::endl;
+			part->addForceGen(buoyancy);
+			part->HasBuoyancy(true);
+
+		}
+	}
+
 }
 
 void GameScene::prepareColors()
@@ -398,9 +417,17 @@ void GameScene::setManure()
 	Vector3 v = { 1,0,1 };
 	Vector4 c = { 0.741, 0.565, 0.251, 1.0 };
 	Vector3 offset = { 0, 0, 0};
-	manure = new FountainSystem(v, a, c, offset);
+	manure = new FountainSystem(v, a, c, offset, 10, 10);
 	manure->Active(false);
 	systems.push_back(manure);
+}
+
+void GameScene::prepareSea()
+{
+	// bloque que hace de agua
+	sea = new SolidoRigido();
+	sea->StaticRigidSolid(_scene, _phisics, { 0,-20, 0 }, { 200,0.3,200 }, {0.376,0.741,0.761,1});
+
 }
 
 void GameScene::Block::Next()

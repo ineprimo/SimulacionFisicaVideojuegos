@@ -32,6 +32,7 @@ void BuoyancyScene::setScene()
 	int n = 10;
 	for (int i = 0; i < n; i++) {
 		Particle* part = new Particle({ posx, posy, 0 }, { 0,0,0 }, { 0,0,0 }, { 0.87, 0.34, 0.57, 1.0 });
+		part->setVolume(2);
 		part->setVisibility(false);
 		part->setMass(0.5);
 		part_vec.push_back(part);

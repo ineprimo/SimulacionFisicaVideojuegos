@@ -8,6 +8,7 @@ class GravityForceGenerator;
 class ExlosionGenerator;
 class BombSys;
 class FountainSys;
+class BuoyancyForceGenerator;
 
 class GameScene : public Scene
 {
@@ -62,6 +63,7 @@ private:
 	std::vector<std::vector<bool>> complete;
 	bool ended = false;
 
+	SolidoRigido* sea;
 
 	std::vector<Vector4> colors;
 	std::vector<Particle*> debug;
@@ -71,6 +73,8 @@ private:
 	ExplosionGenerator* explosion;
 	BombSys* celebration;
 	FountainSystem* manure;
+	BuoyancyForceGenerator* buoyancy;
+
 
 	ParticleSys* current_sys = nullptr;
 
@@ -103,6 +107,9 @@ private:
 
 	// 
 	void setManure();
+
+	// 
+	void prepareSea();
 	 
 	// --------------- metodos auxiliares ----------
 	void prepareColors();

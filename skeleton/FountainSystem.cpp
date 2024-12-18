@@ -3,7 +3,14 @@
 FountainSystem::FountainSystem(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 o_)
 	: ParticleSys(_v, _a, _c, o_, 0,0)
 {
+	volume = 1;
+}
 
+FountainSystem::FountainSystem(physx::PxVec3 _v, physx::PxVec3 _a, physx::PxVec4 _c, physx::PxVec3 o_, float vol, int mas)
+	: ParticleSys(_v, _a, _c, o_, 0, 0)
+{
+	ParticleSys::mass = mas;
+	volume = vol;
 }
 
 FountainSystem::~FountainSystem()
@@ -33,6 +40,7 @@ std::vector<Particle*> FountainSystem::generateParticle()
 		const Vector3 auxv = { randx * v.x, randy * v.y, randz * v.z };
 
 		pr = new Particle(p, auxv, g, c);
+		pr->setVolume(volume);
 		pr->setType(1);
 		pr->setMass(mass);
 		particles.push_back(pr);

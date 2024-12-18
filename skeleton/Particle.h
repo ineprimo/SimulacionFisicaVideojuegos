@@ -26,6 +26,9 @@ public:
 	void setVelocity(Vector3 v_) { vel = v_; }
 	void setDumping(float d) { dump = d; };
 
+	void setVolume(float vol) { _volume = vol; };
+	float getVolume() { return _volume; };
+
 	Vector3 getPosition() { return pose.p; }
 
 	bool integrate(double t);
@@ -44,6 +47,10 @@ public:
 
 	void setVisibility(bool a) override;
 
+
+	void HasBuoyancy(bool a) { hasBuoyancy = a; };
+	bool HasBuoyancy() { return hasBuoyancy; };
+
 private:
 
 	Vector3 vel;	// vel
@@ -54,11 +61,16 @@ private:
 	double maxt;
 	Vector3 maxp;
 
+	float _volume;
 	float mass;
 
 	int type = -1;
 
 	std::vector<ForceGen*> forceGens;
 	std::vector<Vector3> forces;
+
+
+	// guarrada pero bueno
+	bool hasBuoyancy = false;
 
 };
