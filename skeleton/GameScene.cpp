@@ -78,7 +78,8 @@ void GameScene::setScene()
 
 	// settea la gravedad
 	gravity = new GravityForceGenerator({0,-9.8,0});
-	explosion = new ExplosionGenerator({0,0,0});
+	explosion = new ExplosionGenerator({0,10,0});
+	explosion->setAll(40, 0.05, 125, 10, 100);
 	buoyancy = new BuoyancyForceGenerator({0,0,0}, 998, 10, 4); // kg/m^3
 	explosion->Activate(false);
 	sprinkler->setGravForgeGen(gravity);
@@ -219,7 +220,7 @@ void GameScene::createFloor(int l, int w)
 		for (int j = 0; j < w; j++) {
 
 			auto* block = new SolidoRigido();
-			block->StaticRigidSolid(_scene, _phisics, { posx,5, posz }, { 2,1,2 }, colors[color]);
+			block->StaticRigidSolid(_scene, _phisics, { posx,5, posz }, { 2,1,2 }, colors[0]);
 			//block->Static()->setGlobalPose({  });
 
 			Block* b = new Block();
@@ -432,7 +433,7 @@ void GameScene::setManure()
 
 void GameScene::CascadeSolidRigid()
 {
-	PxTransform pos = { 0,0,0 };
+	PxTransform pos = { -200,40,-400 };
 	cascade = new SolidoRigidoSystem(_scene, _phisics, pos);
 	systems.push_back(cascade);
 }
@@ -441,7 +442,8 @@ void GameScene::prepareSea()
 {
 	// bloque que hace de agua
 	sea = new SolidoRigido();
-	sea->StaticRigidSolid(_scene, _phisics, { 0,0, 0 }, { 200,0.3,200 }, {0.376,0.741,0.761,1});
+	sea->StaticRigidSolid(_scene, _phisics, { 0,0, -200 }, { 800,0.3,5000 }, {0.376,0.741,0.761,1});
+
 
 }
 

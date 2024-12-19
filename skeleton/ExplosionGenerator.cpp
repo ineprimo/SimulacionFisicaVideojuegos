@@ -2,6 +2,7 @@
 #include "Particle.h"
 
 ExplosionGenerator::ExplosionGenerator(Vector3 pos_)
+	: position(pos_)
 {
 }
 
@@ -34,4 +35,14 @@ Vector3 ExplosionGenerator::force(double t, Particle* p)
 	f = ((k / radio* radio) * (p->getPosition() - position)) * exp(-t / tau);
 	//f = ((k / radio * radio) * (p->getPosition() - position)) * exp(-t / tau);
 	return f;
+}
+
+void ExplosionGenerator::setAll(float _k = 100, float _tau = 0.05, 
+	float _ve = 125, float _time = 10, float _radio = 100)
+{
+	k = _k;
+	tau = _tau;
+	ve = _ve;
+	time = _time;
+	radio = _radio;
 }

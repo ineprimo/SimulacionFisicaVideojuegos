@@ -37,7 +37,7 @@ private:
 	//Vector3 Lvel;
 	//Vector3 Wvel;
 
-	int lifetime;
+	int lifetime = 200;
 
 };
 

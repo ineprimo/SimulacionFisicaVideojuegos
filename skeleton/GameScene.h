@@ -65,6 +65,7 @@ private:
 	bool ended = false;
 
 	SolidoRigido* sea;
+	SolidoRigido* skyz;
 
 	std::vector<Vector4> colors;
 	std::vector<Particle*> debug;

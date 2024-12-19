@@ -21,7 +21,10 @@ std::vector<SolidoRigido*> SolidoRigidoSystem::generateSolids()
 						u.z + position.p.z }; // 
 
 
-	std::normal_distribution<float> rand(3.0, 1.0);
+	std::normal_distribution<float> rand(1.0, 1.0);
+	std::uniform_int_distribution<> distr(1, 10); 
+	std::uniform_int_distribution<> distr2(-100, 100); 
+	std::uniform_int_distribution<> inertia(0, 5); 
 	SolidoRigido* sr;
 
 	for (int i = 0; i < partcant; i++) {
@@ -32,16 +35,27 @@ std::vector<SolidoRigido*> SolidoRigidoSystem::generateSolids()
 		float randy = rand(generator);
 		float randz = rand(generator);
 
-		const Vector3 auxv = { randx, randy, randz};
-		const Vector3 auxva = { randx, randy, randz};
-		const Vector3 size = { 1, 1, 1};
-		PxTransform pos = { 0,0,0 };
-		float dens = 1;	// masa calculada con esto
-		int typ = 1;
-		int mass;
+		float randxs = distr(generator);
+		float randys = distr(generator);
+		float randzs = distr(generator);
 
-		sr = new SolidoRigido(scene, physics, pos, auxv, auxva, size, dens, { 0,0,1,1 }, typ);
-		sr->Dynamic()->setMassSpaceInertiaTensor({0,0,0});
+		float randposx = distr2(generator);
+
+
+		float inertiax = inertia(generator);
+
+		const Vector3 auxv = { 0, 0, 0};
+		const Vector3 auxva = { 0, 0, 0};
+		const Vector3 size = { randxs, randys, randzs };
+		int typ = std::rand() % 2;	// random entre 0 y 1
+		
+		int dens = std::rand() % 11;// random entre 0 y 11
+		if (dens == 0) dens = 1;
+
+		PxTransform pos = { randposx, position.p.y + i ,position.p.z + i };
+
+		sr = new SolidoRigido(scene, physics, pos, {0,0,0}, auxva, size, dens, {0,0,1,1}, typ);
+		sr->Dynamic()->setMassSpaceInertiaTensor({inertiax,0,0});
 		//sr->Dynamic()->setMass(mass);
 		solids.push_back(sr);
 		aux.push_back(sr); 
@@ -52,7 +66,7 @@ std::vector<SolidoRigido*> SolidoRigidoSystem::generateSolids()
 
 void SolidoRigidoSystem::update(double t)
 {
-	System::update(t);
+	//System::update(t);
 	wait();
 }
 

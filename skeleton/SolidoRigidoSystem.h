@@ -17,9 +17,9 @@ class SolidoRigidoSystem : public System
 
 private:
 
-	int partcant = 50;
+	int partcant = 5;
 
-	float volume = 1;;
+	float volume = 1;
 
 	double timeElapsed = 0;
 	double cooldown = 300;

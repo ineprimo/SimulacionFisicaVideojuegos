@@ -10,7 +10,7 @@ public:
 	void updateForce(double t, Particle* p) override;
 	Vector3 force(double t, Particle* p) override;
 
-
+	void setAll(float _k, float _tau, float _ve, float _time, float _radio);
 
 private:
 	float k = 100;

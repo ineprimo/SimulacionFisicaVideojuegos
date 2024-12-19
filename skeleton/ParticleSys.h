@@ -63,7 +63,6 @@ public:
 	void setWindForgeGen(WindForceGenerator* g) { wGen = g; };
 	void setTornadoGen(TornadoGenerator* g) { tGen = g; };
 	void setExplosionGen(ExplosionGenerator* g) { eGen = g; };
-	void setSpringGen(SpringForceGenerator* g) { sGen = g; };
 
 	ForceGen* getGravForgeGen() { return gfGen; };
 	ForceGen* getWindForgeGen() { return wGen; };

@@ -13,8 +13,23 @@ SolidoRigido::SolidoRigido(PxScene* _scene, PxPhysics* _physics, PxTransform ori
 	_solid->setAngularVelocity(ang_vel);
 	PxShape* shape;
 
-	shape = CreateShape(PxBoxGeometry(size));
-	_solid->attachShape(*shape);
+	switch (type)
+	{
+	case 0:
+		shape = CreateShape(PxBoxGeometry(size));
+		_solid->attachShape(*shape);
+
+		break;
+	case 1: 
+		shape = CreateShape(PxSphereGeometry(size.x));
+		_solid->attachShape(*shape);
+
+		break;
+	default:
+		shape = CreateShape(PxBoxGeometry(size));
+		_solid->attachShape(*shape);
+		break;
+	}
 
 	PxRigidBodyExt::updateMassAndInertia(*_solid, density);	
 	mass = _solid->getMass();
@@ -38,7 +53,7 @@ bool SolidoRigido::update(double t)
 	lifetime -= t;
 
 	if (lifetime <= 0)
-		//Active(false);
+		Active(false);
 		;
 
 	//applyForce();
