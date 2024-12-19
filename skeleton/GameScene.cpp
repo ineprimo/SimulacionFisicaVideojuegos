@@ -48,6 +48,8 @@ void GameScene::createSprinkler(Vector3 pos)
 	// ------------------  ASPERSOR
 	Vector3 v = { 5,0,5 };
 	sprinkler = new SprinklerSystem(v, { 0,0,0 }, { 0,0,1,1 }, pos, 3, 1, 5, 2, 5);
+	sprinkler->setMass(1);
+	sprinkler->setVolume(100);
 	systems.push_back(sprinkler);
 
 }
@@ -56,8 +58,8 @@ void GameScene::setScene()
 	// PxScene* _scene, PxPhysics* _physics, 
 	// PxTransform ori, Vector3 vel, Vector3 ang_vel, 
 	// Vector3 size, float density, Vector4 color
-	auto* solid = new SolidoRigido(_scene, _phisics, {0,20,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1}, 2);
-	objects.push_back(solid);
+	//auto* solid = new SolidoRigido(_scene, _phisics, {0,20,0}, {0,0,0}, {0,0,0}, {1,1,1}, 2, {1,0,0,1}, 2);
+	//objects.push_back(solid);
 
 	// suelo (tierra)
 	createFloor(10, 10);
@@ -80,7 +82,8 @@ void GameScene::setScene()
 	gravity = new GravityForceGenerator({0,-9.8,0});
 	explosion = new ExplosionGenerator({0,10,0});
 	explosion->setAll(40, 0.05, 125, 10, 100);
-	buoyancy = new BuoyancyForceGenerator({0,0,0}, 998, 10, 4); // kg/m^3
+
+	buoyancy = new BuoyancyForceGenerator({0,0,0}, 998, 10, 4);
 	explosion->Activate(false);
 	sprinkler->setGravForgeGen(gravity);
 	manure->setGravForgeGen(gravity);
@@ -145,7 +148,7 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 
 		break;
 	}
-	case 'U':
+	case 'O':
 	{
 		{
 			current_sys->setMass(current_sys->getMass() + 1);
@@ -154,7 +157,7 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 
 		break;
 	}	
-	case 'O':
+	case 'U':
 	{
 		{
 			if(current_sys->getMass() > 1)
@@ -165,6 +168,15 @@ void GameScene::keyPressed(unsigned char key, const physx::PxTransform& camera)
 
 		break;
 	}
+	case 'Y':
+	{
+		{
+			sprinkler->Active(!sprinkler->Active());
+		}
+
+		break;
+	}
+
 
 	case 'B':
 	{
@@ -220,7 +232,7 @@ void GameScene::createFloor(int l, int w)
 		for (int j = 0; j < w; j++) {
 
 			auto* block = new SolidoRigido();
-			block->StaticRigidSolid(_scene, _phisics, { posx,5, posz }, { 2,1,2 }, colors[0]);
+			block->StaticRigidSolid(_scene, _phisics, { posx,5, posz }, { 2,1,2 }, colors[0], 1);
 			//block->Static()->setGlobalPose({  });
 
 			Block* b = new Block();
@@ -442,8 +454,41 @@ void GameScene::prepareSea()
 {
 	// bloque que hace de agua
 	sea = new SolidoRigido();
-	sea->StaticRigidSolid(_scene, _phisics, { 0,0, -200 }, { 800,0.3,5000 }, {0.376,0.741,0.761,1});
+	sea->StaticRigidSolid(_scene, _phisics, { 0,0, -200 }, { 800,0.3,5000 }, {0.376,0.741,0.761,1}, 1);
 
+	auto aux1 = new SolidoRigido();
+	aux1->StaticRigidSolid(_scene, _phisics, { 200,-200, -600 }, { 300,1,1 }, { 0.384,0.651,0.376,1 }, 2);
+	auto aux2 = new SolidoRigido();
+	aux2->StaticRigidSolid(_scene, _phisics, { -100,-250, -1000 }, { 500,1,1 }, { 0.384,0.651,0.376,1 }, 2);
+
+	// faro
+	auto faro = new SolidoRigido();
+	faro->StaticRigidSolid(_scene, _phisics, { 100,30, -600 }, { 10,100,10 }, { 0.216,0.231,0.239,1 }, 1);
+	auto faro1 = new SolidoRigido();
+	faro1->StaticRigidSolid(_scene, _phisics, { 100,120, -600 }, { 15,10,15 }, { 0.216,0.231,0.239,1 }, 1);
+	auto faro2 = new SolidoRigido();
+	faro2->StaticRigidSolid(_scene, _phisics, { 100,130, -600 }, { 15,10,15 }, { 0.216,0.231,0.239,1 }, 2);
+
+	//puerto
+	auto puerto = new SolidoRigido();
+	puerto->StaticRigidSolid(_scene, _phisics, { 10,10, -600 }, { 50,5,15 }, { 0.216,0.231,0.239,1 }, 1);
+	auto puerto1 = new SolidoRigido();
+	puerto1->StaticRigidSolid(_scene, _phisics, { -30,5, -550 }, { 2,15,2 }, { 0.216,0.231,0.239,1 }, 1);
+
+	// casas
+	auto casas = new SolidoRigido();
+	casas->StaticRigidSolid(_scene, _phisics, { 0,10, -600 }, { 7,20,7 }, { 0.216,0.231,0.239,1 }, 1);
+	auto casas1 = new SolidoRigido();
+	casas1->StaticRigidSolid(_scene, _phisics, { 20,30, -600 }, { 10,20,7 }, { 0.216,0.231,0.239,1 }, 1);
+	auto casas2 = new SolidoRigido();
+	casas2->StaticRigidSolid(_scene, _phisics, { 0,50, -610 }, { 15,20,7 }, { 0.216,0.231,0.239,1 }, 1);
+
+	auto aux3 = new SolidoRigido();
+	aux3->StaticRigidSolid(_scene, _phisics, { -300, -50, 0 }, { 100,1,1 }, { 0.384,0.651,0.376,1 }, 2);
+
+
+	auto aux4 = new SolidoRigido();
+	aux4->StaticRigidSolid(_scene, _phisics, { 500, -50, 1000 }, { 100,1,1 }, { 0.384,0.651,0.376,1 }, 2);
 
 }
 

@@ -18,7 +18,7 @@ public:
 
 	void AddForceGen(ForceGen* f);
 
-	void StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color);
+	void StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color, int type);
 
 	PxRigidDynamic* Dynamic() { if (_solid != nullptr) return _solid; }
 	PxRigidStatic* Static() { if (_static != nullptr) return _static; }

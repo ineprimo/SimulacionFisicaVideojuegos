@@ -31,6 +31,7 @@ protected:
 	Vector3 offset;
 	Vector3 position;
 	int mass;
+	float volume;
 
 
 	Vector3 g;		// gravedad
@@ -78,6 +79,9 @@ public:
 	void setMass(int m_) { mass = m_; }
 	int getMass() { return mass; }
 
+
+	void setVolume(int m_) { volume = m_; }
+	float getVolume() { return volume; }
 
 	void hide();
 	void show();

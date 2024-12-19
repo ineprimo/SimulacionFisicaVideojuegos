@@ -6,11 +6,6 @@ SprinklerSystem::SprinklerSystem(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_,
 
 }
 
-SprinklerSystem::SprinklerSystem(Vector3 _v, Vector3 _a, Vector4 _c, Vector3 o_, float vol, int _med, int _var, int pnum, int cd, int angles)
-: ParticleSys(_v, _a, _c, o_, _med, _var), particlenum(pnum), volume(vol), cooldown(cd), anglesum(angles) {
-
-}
-
 SprinklerSystem::~SprinklerSystem()
 {
 }

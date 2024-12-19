@@ -73,14 +73,29 @@ void SolidoRigido::AddForceGen(ForceGen* f)
 }
 
 
-void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color)
+void SolidoRigido::StaticRigidSolid(PxScene* _scene, PxPhysics* _physics, PxTransform ori, Vector3 size, Vector4 color, int type)
 {
 	//createCaja(ori.p, tam.x, tam.y, tam.z);
 	_static = _physics->createRigidStatic(ori);
 	_static->setGlobalPose(ori);
 	Transform(ori);
-	PxShape* shapeEstatic = CreateShape(PxBoxGeometry(size));
-	_static->attachShape(*shapeEstatic);
+	PxShape* shapeEstatic;
+	switch (type)
+	{
+	case 1:
+		shapeEstatic = CreateShape(PxBoxGeometry(size));
+		_static->attachShape(*shapeEstatic);
+		break;
+	case 2:
+		shapeEstatic = CreateShape(PxSphereGeometry(size.x));
+		_static->attachShape(*shapeEstatic);
+		break;
+	default:
+		shapeEstatic = CreateShape(PxBoxGeometry(size));
+		_static->attachShape(*shapeEstatic);
+		break;
+	}
+
 	_scene->addActor(*_static);
 
 	Transform(ori);

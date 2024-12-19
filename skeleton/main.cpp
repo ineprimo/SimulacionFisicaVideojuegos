@@ -27,7 +27,7 @@
 
 #include <iostream>
 
-std::string display_text = "This is a test";
+std::string display_text = " ";
 
 
 using namespace physx;
